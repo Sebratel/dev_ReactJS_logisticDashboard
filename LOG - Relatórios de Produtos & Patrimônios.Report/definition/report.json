@@ -1,0 +1,141 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY23SU11",
+      "reportVersionAtImport": {
+        "visual": "1.8.86",
+        "report": "2.0.86",
+        "page": "1.3.86"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "012_-_Sebratel19620982843985924.png",
+          "path": "012_-_Sebratel19620982843985924.png",
+          "type": "Image"
+        },
+        {
+          "name": "012_-_Sebratel5112148507129075.png",
+          "path": "012_-_Sebratel5112148507129075.png",
+          "type": "Image"
+        },
+        {
+          "name": "310144339165564582579.png",
+          "path": "310144339165564582579.png",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem_Padr_o13459214213340176.jpg",
+          "path": "Imagem_Padr_o13459214213340176.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem_Padr_o16175248068926606.jpg",
+          "path": "Imagem_Padr_o16175248068926606.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "logo_circular22033869102524406.png",
+          "path": "logo_circular22033869102524406.png",
+          "type": "Image"
+        },
+        {
+          "name": "Wallpaper_PowerBI37384337280660385.jpg",
+          "path": "Wallpaper_PowerBI37384337280660385.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Wallpaper_PowerBI44764238412578317.jpg",
+          "path": "Wallpaper_PowerBI44764238412578317.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Wallpaper_PowerBI7673387727980722.jpg",
+          "path": "Wallpaper_PowerBI7673387727980722.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Wallpaper_PowerBI8851512360313315.jpg",
+          "path": "Wallpaper_PowerBI8851512360313315.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "x_icon_1721015300702500597225.png",
+          "path": "x_icon_1721015300702500597225.png",
+          "type": "Image"
+        }
+      ]
+    },
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY23SU11",
+          "path": "BaseThemes/CY23SU11.json",
+          "type": "BaseTheme"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultFilterActionIsDataFilter": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true,
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  }
+}

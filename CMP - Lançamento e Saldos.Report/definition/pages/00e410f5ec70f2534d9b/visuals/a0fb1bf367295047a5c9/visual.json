@@ -1,0 +1,34 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "a0fb1bf367295047a5c9",
+  "position": {
+    "x": 22.68080427628071,
+    "y": 1.787762972355891,
+    "z": 5000,
+    "height": 55.01422071363131,
+    "width": 139.21933055114678,
+    "tabOrder": 45000
+  },
+  "visual": {
+    "visualType": "image",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "imageUrl": {
+              "expr": {
+                "ResourcePackageItem": {
+                  "PackageName": "RegisteredResources",
+                  "PackageType": 1,
+                  "ItemName": "limpafiltro9463843167541073.png"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "490a1b4603e5d9a2cb07"
+}

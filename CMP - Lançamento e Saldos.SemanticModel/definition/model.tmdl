@@ -1,0 +1,25 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["DataAtualizado","Produtos","Pedido de Compra"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_8b9c53d0-23be-4a4d-88fb-ad4f62f26857
+ref table DataAtualizado
+ref table LocalDateTable_c841af89-2fe8-48c2-808e-9327f3fec7e6
+ref table LocalDateTable_5fc5a6e6-6c84-46f0-9e3b-904d8d659a77
+ref table Produtos
+ref table 'Pedido de Compra'
+ref table LocalDateTable_5af3a8ce-5c3f-4435-bd93-7d677faa721f
+ref table LocalDateTable_1cb31af6-6a7e-4ee6-8b0e-b120a0e93163
+
+ref cultureInfo pt-BR
+

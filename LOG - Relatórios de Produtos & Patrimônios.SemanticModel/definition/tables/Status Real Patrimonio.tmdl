@@ -1,0 +1,141 @@
+table 'Status Real Patrimonio'
+	lineageTag: 1a68649e-cca5-45ff-9321-9eddaebf859f
+
+	measure Qtd_Disponivel = ```
+			
+			CALCULATE(
+			    COUNT('Status Real Patrimonio'[patrimonio_id]), 
+			    'Status Real Patrimonio'[Status Atual] = "Disponível"
+			)
+			```
+		formatString: 0
+		lineageTag: a070a205-4fe9-4a43-ba31-9e7bb9d34b5e
+
+	measure Qtd_Indisponivel = ```
+			
+			CALCULATE(
+			    COUNT('Status Real Patrimonio'[patrimonio_id]), 
+			    'Status Real Patrimonio'[Status Atual] = "Indisponível"
+			)
+			```
+		formatString: 0
+		lineageTag: bb956f48-af8a-4c65-8e21-fd7c34f74634
+
+	column produto_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 8ac73989-63e6-467c-9407-6444f6d27660
+		summarizeBy: none
+		sourceColumn: produto_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column produto_codigo
+		dataType: string
+		lineageTag: c9b2f7f9-4131-4bd8-852d-d547482bfe03
+		summarizeBy: none
+		sourceColumn: produto_codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column produto_titulo
+		dataType: string
+		lineageTag: 9b08fc04-b754-465d-a98f-1ed690ea29a7
+		summarizeBy: none
+		sourceColumn: produto_titulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column base_descricao
+		dataType: string
+		lineageTag: 97be2398-2a98-4057-ba14-eff843f28bfe
+		summarizeBy: none
+		sourceColumn: base_descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column patrimonio_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6fabfbe5-326c-46c5-bcf3-0966b922aebd
+		summarizeBy: sum
+		sourceColumn: patrimonio_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column serial
+		dataType: string
+		lineageTag: f7f5e8af-3394-4515-9ed2-f2e11ad9368d
+		summarizeBy: none
+		sourceColumn: serial
+
+		annotation SummarizationSetBy = Automatic
+
+	column patrimonio
+		dataType: string
+		lineageTag: 0e0380d9-5d55-41d4-8695-0235879a39fa
+		summarizeBy: none
+		sourceColumn: patrimonio
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status Atual'
+		dataType: string
+		lineageTag: 017df7d8-278d-423a-8dfc-d236792aa214
+		summarizeBy: none
+		sourceColumn: Status Atual
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status = IF('Status Real Patrimonio'[Status Atual] = "Disponível", "Disponível", "Indisponível")
+		lineageTag: 31d67f9a-e35a-4dec-85f9-f2b01c59672c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column patrimonio_titulo
+		dataType: string
+		lineageTag: bf9741cc-79c6-4174-ad34-11e70f892d5d
+		summarizeBy: none
+		sourceColumn: patrimonio_titulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column responsavel
+		dataType: string
+		lineageTag: bcf2019a-14ea-492e-9d8b-c6d09bcea4a9
+		summarizeBy: none
+		sourceColumn: responsavel
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Base_Senior.operational_base'
+		dataType: string
+		lineageTag: 9b48f15e-acc6-48d7-9297-54eace7d36ae
+		summarizeBy: none
+		sourceColumn: Base_Senior.operational_base
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Base_Senior.team'
+		dataType: string
+		lineageTag: 52d87167-c2e9-4653-8fb5-52ddea138fc0
+		summarizeBy: none
+		sourceColumn: Base_Senior.team
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Status Real Patrimonio' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "WITH ultimas_ocorrencias AS (#(lf)    SELECT#(lf)        p.id AS patrimonio_id,#(lf)        p.serial_number AS serial,#(lf)        p.tag_number AS patrimonio,#(lf)        p.p_is_disponible,#(lf)        p.last_occurrence_description,#(lf)        p.service_product_id,#(lf)        p.company_place_business_unit_id,#(lf)        po.occurrence_type,#(lf)        po.title AS ocorrencia_titulo,#(lf)        ROW_NUMBER() OVER (#(lf)            PARTITION BY po.patrimony_id#(lf)            ORDER BY po.id DESC, po.date DESC#(lf)        ) AS rn#(lf)    FROM patrimony_occurrences po#(lf)    LEFT JOIN patrimonies p ON p.id = po.patrimony_id#(lf)    ---WHERE pt.service_product_id IN ('02156','02845','03188','03693','03934','03935','04000','05601')#(lf))#(lf)SELECT #(lf)    sp.id AS produto_id, #(lf)    sp.code AS produto_codigo, #(lf)    sp.title AS produto_titulo,  #(lf)    p.title as patrimonio_titulo,#(lf)    pe.name as responsavel,#(lf)    cpbu.description AS base_descricao,  #(lf)    uo.patrimonio_id,#(lf)    uo.serial,#(lf)    uo.patrimonio,#(lf)    CASE #(lf)        WHEN uo.occurrence_type IN ('12', '23') THEN 'Aguardando Retorno'#(lf)        WHEN uo.occurrence_type = '33' THEN 'Extraviado'#(lf)        WHEN uo.occurrence_type = '13' THEN 'Descarte'#(lf)        WHEN uo.occurrence_type = '28' THEN 'Vendido'#(lf)        WHEN uo.occurrence_type = '2'  THEN 'Alocado Cliente'#(lf)        WHEN uo.occurrence_type = '15' THEN 'Alocado Site'#(lf)        WHEN uo.occurrence_type = '5' THEN #(lf)            CASE #(lf)                WHEN (uo.last_occurrence_description LIKE '%MANUTENÇÃO / LABORATÓRIO / CANOAS%' OR #(lf)                      uo.last_occurrence_description LIKE '%CANCELAMENTO / LABORATÓRIO / SLE%') #(lf)                     AND TRIM(uo.last_occurrence_description) LIKE '%.'#(lf)                THEN 'Resp. Lab'#(lf)                WHEN (uo.last_occurrence_description LIKE '%MANUTENÇÃO / LABORATÓRIO / CANOAS%' OR #(lf)                      uo.last_occurrence_description LIKE '%CANCELAMENTO / LABORATÓRIO / SLE%')#(lf)                THEN 'Aguardando Retorno'#(lf)                ELSE 'Resp. Técnico'#(lf)            END#(lf)        WHEN uo.p_is_disponible = true OR uo.p_is_disponible IS TRUE THEN 'Disponível'#(lf)        WHEN uo.occurrence_type IN ('6', '10', '1') OR uo.ocorrencia_titulo LIKE '%Disponível%' THEN 'Disponível'#(lf)        ELSE 'Outros (' || COALESCE(uo.ocorrencia_titulo, 'Sem Histórico') || ')'#(lf)    END AS ""Status Atual""#(lf)FROM ultimas_ocorrencias uo#(lf)LEFT JOIN service_products sp ON sp.id = uo.service_product_id#(lf)LEFT JOIN company_place_business_units cpbu ON cpbu.id = uo.company_place_business_unit_id #(lf)LEFT JOIN companies_places cp ON cp.id = cpbu.company_place_id#(lf)left join patrimonies p on p.id = uo.patrimonio_id#(lf)left join people pe on pe.id = p.person_id#(lf)WHERE uo.rn = 1 #(lf)  AND sp.title IS NOT NULL#(lf)  AND cp.id = 1#(lf)  AND cpbu.description <> 'PROJETO NHO'#(lf)  AND cpbu.deleted IS NOT TRUE;"),
+				    #"Consultas Mescladas" = Table.NestedJoin(Fonte, {"responsavel"}, Base_Senior, {"name"}, "Base_Senior", JoinKind.LeftOuter),
+				    #"Base_Senior Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "Base_Senior", {"operational_base", "team"}, {"Base_Senior.operational_base", "Base_Senior.team"})
+				in
+				    #"Base_Senior Expandido"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

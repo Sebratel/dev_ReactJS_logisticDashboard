@@ -1,0 +1,25 @@
+# Power BI: cache local do modelo (dado real) e configurações da máquina
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# dependências e artefatos de build
+node_modules/
+dist/
+server/public/
+server/.source-cache/
+# dados gravados pelo app (cadastro de controle de estoque) — o versionado é a semente
+server/data/
+# dados da API de teste local (launch.json "api-teste", sem login, porta 8090)
+server/.teste-data/
+
+# segredos — NUNCA versionar (use .env.example como modelo)
+.env
+.env.*
+!.env.example
+*.pem
+service-account*.json
+
+# diversos
+*.log
+.DS_Store
+Thumbs.db

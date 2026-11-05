@@ -1,0 +1,65 @@
+relationship 1127f167-e5b7-42e9-ab85-75b6ea6bdc5b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendario.'Inicio do Mes'
+	toColumn: LocalDateTable_435ec5e9-2a4f-43de-860c-a014dc1f4371.Date
+
+relationship 94452acd-3ae6-4e55-8604-634638e167d6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendario.Date
+	toColumn: LocalDateTable_25e62b06-faeb-4ef2-b57e-b3337519c35c.Date
+
+relationship 4fd97e61-d5d3-48e1-a4f4-4d6dab350b14
+	fromColumn: 'CONSUMO DE FLATH'.'CRIADO EM'
+	toColumn: Calendario.Date
+
+relationship 1735ed23-437e-40ef-ba18-044725f3013c
+	fromColumn: 'OBJETOS CRIADOS'.DATA
+	toColumn: Calendario.Date
+
+relationship d95279cd-a59f-bab0-25a4-726dcdbf0cee
+	fromColumn: 'PRIMEIRO VÍNCULO'.DATA
+	toColumn: Calendario.Date
+
+relationship cb19f521-afe8-f649-41b5-94bedcc2c1b1
+	fromColumn: 'ÚLTIMO VÍNCULO'.DATA
+	toColumn: Calendario.Date
+
+relationship 45f1f00e-ec06-c823-0f43-ce774baa7c24
+	fromColumn: 'EQUIPAMENTO OBSOLETOS'.movimentation_date
+	toColumn: Calendario.Date
+
+relationship 26e901ee-4b40-452d-90ac-d5abf41ea758
+	joinOnDateBehavior: datePartOnly
+	fromColumn: QuantidadeRomaneios.DATA
+	toColumn: LocalDateTable_cb14ba3d-c9f2-417e-b52e-60ff34beff40.Date
+
+relationship 7ccee5f8-0efc-4fea-8065-06f49fec4a6c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Notas_Fiscais.ENTRADA
+	toColumn: LocalDateTable_6d07a134-08ce-4584-8cdb-3c3379c65ce8.Date
+
+relationship bf3292c4-09a1-41ab-9666-8c814e780c62
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Data Atualizado'.Data
+	toColumn: LocalDateTable_c1fd57ae-c946-4fc9-959c-9684c0d112ac.Date
+
+relationship 633f5b8d-0dcb-50f3-c29f-7cf9d4a97472
+	fromColumn: 'Consumo Voalle'.DATA
+	toColumn: Calendario.Date
+
+relationship 5d4a8991-6448-4113-8e9e-afd3902fa842
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'USADOS CLASSIFICADO'.DATA_RETORNO
+	toColumn: LocalDateTable_daf52a4b-665a-4441-908c-387546b22889.Date
+
+relationship fd3a67db-7dd6-4733-a624-b3220d0afeb5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'USADOS CLASSIFICADO'.DATA_ORIGEM
+	toColumn: LocalDateTable_bb373d9a-5410-4fcd-a4f7-ebb1a790a041.Date
+
+relationship 1d00114f-cf35-663a-08f8-0577f967d041
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'ÚLTIMO VÍNCULO'.ChavePersonalizar
+	toColumn: 'USADOS CLASSIFICADO'.ChavePersonalizar
+

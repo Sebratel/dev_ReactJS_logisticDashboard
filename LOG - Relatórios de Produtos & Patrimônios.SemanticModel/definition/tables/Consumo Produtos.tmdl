@@ -1,0 +1,172 @@
+table 'Consumo Produtos'
+	lineageTag: 72895434-10e9-4bee-b7a5-f47ad39d076c
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: cac15e77-ef09-4439-9b3b-e6e976b2a0ce
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TECNICO
+		dataType: string
+		lineageTag: 3ab1c1ba-b40b-44e3-88ed-4d0549fba9f2
+		summarizeBy: none
+		sourceColumn: TECNICO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CODIGO
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e023c54-83a6-484d-b572-79b0d285c12a
+		summarizeBy: none
+		sourceColumn: CODIGO
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUTO
+		dataType: string
+		lineageTag: b5ac21c5-59c9-46af-b784-59c942a5f297
+		summarizeBy: none
+		sourceColumn: PRODUTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD_ALOCADO
+		dataType: int64
+		lineageTag: 86286080-fdf8-404f-96e7-73befbc766fb
+		summarizeBy: sum
+		sourceColumn: QTD_ALOCADO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MEDIDA
+		dataType: string
+		lineageTag: 4a9a4601-dd7d-47a5-ad37-7b9820adddf6
+		summarizeBy: none
+		sourceColumn: MEDIDA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NOTA BAIXA'
+		dataType: int64
+		lineageTag: 4ad6fc41-ed61-4140-8f0b-4e831091da7d
+		summarizeBy: sum
+		sourceColumn: NOTA BAIXA
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'CRIADO EM'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c27577c5-4426-45a4-8f47-0ba1d7f15728
+		summarizeBy: none
+		sourceColumn: CRIADO EM
+
+		variation Variation
+			isDefault
+			relationship: 1c4aa658-8131-4f82-9015-10be4bbb1c0c
+			defaultHierarchy: LocalDateTable_3ee42a12-1e34-4e05-b4a6-2e9a8bea9d9e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b2a28649-ad50-47ad-a7a0-f037be925bf0
+		summarizeBy: none
+		sourceColumn: DATA
+
+		variation Variation
+			isDefault
+			relationship: 0712777e-d1d2-411c-af19-aac624c54200
+			defaultHierarchy: LocalDateTable_35e69705-a812-4e86-91e9-e4349af4dd1d.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PROTOCOLO
+		dataType: string
+		lineageTag: 4547c7a2-b427-4830-b091-402ff6225f0e
+		summarizeBy: none
+		sourceColumn: PROTOCOLO
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGIAO
+		dataType: string
+		lineageTag: a1c2cf37-77be-432d-a0d1-de414324cacd
+		summarizeBy: none
+		sourceColumn: REGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'N° PROTOCOLO'
+		dataType: string
+		lineageTag: 70aadc8c-1bf8-4bd3-b5af-73270ef0d9f7
+		summarizeBy: none
+		sourceColumn: N° PROTOCOLO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Controle Estoque.SITUAÇÃO'
+		dataType: string
+		lineageTag: 7234cdf3-34b9-41b9-907e-e56332bfa918
+		summarizeBy: none
+		sourceColumn: Controle Estoque.SITUAÇÃO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CÓDIGO
+		dataType: string
+		lineageTag: ac1b4339-92ba-4201-ad4a-aa9165a6c975
+		summarizeBy: none
+		sourceColumn: CÓDIGO
+
+		annotation SummarizationSetBy = Automatic
+
+	column BaseGrupo =
+			
+			SWITCH(
+			    TRUE(),
+			    'Consumo Produtos'[REGIAO] IN {"✅Base São Leopoldo (Ativação)", "✅Base São Leopoldo (Manutenção)", "Estância Velha (EV)", "Novo Hamburgo (NHO)", "São Leopoldo (Manutenção),", "São Leopoldo (SLE)", "✅Sapucaia do Sul (Manutenção)", "Brochier (BCR)", "Sapucaia do Sul (SPS)", "São Leopoldo (Manutenção)."}, "BASE SLE",
+			    'Consumo Produtos'[REGIAO] IN {"✅Base Canoas (Ativação)", "✅Base Canoas (Manutenção)", "Canoas (CAN)", "Esteio (EIO)", "Nova Santa Rita (NSR)", "Porto Alegre (POA)", "Triunfo (TNF)"}, "BASE CAN",
+			    "OUTROS"
+			)
+		lineageTag: b29662d4-6d86-4e64-b258-467eea78c676
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Consumo Produtos' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "select#(lf)#(tab)vap.id as ""ID"",#(lf)#(tab)vap.responsible_name as ""TECNICO"",#(lf)#(tab)vap.service_product_code as ""CODIGO"",#(lf)#(tab)vap.service_product_title as ""PRODUTO"",#(lf)#(tab)vap.allocated_amount as ""QTD_ALOCADO"",#(lf)#(tab)vap.first_unit_measure_title as ""MEDIDA"",#(lf)#(tab)vap.invoice_note_document_number as ""NOTA BAIXA"",#(lf)#(tab)i.created as ""CRIADO EM"",#(lf)#(tab)i.issue_date as ""DATA"",#(lf)#(tab)a.title as ""PROTOCOLO"",#(lf)#(tab)r.title as ""REGIAO""#(lf)#(tab)from v_allocated_products vap#(lf)#(tab)left join invoice_notes i on i.id = vap.invoice_note_id#(lf)#(tab)left join people p on p.id = vap.responsible_id#(lf)        left join assignments a on a.id = vap.assignment_id#(lf)        left join regions r on r.id = a.region_id #(lf)        WHERE i.issue_date >= '01-01-2024'#(lf)#(tab)order by vap.id desc"),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"QTD_ALOCADO", Int64.Type}}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Tipo Alterado", "PROTOCOLO", "PROTOCOLO - Copiar"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Duplicada",{{"PROTOCOLO - Copiar", "N° PROTOCOLO"}}),
+				    #"Intervalo de Texto Extraído" = Table.TransformColumns(#"Colunas Renomeadas", {{"N° PROTOCOLO", each Text.Middle(_, 10, 7), type text}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Intervalo de Texto Extraído",{{"CODIGO", Int64.Type}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Tipo Alterado1", {"CODIGO"}, #"Controle Estoque", {"CÓDIGO"}, "Controle Estoque", JoinKind.LeftOuter),
+				    #"Controle Estoque Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "Controle Estoque", {"SITUAÇÃO"}, {"Controle Estoque.SITUAÇÃO"}),
+				    #"Coluna Duplicada1" = Table.DuplicateColumn(#"Controle Estoque Expandido", "CODIGO", "CODIGO - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada1",{{"CODIGO - Copiar", "CÓDIGO"}}),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"CÓDIGO", type text}})
+				in
+				    #"Tipo Alterado2"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

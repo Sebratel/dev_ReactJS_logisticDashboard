@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CMP - Lançamento e Saldos"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "11523385-10d7-485a-aaff-7725f1a4b033"
+  }
+}

@@ -1,0 +1,100 @@
+table Z_MEDIDAS_VALOR
+	lineageTag: b45f7621-1171-4828-81f6-c991f8309456
+
+	measure MaM_Valor = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Valor_Almoxarifado],
+			        Calendario[MES_ATUAL_ANTERIOR] = 1
+			    ),
+			    CALCULATE(
+			        [Valor_Almoxarifado],
+			        Calendario[MES_ATUAL_ANTERIOR] = 2
+			    )
+			) - 1
+			
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 83a355ef-99bd-4370-b57a-cd13ef9c06be
+
+	measure MAaMA_Valor = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Valor_Almoxarifado],
+			        Calendario[MES_ATUAL_ANTERIOR_ANO] = 1
+			    ),
+			    CALCULATE(
+			        [Valor_Almoxarifado],
+			        Calendario[MES_ATUAL_ANTERIOR_ANO] = 2
+			    )
+			) - 1
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 64e88deb-e327-4798-a3a3-64c9b42f167c
+
+	measure TaT_Valor = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Valor_Almoxarifado],
+			        Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 1
+			    ),
+			    CALCULATE(
+			        [Valor_Almoxarifado],
+			        Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 2
+			    )
+			) - 1
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b3801209-19f2-4258-9152-388743544cf7
+
+	measure TAaTA_Valor = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Valor_Almoxarifado],
+			        Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 1
+			    ),
+			    CALCULATE(
+			        [Valor_Almoxarifado],
+			        Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 2
+			    )
+			) - 1
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 86ff0389-a82e-4a00-9ae0-e1ca17b86101
+
+	measure AaA_Valor = ```
+			
+			VAR ValorAnoAtual =
+			    CALCULATE([Valor_Almoxarifado], Calendario[Ano] = 2026)
+			VAR ValorAnoAnterior =
+			    CALCULATE([Valor_Almoxarifado], Calendario[Ano] = 2025)
+			RETURN
+			DIVIDE(ValorAnoAtual, ValorAnoAnterior) - 1
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 077ad265-0523-4e86-b9a8-295a76d6a6e7
+
+	column Column
+		formatString: 0
+		lineageTag: 34e3386e-e06e-4ecd-a3ac-c4cdc07c10bc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Z_MEDIDAS_VALOR = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = d2ccdfe6c89847f7b8f38ccc8c142130
+

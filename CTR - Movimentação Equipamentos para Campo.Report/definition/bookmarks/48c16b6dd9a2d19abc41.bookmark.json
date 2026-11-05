@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "FL_MENSAL",
+  "name": "48c16b6dd9a2d19abc41",
+  "options": {
+    "targetVisualNames": [
+      "33ec0f13a99950360dbe"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "7095ac50a2ca8ec0474c",
+    "sections": {
+      "7095ac50a2ca8ec0474c": {
+        "visualContainers": {}
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

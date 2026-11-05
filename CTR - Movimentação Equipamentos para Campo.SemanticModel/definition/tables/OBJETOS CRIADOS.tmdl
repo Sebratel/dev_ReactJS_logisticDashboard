@@ -1,0 +1,83 @@
+table 'OBJETOS CRIADOS'
+	lineageTag: 4e5910a5-bfe7-481d-aed8-da5220a456b9
+
+	column ID
+		dataType: int64
+		formatString: #,0
+		lineageTag: 387d4e81-1ec2-447d-b6c7-09f28c42a91c
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIPO
+		dataType: string
+		lineageTag: 03bfa4d7-cf18-4c47-b9ef-2e92361be23a
+		summarizeBy: none
+		sourceColumn: TIPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESCRICAO
+		dataType: string
+		lineageTag: 71a8acf0-05cc-429b-8e22-83450cc67718
+		summarizeBy: none
+		sourceColumn: DESCRICAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 81250e19-a912-43b3-a947-488f7e5c4a9f
+		summarizeBy: none
+		sourceColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PATRIMONIO
+		dataType: string
+		lineageTag: c7c2d9c4-cea8-45a5-a354-0b676601f22c
+		summarizeBy: none
+		sourceColumn: PATRIMONIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERIAL
+		dataType: string
+		lineageTag: 9a5fecb7-1c97-498d-a7b0-e706d178e571
+		summarizeBy: none
+		sourceColumn: SERIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'STATUS DISPONIVEL'
+		dataType: string
+		lineageTag: ebfbbea1-aaa6-4131-ae6a-7f3e971b33ac
+		summarizeBy: none
+		sourceColumn: STATUS DISPONIVEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAGEM = 1
+		formatString: 0
+		lineageTag: 1ba90db5-74e4-4fda-a704-129b29766aad
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'OBJETOS CRIADOS' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbvoalle", "select distinct #(lf)#(tab)po.id ""ID"",#(lf)#(tab)po.title ""Tipo"",#(lf)#(tab)po.description ""Descrição"",#(lf)#(tab)po.date ""Data"" ,#(lf)#(tab)p.title ""Patrimonio"",#(lf)#(tab)p.serial_number,#(lf)#(tab)p.p_is_disponible#(lf)#(tab)from patrimony_occurrences po#(lf)#(tab)left join patrimonies p on p.id = po.patrimony_id#(lf)#(tab)where po.title like '%Criação do Objeto%'#(lf)#(tab)and po.date >= '2025-01-01'"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(Fonte,{{"p_is_disponible", "STATUS DISPONIVEL"}, {"serial_number", "SERIAL"}, {"Patrimonio", "PATRIMONIO"}, {"Data", "DATA"}, {"Descrição", "DESCRICAO"}, {"Tipo", "TIPO"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

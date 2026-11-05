@@ -1,0 +1,262 @@
+table Z_MEDIDAS_(MOVIMENTAÇÕES)
+	lineageTag: 4d637461-2ed3-45f2-9f4a-7ecd1afbdfe0
+
+	measure AaA_Novos = ```
+			DIVIDE(CALCULATE([PERCENTUAL NOVOS], Calendario[ANO_ATUAL_ANTERIOR] = 1), 
+			CALCULATE([PERCENTUAL NOVOS], Calendario[ANO_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 07ba44a1-098f-46ad-810f-2fbd0003a2be
+
+	measure MaM_Novos = ```
+			DIVIDE(CALCULATE([PERCENTUAL NOVOS], Calendario[MES_ATUAL_ANTERIOR] = 1), 
+			CALCULATE([PERCENTUAL NOVOS], Calendario[MES_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: efbf7e97-16eb-4e70-931e-990c594f2dab
+
+	measure MAaMA_Novos = ```
+			DIVIDE(CALCULATE([PERCENTUAL NOVOS], Calendario[MES_ATUAL_ANTERIOR_ANO] = 1), 
+			CALCULATE([PERCENTUAL NOVOS], Calendario[MES_ATUAL_ANTERIOR_ANO] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b7dd5fb9-b459-429f-bc7d-f688fa0e7518
+
+	measure TaT_Novos = ```
+			DIVIDE(CALCULATE([PERCENTUAL NOVOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 1), 
+			CALCULATE([PERCENTUAL NOVOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 842635a3-b6fd-4cac-9e7a-76f56e39de0f
+
+	measure TAaTA_Novos = ```
+			DIVIDE(CALCULATE([PERCENTUAL NOVOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 1), 
+			CALCULATE([PERCENTUAL NOVOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: ff618776-4582-4bdf-a8fa-24b7dcc0fe80
+
+	measure 'PERCENTUAL NOVOS' = COUNT('PRIMEIRO VÍNCULO'[ID])
+		formatString: 0%;-0%;0%
+		lineageTag: 7a5bd0d5-5c7b-44e5-ac10-08361b2283ff
+
+	measure 'PERCENTUAL USADOS' = COUNT('ÚLTIMO VÍNCULO'[ID])
+		lineageTag: 516a7d19-151a-4172-b146-359ca496ca69
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'TOTAL MOVIMENTAÇÕES' = COUNT('OBJETOS CRIADOS'[ID]) + COUNT('PRIMEIRO VÍNCULO'[ID])
+		formatString: 0
+		lineageTag: cd3bbde2-43fb-49b6-9bc0-ca59591d6b9a
+
+	measure MaM_Usados = ```
+			DIVIDE(CALCULATE([PERCENTUAL USADOS], Calendario[MES_ATUAL_ANTERIOR] = 1), 
+			CALCULATE([PERCENTUAL USADOS], Calendario[MES_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0c8e1470-61de-43d1-b056-77fca302d518
+
+	measure MAaMA_Usados = ```
+			DIVIDE(CALCULATE([PERCENTUAL USADOS], Calendario[MES_ATUAL_ANTERIOR_ANO] = 1), 
+			CALCULATE([PERCENTUAL USADOS], Calendario[MES_ATUAL_ANTERIOR_ANO] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2b2a3b82-8aac-4240-b99d-89db2ce4b398
+
+	measure TaT_Usados = ```
+			DIVIDE(CALCULATE([PERCENTUAL USADOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 1), 
+			CALCULATE([PERCENTUAL USADOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 74189561-1f56-43b4-bc1c-abb66e6f24aa
+
+	measure TAaTA_Usados = ```
+			DIVIDE(CALCULATE([PERCENTUAL USADOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 1), 
+			CALCULATE([PERCENTUAL USADOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5c5ebb5d-6007-4293-999b-910311c893b1
+
+	measure AaA_Usados = ```
+			DIVIDE(CALCULATE([PERCENTUAL USADOS], Calendario[ANO_ATUAL_ANTERIOR] = 1), 
+			CALCULATE([PERCENTUAL USADOS], Calendario[ANO_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 7e3d7565-1dd4-4d6e-b89e-46e06c690673
+
+	measure TOTAL = COUNT('ÚLTIMO VÍNCULO'[ID]) + COUNT('PRIMEIRO VÍNCULO'[ID])
+		formatString: 0
+		lineageTag: d88bfff2-7332-4f32-9409-bfd3efe99ae6
+
+	measure NOVOS = DIVIDE(COUNT('PRIMEIRO VÍNCULO'[ID]), [TOTAL])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e9781a2b-d69d-4929-a5a3-e2af060add7b
+
+	measure USADOS = DIVIDE(COUNT('ÚLTIMO VÍNCULO'[ID]), [TOTAL])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 80c7e0ad-0250-4fb7-be5d-b49b43d52cc8
+
+	measure #MaM_Geral_Novos = CALCULATE([NOVOS], Calendario[MES_ATUAL_ANTERIOR] = 1) - CALCULATE([NOVOS], Calendario[MES_ATUAL_ANTERIOR] = 2)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f50f29de-a3c5-4860-86a5-563c9f17c0d1
+
+	measure #MaM_Geral_Usados = CALCULATE([USADOS], Calendario[MES_ATUAL_ANTERIOR] = 1) - CALCULATE([USADOS], Calendario[MES_ATUAL_ANTERIOR] = 2)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d98981dd-0290-4073-a5be-880bb36aeef6
+
+	measure #MAaMA_Geral_Novos = CALCULATE([NOVOS], Calendario[MES_ATUAL_ANTERIOR_ANO] = 1) - CALCULATE([NOVOS], Calendario[MES_ATUAL_ANTERIOR_ANO] = 2)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 93a88fc5-2ca3-4d0a-801e-434d5d1673b1
+
+	measure #MAaMA_Geral_Usados = CALCULATE([USADOS], Calendario[MES_ATUAL_ANTERIOR_ANO] = 1) - CALCULATE([USADOS], Calendario[MES_ATUAL_ANTERIOR_ANO] = 2)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a282b577-0f77-4a35-8f99-278f4a4c8eb8
+
+	measure #TaT_Geral_Novos = CALCULATE([NOVOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 1) - CALCULATE([NOVOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 2)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b4cee66c-2742-471f-96f8-ac2cc8bb0c60
+
+	measure #TaT_Geral_Usados = CALCULATE([USADOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 1) - CALCULATE([USADOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 2)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d3d20746-10a6-4ee3-99f2-bc82f4bb32e7
+
+	measure #TAaTA_Geral_Novos = CALCULATE([NOVOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 1) - CALCULATE([NOVOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 2)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: cc68a123-dafd-4839-8740-51e7c073f1e4
+
+	measure #TAaTA_Geral_Usados = CALCULATE([USADOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 1) - CALCULATE([USADOS], Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 2)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 777a0fdf-2c78-4a11-9cc2-90afc77b78c0
+
+	measure #AaA_Geral_Usados = CALCULATE([USADOS], Calendario[ANO_ATUAL_ANTERIOR] = 1) - CALCULATE([USADOS], Calendario[ANO_ATUAL_ANTERIOR] = 2)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 262de422-5252-493c-9aba-3c72843f9110
+
+	measure #AaA_Geral_Novos = CALCULATE([NOVOS], Calendario[ANO_ATUAL_ANTERIOR] = 1) - CALCULATE([NOVOS], Calendario[ANO_ATUAL_ANTERIOR] = 2)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f84d509a-1182-4b9c-affa-38dbfb2365f4
+
+	measure #MAM = ```
+			
+			DIVIDE(
+			    (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR]=1) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR]=1)) -
+			        (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR]=2) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR]=2)), 
+			            (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR]=2) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR]=2))
+			    )
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 438c2fac-0041-4fb3-bfcd-78a226ac0510
+
+	measure #MaAMa = ```
+			
+			DIVIDE(
+			    (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR_ANO]=1) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR_ANO]=1)) - 
+			        (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR_ANO]=2) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR_ANO]=2)),
+			            (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR_ANO]=2) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[MES_ATUAL_ANTERIOR_ANO]=2))
+			    )
+			```
+		formatString: #,0%;-#,0%;#,0%
+		lineageTag: 654195b1-30e8-430b-9bc5-7ad4e6002994
+
+	measure #TAT =
+			
+			DIVIDE(
+			    (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR]=1) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR]=1))-    (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR]=2) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR]=2)),
+			        (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR]=2) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR]=2)))
+		formatString: 0%;-0%;0%
+		lineageTag: acf795b5-187f-4189-a4d3-488c4112b2a9
+
+	measure #TaATa = ```
+			
+			DIVIDE(
+			    (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO]=1) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO]=1)) - 
+			        (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO]=2) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO]=2)),
+			            (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO]=2) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO]=2)))
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: ae0bb24d-662d-469a-b95a-7795474b1d94
+
+	measure #AaA = ```
+			
+			DIVIDE(
+			    (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[ANO_ATUAL_ANTERIOR]=1) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[ANO_ATUAL_ANTERIOR]=1)) - 
+			        (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[ANO_ATUAL_ANTERIOR]=2) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[ANO_ATUAL_ANTERIOR]=2)),
+			            (CALCULATE(COUNT('PRIMEIRO VÍNCULO'[ID]), Calendario[ANO_ATUAL_ANTERIOR]=2) + CALCULATE(COUNT('ÚLTIMO VÍNCULO'[ID]), Calendario[ANO_ATUAL_ANTERIOR]=2))
+			)
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 998fef58-cc3a-4cd4-ac2d-ef696d4c9e4f
+
+	measure '#MAM usados classificado' =
+			
+			DIVIDE(
+			    CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[MES_ATUAL_ANTERIOR] = 1) -
+			        CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[MES_ATUAL_ANTERIOR] = 2),
+			    CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[MES_ATUAL_ANTERIOR] = 2)
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 10bb86b2-d56a-4d54-8475-04fecad9ef9c
+
+	measure MAaMA_Usados_Classificado =
+			
+			DIVIDE(
+			    CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[MES_ATUAL_ANTERIOR_ANO] = 1),
+			    CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[MES_ATUAL_ANTERIOR_ANO] = 2)
+			) - 1
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 23c566bb-cfd9-41fa-8cd7-a83c890b47be
+
+	measure TaT_Usados_Classificado =
+			
+			DIVIDE(
+			    CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 1),
+			    CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 2)
+			) - 1
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e8f079e6-f829-4a30-935c-8b338534b098
+
+	measure TAaTA_Usados_Classificado =
+			
+			DIVIDE(
+			    CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 1),
+			    CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 2)
+			) - 1
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c0d547c4-7a39-464a-9400-ff9a87c572f7
+
+	measure AaA_Usados_Classificado =
+			
+			DIVIDE(
+			    CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[ANO_ATUAL_ANTERIOR] = 1),
+			    CALCULATE(COUNT('USADOS CLASSIFICADO'[ID]), Calendario[ANO_ATUAL_ANTERIOR] = 2)
+			) - 1
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a921099e-aa20-43fa-9af9-84fc248c98a1
+
+	column Column
+		formatString: 0
+		lineageTag: f6ee1799-0052-4b16-b0f0-67b0b18f43fb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Z_MEDIDAS_(MOVIMENTAÇÕES) = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 670b9a5bc1d44ae09ce145bc2b94d731
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

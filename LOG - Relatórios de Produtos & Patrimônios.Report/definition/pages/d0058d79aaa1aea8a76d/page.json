@@ -1,0 +1,133 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "d0058d79aaa1aea8a76d",
+  "displayName": "PATRIMÔNIOS - ROMANEIO",
+  "displayOption": "FitToWidth",
+  "height": 2900,
+  "width": 2400,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "''"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "Literal": {
+                    "Value": "''"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "100D"
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": -0.2
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspace": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Wallpaper PowerBI.jpg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Wallpaper_PowerBI44764238412578317.jpg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fill'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "333L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "type": "Tooltip",
+  "visualInteractions": [
+    {
+      "source": "6e8701fd10776a1691e1",
+      "target": "e521e4f0a2011cdde330",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6e8701fd10776a1691e1",
+      "target": "3d710d70702738229d10",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6e8701fd10776a1691e1",
+      "target": "6dcfc0fdab60243226ad",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6e8701fd10776a1691e1",
+      "target": "7013b2c7c1961e61db8a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6e8701fd10776a1691e1",
+      "target": "c7319546d7b804c7ad98",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6e8701fd10776a1691e1",
+      "target": "66691196b9d92b980731",
+      "type": "NoFilter"
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "e7ab0e67a935ce0d5889",
+  "position": {
+    "x": 1340,
+    "y": 368.57142857142861,
+    "z": 15000,
+    "height": 574.28571428571433,
+    "width": 512.85714285714289,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Versão: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "1.0",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Data: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "23/02/2026",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Descrição da Revisão: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "Primeiro Versionamento",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Versão: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "1.1",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Data: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "01/06/2026",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Descrição da Revisão: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "Ajustado query de patrimônios e melhorado visualização por status.",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Versão: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "1.2",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Data: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "02/06/2026",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Descrição da Revisão: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "Ajustado dashboard e segmentado por Romaneios/ Consumo e Alocação em protocolo para Patrimônios e Produtos.",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Versão: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "1.3",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Data: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "16/07/2026",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Descrição da Revisão: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  },
+                  {
+                    "value": "Adicionado novas colunas 'Leadtime', 'Comprador Responsável' e 'Processo Externo' com informações de origem do app nas tabelas de alerta de estoque.",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

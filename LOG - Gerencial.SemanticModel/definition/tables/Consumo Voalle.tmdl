@@ -1,0 +1,105 @@
+table 'Consumo Voalle'
+	lineageTag: e53eb268-18ba-4fee-9a90-588157a1b437
+
+	column 'UNIDADE CONSUMIDA'
+		dataType: int64
+		formatString: 0
+		lineageTag: 254d1b0f-c2a8-471d-a7a6-8d9dd2bc0658
+		summarizeBy: sum
+		sourceColumn: UNIDADE CONSUMIDA
+
+		annotation SummarizationSetBy = Automatic
+
+	column CÓDIGO
+		dataType: string
+		lineageTag: fcceb57d-5c0e-408b-bced-79859f4599da
+		summarizeBy: none
+		sourceColumn: CÓDIGO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 40d88743-70b6-46a4-be51-b9c6372ada47
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESCRIÇÃO
+		dataType: string
+		lineageTag: 60257389-b829-46fd-a4a6-dde522a65169
+		summarizeBy: none
+		sourceColumn: DESCRIÇÃO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BASE DE ORIGEM'
+		dataType: string
+		lineageTag: b775d602-38f2-4bc7-9748-9a6504806a01
+		summarizeBy: none
+		sourceColumn: BASE DE ORIGEM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0159bc0b-f69e-49e5-9119-566770a1c090
+		summarizeBy: none
+		sourceColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column RECEBEDOR
+		dataType: string
+		lineageTag: 2b64ac15-b795-4408-a338-fd6d4f5e8c19
+		summarizeBy: none
+		sourceColumn: RECEBEDOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column FORNECEDOR
+		dataType: string
+		lineageTag: c296a110-60bb-43f3-b032-59401cd73248
+		summarizeBy: none
+		sourceColumn: FORNECEDOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column equipes
+		dataType: string
+		lineageTag: 29012d0a-da10-4c6c-b34a-d9aeb4ae3293
+		summarizeBy: none
+		sourceColumn: equipes
+
+		annotation SummarizationSetBy = Automatic
+
+	column responsáveis
+		dataType: string
+		lineageTag: 0393e2e2-79d1-4855-9524-27cd997297bb
+		summarizeBy: none
+		sourceColumn: responsáveis
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Consumo Voalle' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "SELECT DISTINCT #(lf)    ppm.units,#(lf)    sp.code,#(lf)    sp.id,#(lf)    sp.title,#(lf)    cpbu.description,#(lf)    ppm.created,#(lf)    p.name,#(lf)    p2.name,#(lf)    t.title AS ""equipes"",#(lf)    p2.name AS ""responsáveis""#(lf)FROM person_product_movimentations ppm#(lf)LEFT JOIN people p ON p.id = ppm.person_id#(lf)LEFT JOIN service_products sp ON sp.id = ppm.service_product_id #(lf)LEFT JOIN units_measures um ON um.id = ppm.first_units_measure_id#(lf)LEFT JOIN v_users p2 ON p2.id = ppm.created_by#(lf)LEFT JOIN company_place_business_units cpbu ON cpbu.id = ppm.company_place_business_unit_id#(lf)LEFT JOIN people_teams pt ON pt.person_id = p.id#(lf)LEFT JOIN teams t ON t.id = pt.team_id#(lf)WHERE ppm.created >= '2024-01-01'#(lf)  AND sp.""type"" = '1'#(lf)  AND sp.code = '00069'#(lf)  AND NOT (#(lf)        DATE(ppm.created) = '2025-09-04'  -- ajusta para o ano correto#(lf)        AND p.name IN (#(lf)            'A.ALMOXARIFADO / SÃO LEO',#(lf)            'A.ALMOXARIFADO / SEDE PORTO ALEGRE',#(lf)            'A.ALMOXARIFADO / CANOAS'#(lf)        )#(lf)  )#(lf)ORDER BY ppm.created DESC;"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(Fonte,{{"code", "CÓDIGO"}, {"id", "ID"}, {"title", "DESCRIÇÃO"}, {"units", "UNIDADE CONSUMIDA"}, {"description", "BASE DE ORIGEM"}, {"created", "DATA"}}),
+				    #"Linhas Classificadas" = Table.Sort(#"Colunas Renomeadas",{{"DATA", Order.Descending}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Linhas Classificadas",{{"DATA", type date}}),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Tipo Alterado",{{"name", "RECEBEDOR"}, {"name2", "FORNECEDOR"}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Colunas Renomeadas1", each ([FORNECEDOR] = "ADRIANO ALEXANDRE CRUZ" or [FORNECEDOR] = "ALEX RAIMUNDO RODRIGUES" or [FORNECEDOR] = "ALEXANDRE DA SILVA DUARTE" or [FORNECEDOR] = "ALEXANDRE DA SILVA MACIEL" or [FORNECEDOR] = "BRIAN EDUARDO DOS SANTOS" or [FORNECEDOR] = "CLOVIS SANTOS DA SILVEIRA" or [FORNECEDOR] = "GABRIEL LINHARES" or [FORNECEDOR] = "GERMANO DE PAULA" or [FORNECEDOR] = "JESSICA ROCHA MEIRELES" or [FORNECEDOR] = "JOAO PEDRO DOS SANTOS MARTINS" or [FORNECEDOR] = "JOÃO PEDRO MACIEL JUNG" or [FORNECEDOR] = "LUCAS ALVIM LOSS BATISTA" or [FORNECEDOR] = "RAONI SILVA DA SILVA" or [FORNECEDOR] = "SAMUEL FIGUEIRA DUTRA" or [FORNECEDOR] = "SAMUEL NORIVAL MASS" or [FORNECEDOR] = "VITOR SARAIVA SILVEIRA") and ([RECEBEDOR] <> "A.ALMOXARIFADO / CANOAS" and [RECEBEDOR] <> "A.ALMOXARIFADO / SÃO LEO" and [RECEBEDOR] <> "JESSICA ROCHA MEIRELES"))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

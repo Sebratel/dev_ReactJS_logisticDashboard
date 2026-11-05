@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Abrir filtro (Almox)",
+  "name": "Bookmarka96d8c4d382a5207dd0c",
+  "options": {
+    "targetVisualNames": [
+      "09406cc52ba29bf1e0fc"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSection543be694ea2addb30065",
+    "sections": {
+      "ReportSection543be694ea2addb30065": {
+        "visualContainers": {},
+        "visualContainerGroups": {
+          "7b5d5c5bcdb354da629a": {
+            "isHidden": false
+          },
+          "d628d3123eb5c8b9b47e": {
+            "isHidden": true
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

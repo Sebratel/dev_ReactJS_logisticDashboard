@@ -1,0 +1,60 @@
+table Z_MEDIDAS_(FLATH)
+	lineageTag: 4d1bf2d8-0547-4c86-862b-6fa907c5761d
+
+	measure AaA_Flath = ```
+			DIVIDE(CALCULATE(SUM('Consumo Voalle'[UNIDADE CONSUMIDA]), Calendario[ANO_ATUAL_ANTERIOR] = 1), 
+			CALCULATE(SUM('Consumo Voalle'[UNIDADE CONSUMIDA]), Calendario[ANO_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: f2c018c2-2fe8-46c9-bd03-5322cf26b01b
+
+	measure MaM_Flath = ```
+			DIVIDE(CALCULATE(SUM('Consumo Voalle'[UNIDADE CONSUMIDA]), Calendario[MES_ATUAL_ANTERIOR] = 1), 
+			CALCULATE(SUM('Consumo Voalle'[UNIDADE CONSUMIDA]), Calendario[MES_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: cfc4e53a-23ae-4fea-af44-c12820b03602
+
+	measure MAaMA_Flath = ```
+			DIVIDE(CALCULATE(SUM('Consumo Voalle'[UNIDADE CONSUMIDA]), Calendario[MES_ATUAL_ANTERIOR_ANO] = 1), 
+			CALCULATE(SUM('Consumo Voalle'[UNIDADE CONSUMIDA]), Calendario[MES_ATUAL_ANTERIOR_ANO] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 219bd11a-750d-4023-8212-f187c9ea6097
+
+	measure TaT_Flath = ```
+			DIVIDE(CALCULATE(SUM('Consumo Voalle'[UNIDADE CONSUMIDA]), Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 1), 
+			CALCULATE(SUM('Consumo Voalle'[UNIDADE CONSUMIDA]), Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 75b0a75e-6f43-4cfa-b5dc-758dd0a347d0
+
+	measure TAaTA_Flath = ```
+			DIVIDE(CALCULATE(SUM('Consumo Voalle'[UNIDADE CONSUMIDA]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 1), 
+			CALCULATE(SUM('Consumo Voalle'[UNIDADE CONSUMIDA]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2636ecba-cea6-4e8b-b43a-19020994d48e
+
+	column Column
+		formatString: 0
+		lineageTag: 6b82957c-0ad1-40d5-9d11-b365b8e9602a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Z_MEDIDAS_(FLATH) = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 2ef5528a505f45299cd76e6fc01c8072
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

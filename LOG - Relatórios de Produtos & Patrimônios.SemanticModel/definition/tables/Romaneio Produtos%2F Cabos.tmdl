@@ -1,0 +1,176 @@
+table 'Romaneio Produtos/ Cabos'
+	lineageTag: 136f4e03-123e-42c6-9ab3-328b68f9572f
+
+	measure Romaneios = DISTINCTCOUNT('Romaneio Produtos/ Cabos'[document_number])
+		formatString: 0
+		lineageTag: 8995a4af-9cdf-4d41-bae5-a176676c9b0e
+
+	measure MEDIA_MENSAL =
+			
+			DIVIDE(
+			    [Romaneios],
+			    DISTINCTCOUNT('Romaneio Produtos/ Cabos'[AnoMes])
+			)
+		formatString: 0
+		lineageTag: f47ee487-9b8f-4eca-a468-d4a2d6f2f657
+
+	measure MEDIA_3_MESES =
+			
+			VAR InicioPeriodo =
+			    EOMONTH(TODAY(), -4) + 1
+			
+			VAR FimPeriodo =
+			    EOMONTH(TODAY(), -1)
+			
+			RETURN
+			CALCULATE(
+			    SUM('Romaneio Produtos/ Cabos'[UNIDADE CONSUMIDA]),
+			    FILTER(
+			        ALL('Romaneio Produtos/ Cabos'[DATA]),
+			        'Romaneio Produtos/ Cabos'[DATA] >= InicioPeriodo
+			            && 'Romaneio Produtos/ Cabos'[DATA] <= FimPeriodo
+			    )
+			) / 3
+		formatString: 0
+		lineageTag: b5f799d5-c59b-411e-884d-9ebdaa7a0957
+
+	measure MEDIA_MENSAL_GERAL =
+			
+			AVERAGEX(
+			    VALUES('Romaneio Produtos/ Cabos'[AnoMes]),
+			    CALCULATE(
+			        SUM('Romaneio Produtos/ Cabos'[UNIDADE CONSUMIDA])
+			    )
+			)
+		formatString: 0
+		lineageTag: b683e108-355e-4595-9e68-9b4a511c5468
+
+	column 'UNIDADE CONSUMIDA'
+		dataType: int64
+		formatString: 0
+		lineageTag: a9608711-f3f4-49b0-9e93-2847688bb599
+		summarizeBy: sum
+		sourceColumn: UNIDADE CONSUMIDA
+
+		annotation SummarizationSetBy = Automatic
+
+	column CÓDIGO
+		dataType: string
+		lineageTag: c05d105e-1853-480a-a9f2-a7a5d5825731
+		summarizeBy: none
+		sourceColumn: CÓDIGO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f269e7e-ff33-4f48-a0eb-be91b73c3486
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESCRIÇÃO
+		dataType: string
+		lineageTag: cc9f1f54-e74d-4cb7-ac39-7a7e218478fd
+		summarizeBy: none
+		sourceColumn: DESCRIÇÃO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BASE DE ORIGEM'
+		dataType: string
+		lineageTag: f49d00c3-bee0-421e-b73f-2c5954567325
+		summarizeBy: none
+		sourceColumn: BASE DE ORIGEM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: de4234d7-5faa-47fb-9e3c-4a5e2d5b1253
+		summarizeBy: none
+		sourceColumn: DATA
+
+		variation Variation
+			isDefault
+			relationship: d5cf86b7-91ce-47cd-9d29-040fe8f76a47
+			defaultHierarchy: LocalDateTable_18ba20c4-e427-41ff-9634-89605e43dbae.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column RECEBEDOR
+		dataType: string
+		lineageTag: 74c0fb78-4d5d-4d6a-9f26-b876b3c1cba4
+		summarizeBy: none
+		sourceColumn: RECEBEDOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column FORNECEDOR
+		dataType: string
+		lineageTag: 9bd8cdc4-0d5d-4282-b84d-248bac05f1a8
+		summarizeBy: none
+		sourceColumn: FORNECEDOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column id2
+		dataType: int64
+		formatString: 0
+		lineageTag: e0719950-81a3-4abe-8b1d-249d6c71d004
+		summarizeBy: sum
+		sourceColumn: id2
+
+		annotation SummarizationSetBy = Automatic
+
+	column document_number
+		dataType: int64
+		formatString: 0
+		lineageTag: e29e8f7b-849c-4320-917a-fe19fa829d9a
+		summarizeBy: sum
+		sourceColumn: document_number
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMes =
+			
+			YEAR('Romaneio Produtos/ Cabos'[DATA]) * 100
+			+ MONTH('Romaneio Produtos/ Cabos'[DATA])
+		formatString: 0
+		lineageTag: 0f3b69cd-f7a2-460e-91ca-a908f4e12747
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHAVE_PRODUTO_BASE = ```
+			'Romaneio Produtos/ Cabos'[CÓDIGO] & "-" & 'Romaneio Produtos/ Cabos'[BASE DE ORIGEM]
+			
+			```
+		lineageTag: acc65f14-898e-41f3-9107-44067193167a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Romaneio Produtos/ Cabos' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "SELECT DISTINCT #(lf)ppm.id,#(lf)ivn.document_number,#(lf)    ppm.units,#(lf)    sp.code,#(lf)    sp.id,#(lf)    sp.title,#(lf)    cpbu.description,#(lf)    ppm.created,#(lf)    p.name,#(lf)    p2.name#(lf)FROM person_product_movimentations ppm#(lf)LEFT JOIN people p ON p.id = ppm.person_id#(lf)LEFT JOIN service_products sp ON sp.id = ppm.service_product_id #(lf)LEFT JOIN units_measures um ON um.id = ppm.first_units_measure_id#(lf)LEFT JOIN v_users p2 ON p2.id = ppm.created_by#(lf)LEFT JOIN company_place_business_units cpbu ON cpbu.id = ppm.company_place_business_unit_id#(lf)LEFT JOIN people_teams pt ON pt.person_id = p.id#(lf)left join invoice_notes ivn on ivn.id = ppm.invoice_note_id #(lf)WHERE ppm.created >= '2025-01-01'#(lf)and p2.name in ('ADRIANO ALEXANDRE CRUZ', 'ALEX RAIMUNDO RODRIGUES', 'ALEXANDRE DA SILVA MACIEL', 'BRIAN EDUARDO DOS SANTOS', 'CLOVIS SANTOS DA SILVEIRA',#(lf)'GABRIEL LINHARES', 'GERMANO DE PAULA', 'JESSICA ROCHA MEIRELES', 'JOAO PEDRO DOS SANTOS MARTINS', 'JOÃO PEDRO MACIEL JUNG', 'RAONI SILVA DA SILVA'#(lf)'SAMUEL FIGUEIRA DUTRA', 'VITOR SARAIVA SILVEIRA')#(lf)  AND sp.""type"" = '1'#(lf)  ---AND sp.code = '00069'#(lf)  AND NOT (#(lf)        DATE(ppm.created) = '2025-09-04'  -- ajusta para o ano correto#(lf)        AND p.name IN (#(lf)            'A.ALMOXARIFADO / SÃO LEO',#(lf)            'A.ALMOXARIFADO / SEDE PORTO ALEGRE',#(lf)            'A.ALMOXARIFADO / CANOAS'#(lf)        )#(lf)  )#(lf)ORDER BY ppm.created DESC;"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(Fonte,{{"code", "CÓDIGO"}, {"id", "ID"}, {"title", "DESCRIÇÃO"}, {"units", "UNIDADE CONSUMIDA"}, {"description", "BASE DE ORIGEM"}, {"created", "DATA"}}),
+				    #"Linhas Classificadas" = Table.Sort(#"Colunas Renomeadas",{{"DATA", Order.Descending}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Linhas Classificadas",{{"DATA", type date}}),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Tipo Alterado",{{"name", "RECEBEDOR"}, {"name2", "FORNECEDOR"}})
+				in
+				    #"Colunas Renomeadas1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

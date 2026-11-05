@@ -1,0 +1,20 @@
+relationship b2d5b063-d123-413e-b334-224bbc6a5356
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DATA_ATUALIZADO.Data
+	toColumn: LocalDateTable_5037fe1c-25e9-4f90-875f-9924b981f06d.Date
+
+relationship fc0247ea-da2c-41f8-9a45-ef4cf76d9ed5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: general.'Data Compra'
+	toColumn: LocalDateTable_8134e3c2-1f52-4408-9b86-663d3f819107.Date
+
+relationship 98856e16-a090-4d31-b821-7f547228cabb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: general.'Data Criado'
+	toColumn: LocalDateTable_e3b8315a-c290-42dc-afa3-56ff60ee2a5f.Date
+
+relationship 79e13cda-b035-4759-b7c4-387412b26af9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: general.'Data Modificado'
+	toColumn: LocalDateTable_999eb4f0-ec26-47e2-a178-f875623fb127.Date
+

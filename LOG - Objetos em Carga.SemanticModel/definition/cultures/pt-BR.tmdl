@@ -1,0 +1,4684 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "dash_atual_tecnico": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dash atual tecnico": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DASH_ATUAL_TECNICOS": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.codigo_do_produto": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "CODIGO DO PRODUTO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "codigo do produto": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.descricao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "DESCRICAO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "descricao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DESCRIÇÃO": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.serial": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "SERIAL"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "serial": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "series": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "serialization": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "run": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "soap": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "program": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.patrimonio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "PATRIMONIO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "patrimonio": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "PATRIMÔNIO": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.valor_do_item": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "VALOR DO ITEM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "valor do item": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "item": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "do item": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "valor do product": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "valor do element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "valor do entry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "do product": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "do element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "do entry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "valor do article": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "valor do object": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "valor do piece": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "valor do token": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.tecnico": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "TECNICO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "tecnico": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TÉCNICO": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.data_da_movimentacao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "DATA DA MOVIMENTACAO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data da movimentacao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information da movimentacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact da movimentacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info da movimentacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic da movimentacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document da movimentacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure da movimentacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record da movimentacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "DATA": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "VariationSource": "DATA DA MOVIMENTACAO",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.data_da_movimentacao.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "VariationSource": "DATA DA MOVIMENTACAO",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data da movimentacao ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information da movimentacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "fact da movimentacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "info da movimentacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "statistic da movimentacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "document da movimentacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "figure da movimentacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "record da movimentacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.data_da_movimentacao.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "VariationSource": "DATA DA MOVIMENTACAO",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data da movimentacao trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information da movimentacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "fact da movimentacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "info da movimentacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "statistic da movimentacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "document da movimentacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "figure da movimentacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "record da movimentacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.data_da_movimentacao.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "VariationSource": "DATA DA MOVIMENTACAO",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data da movimentacao mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information da movimentacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "fact da movimentacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "info da movimentacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "statistic da movimentacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "document da movimentacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "figure da movimentacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "record da movimentacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.data_da_movimentacao.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "VariationSource": "DATA DA MOVIMENTACAO",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data da movimentacao dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information da movimentacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "fact da movimentacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "info da movimentacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "statistic da movimentacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "document da movimentacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "figure da movimentacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "record da movimentacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.cidade": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "CIDADE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cidade": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.base": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "BASE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "base": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "headquarters": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "center": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "seat": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "station": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.codigo_servico": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "CODIGO SERVICO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "codigo servico": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CÓD.PRODUTO": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.valor_medio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "VALOR MEDIO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "valor medio": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.total_valor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "TOTAL_VALOR"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total valor": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TOTAL_VALOR": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "aggregate valor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "overall valor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "total courage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total bravery": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total heroism": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total fearlessness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total boldness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total gallantry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total lionheartedness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total pluck": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "VALOR TOTAL": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico.rotulo_personalizado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS",
+			          "ConceptualProperty": "ROTULO PERSONALIZADO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "rotulo personalizado": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "data_atualizado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DATA_ATUALIZADO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data atualizado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DATA_ATUALIZADO": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "information atualizado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact atualizado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info atualizado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic atualizado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document atualizado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure atualizado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record atualizado": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "data_atualizado.data_hora": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DATA_ATUALIZADO",
+			          "ConceptualProperty": "DataHora"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data hora": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DataHora": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "information hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "data_atualizado.data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DATA_ATUALIZADO",
+			          "ConceptualProperty": "Data"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "data_atualizado.data.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DATA_ATUALIZADO",
+			          "VariationSource": "Data",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "data_atualizado.data.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DATA_ATUALIZADO",
+			          "VariationSource": "Data",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "data_atualizado.data.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DATA_ATUALIZADO",
+			          "VariationSource": "Data",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "data_atualizado.data.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DATA_ATUALIZADO",
+			          "VariationSource": "Data",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "data_atualizado.data.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DATA_ATUALIZADO",
+			          "VariationSource": "Data",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "data_atualizado.hora": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DATA_ATUALIZADO",
+			          "ConceptualProperty": "Hora"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hora": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "equipes_atuais": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "EQUIPES_ATUAIS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "equipes atuais": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "equipe atuais": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "EQUIPES_ATUAIS": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "equipes_atuais.técnico": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "EQUIPES_ATUAIS",
+			          "ConceptualProperty": "TÉCNICO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "técnico": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "equipes_atuais.área": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "EQUIPES_ATUAIS",
+			          "ConceptualProperty": "ÁREA"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "área": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "equipes_atuais.base": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "EQUIPES_ATUAIS",
+			          "ConceptualProperty": "BASE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "base": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "headquarters": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "center": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "seat": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "station": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_CONSUMOS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dash atual consumo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DASH_ATUAL_CONSUMOS": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo.tecnico": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_CONSUMOS",
+			          "ConceptualProperty": "TECNICO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "tecnico": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TÉCNICO": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo.cidade": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_CONSUMOS",
+			          "ConceptualProperty": "CIDADE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cidade": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo.codigo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_CONSUMOS",
+			          "ConceptualProperty": "CODIGO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "codigo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CÓDIGO": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo.descricao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_CONSUMOS",
+			          "ConceptualProperty": "DESCRICAO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "descricao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DESCRIÇÃO": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo.unidade_de_medida": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_CONSUMOS",
+			          "ConceptualProperty": "UNIDADE DE MEDIDA"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "unidade de medida": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo.base_2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_CONSUMOS",
+			          "ConceptualProperty": "BASE2"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "base 2": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "BASE2": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "BASE": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo.quantidadee": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_CONSUMOS",
+			          "ConceptualProperty": "QUANTIDADEE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "quantidadee": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "QUANTIDADE": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo.valor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_CONSUMOS",
+			          "ConceptualProperty": "VALOR"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "valor": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "courage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "bravery": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "heroism": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "fearlessness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "boldness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "gallantry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "lionheartedness": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "pluck": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "spirit": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "nerve": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo.rotulo_personalizado2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_CONSUMOS",
+			          "ConceptualProperty": "ROTULO PERSONALIZADO2"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "rotulo personalizado2": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnicosmedia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS(MEDIA)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dash_atual_tecnicos(media)": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dash_atual_tecnico(media)": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnicosmedia.descricao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS(MEDIA)",
+			          "ConceptualProperty": "DESCRICAO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "descricao": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnicosmedia.media_valor_prod_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASH_ATUAL_TECNICOS(MEDIA)",
+			          "ConceptualProperty": "MEDIA_VALOR_PROD."
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "media_valor_prod.": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_atual": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASHBOARD_ATUAL"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dashboard atual": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DASHBOARD_ATUAL": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_atual.tecnico": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASHBOARD_ATUAL",
+			          "ConceptualProperty": "TECNICO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "tecnico": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_atual.área": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASHBOARD_ATUAL",
+			          "ConceptualProperty": "ÁREA"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "área": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_atual.base": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DASHBOARD_ATUAL",
+			          "ConceptualProperty": "BASE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "base": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "headquarters": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "center": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "seat": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "station": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    },
+			    "usuário": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Usuários"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "usuário": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "usuário.name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Usuários",
+			          "ConceptualProperty": "name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "NameType": "Name"
+			    },
+			    "usuário.active": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Usuários",
+			          "ConceptualProperty": "active"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "active": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dynamic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "functioning": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "effective": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "operating": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "working": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "data_atualizado_data_hierarquia_de_data_has_data_atualizado_data_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado.data.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.hierarquia_de_data"
+			          }
+			        },
+			        "data_atualizado.data.trimestre": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres"
+			        }
+			      ]
+			    },
+			    "data_atualizado_data_hierarquia_de_data_has_data_atualizado_data_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado.data.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.hierarquia_de_data"
+			          }
+			        },
+			        "data_atualizado.data.ano": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos"
+			        }
+			      ]
+			    },
+			    "data_atualizado_data_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado.data": {
+			          "Target": {
+			            "Entity": "data_atualizado.data"
+			          }
+			        },
+			        "data_atualizado.data.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "data_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_data_da_movimentacao_mê_has_dash_atual_tecnico_data_da_movimentacao_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico.data_da_movimentacao.mê": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.mê"
+			          }
+			        },
+			        "dash_atual_tecnico.data_da_movimentacao.dia": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.mê"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.dia"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_data_da_movimentacao_trimestre_has_dash_atual_tecnico_data_da_movimentacao_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico.data_da_movimentacao.trimestre": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.trimestre"
+			          }
+			        },
+			        "dash_atual_tecnico.data_da_movimentacao.mê": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.trimestre"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.mê"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_data_da_movimentacao_ano_has_dash_atual_tecnico_data_da_movimentacao_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico.data_da_movimentacao.ano": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.ano"
+			          }
+			        },
+			        "dash_atual_tecnico.data_da_movimentacao.trimestre": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.ano"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.trimestre"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_data_da_movimentacao_hierarquia_de_data_has_dash_atual_tecnico_data_da_movimentacao_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data"
+			          }
+			        },
+			        "dash_atual_tecnico.data_da_movimentacao.dia": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_data_da_movimentacao_hierarquia_de_data_has_dash_atual_tecnico_data_da_movimentacao_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data"
+			          }
+			        },
+			        "dash_atual_tecnico.data_da_movimentacao.mê": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_data_da_movimentacao_hierarquia_de_data_has_dash_atual_tecnico_data_da_movimentacao_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data"
+			          }
+			        },
+			        "dash_atual_tecnico.data_da_movimentacao.trimestre": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres1"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_data_da_movimentacao_hierarquia_de_data_has_dash_atual_tecnico_data_da_movimentacao_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data"
+			          }
+			        },
+			        "dash_atual_tecnico.data_da_movimentacao.ano": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos1"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_data_da_movimentacao_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico.data_da_movimentacao": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao"
+			          }
+			        },
+			        "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "data_da_movimentacaos_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "dashboard_atual_has_usuário": {
+			      "Binding": {
+			        "ConceptualEntity": "DASHBOARD_ATUAL"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_atual": {
+			          "Target": {
+			            "Entity": "dashboard_atual"
+			          }
+			        },
+			        "usuário": {
+			          "Target": {
+			            "Entity": "usuário"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_atual"
+			            },
+			            "Object": {
+			              "Role": "usuário"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_atuals_have_usuários"
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo_has_dashboard_atual": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_CONSUMOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_consumo": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo"
+			          }
+			        },
+			        "dashboard_atual": {
+			          "Target": {
+			            "Entity": "dashboard_atual"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_consumo"
+			            },
+			            "Object": {
+			              "Role": "dashboard_atual"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_consumos_have_dashboard_atuals"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_atual"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_consumo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_atuals_have_dash_atual_consumos"
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo_has_dash_atual_consumos_media": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_CONSUMOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_consumo": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo"
+			          }
+			        },
+			        "dash_atual_consumos_media": {
+			          "Target": {
+			            "Entity": "dash_atual_consumos_media"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_consumo"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_consumos_media"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_consumos_have_dash_atual_consumos_media"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_consumos_media"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_consumo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_consumos_media_have_dash_atual_consumos"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_dashboard_atual": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dashboard_atual": {
+			          "Target": {
+			            "Entity": "dashboard_atual"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dashboard_atual"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_dashboard_atuals"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_atual"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_atuals_have_dash_atual_tecnicos"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_dash_atual_tecnicosmedia": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnicosmedia": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnicosmedia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnicosmedia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_dash_atual_tecnicosmedia"
+			        }
+			      ]
+			    },
+			    "usuário_has_active": {
+			      "Binding": {
+			        "ConceptualEntity": "Usuários"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "usuário": {
+			          "Target": {
+			            "Entity": "usuário"
+			          }
+			        },
+			        "usuário.active": {
+			          "Target": {
+			            "Entity": "usuário.active"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "usuário"
+			            },
+			            "Object": {
+			              "Role": "usuário.active"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "usuários_have_actives"
+			        }
+			      ]
+			    },
+			    "usuário_has_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Usuários"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "usuário": {
+			          "Target": {
+			            "Entity": "usuário"
+			          }
+			        },
+			        "usuário.name": {
+			          "Target": {
+			            "Entity": "usuário.name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "usuário"
+			            },
+			            "Object": {
+			              "Role": "usuário.name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "usuários_have_names"
+			        },
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "usuário"
+			            },
+			            "Name": {
+			              "Role": "usuário.name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "names_are_names_IDs_of_usuários"
+			        }
+			      ]
+			    },
+			    "dashboard_atual_has_base": {
+			      "Binding": {
+			        "ConceptualEntity": "DASHBOARD_ATUAL"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_atual": {
+			          "Target": {
+			            "Entity": "dashboard_atual"
+			          }
+			        },
+			        "dashboard_atual.base": {
+			          "Target": {
+			            "Entity": "dashboard_atual.base"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_atual"
+			            },
+			            "Object": {
+			              "Role": "dashboard_atual.base"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_atuals_have_bases"
+			        }
+			      ]
+			    },
+			    "dashboard_atual_has_área": {
+			      "Binding": {
+			        "ConceptualEntity": "DASHBOARD_ATUAL"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dashboard_atual": {
+			          "Target": {
+			            "Entity": "dashboard_atual"
+			          }
+			        },
+			        "dashboard_atual.área": {
+			          "Target": {
+			            "Entity": "dashboard_atual.área"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dashboard_atual"
+			            },
+			            "Object": {
+			              "Role": "dashboard_atual.área"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dashboard_atuals_have_áreas"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnicosmedia_has_media_valor_prod_": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS(MEDIA)"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnicosmedia": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnicosmedia"
+			          }
+			        },
+			        "dash_atual_tecnicosmedia.media_valor_prod_": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnicosmedia.media_valor_prod_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnicosmedia"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnicosmedia.media_valor_prod_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicosmedia_have_media_valor_prod_"
+			        },
+			        {
+			          "Adjective": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnicosmedia"
+			            },
+			            "Adjectives": [
+			              {
+			                "expensive": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Antonyms": [
+			              {
+			                "cheap": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Measurement": {
+			              "Role": "dash_atual_tecnicosmedia.media_valor_prod_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "media_valor_prod__indicates_how_expensive_dash_atual_tecnicosmedia_are"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnicosmedia_has_descricao": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS(MEDIA)"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnicosmedia": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnicosmedia"
+			          }
+			        },
+			        "dash_atual_tecnicosmedia.descricao": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnicosmedia.descricao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnicosmedia"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnicosmedia.descricao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicosmedia_have_descricaos"
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo_has_rotulo_personalizado2": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_CONSUMOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_consumo": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo"
+			          }
+			        },
+			        "dash_atual_consumo.rotulo_personalizado2": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo.rotulo_personalizado2"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_consumo"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_consumo.rotulo_personalizado2"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_consumos_have_rotulo_personalizado2"
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo_has_valor": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_CONSUMOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_consumo": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo"
+			          }
+			        },
+			        "dash_atual_consumo.valor": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo.valor"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_consumo"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_consumo.valor"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_consumos_have_valor"
+			        },
+			        {
+			          "Adjective": {
+			            "Subject": {
+			              "Role": "dash_atual_consumo"
+			            },
+			            "Adjectives": [
+			              {
+			                "expensive": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Antonyms": [
+			              {
+			                "cheap": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Measurement": {
+			              "Role": "dash_atual_consumo.valor"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "valor_indicates_how_expensive_dash_atual_consumos_are"
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo_has_quantidadee": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_CONSUMOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_consumo": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo"
+			          }
+			        },
+			        "dash_atual_consumo.quantidadee": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo.quantidadee"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_consumo"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_consumo.quantidadee"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_consumos_have_quantidadees"
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo_has_base_2": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_CONSUMOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_consumo": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo"
+			          }
+			        },
+			        "dash_atual_consumo.base_2": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo.base_2"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_consumo"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_consumo.base_2"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_consumos_have_base_2"
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo_has_unidade_de_medida": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_CONSUMOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_consumo": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo"
+			          }
+			        },
+			        "dash_atual_consumo.unidade_de_medida": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo.unidade_de_medida"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_consumo"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_consumo.unidade_de_medida"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_consumos_have_unidade_de_medidas"
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo_has_codigo": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_CONSUMOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_consumo": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo"
+			          }
+			        },
+			        "dash_atual_consumo.codigo": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo.codigo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_consumo"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_consumo.codigo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_consumos_have_codigos"
+			        }
+			      ]
+			    },
+			    "dash_atual_consumo_has_cidade": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_CONSUMOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_consumo": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo"
+			          }
+			        },
+			        "dash_atual_consumo.cidade": {
+			          "Target": {
+			            "Entity": "dash_atual_consumo.cidade"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_consumo"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_consumo.cidade"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_consumos_have_cidades"
+			        }
+			      ]
+			    },
+			    "equipes_atuais_has_base": {
+			      "Binding": {
+			        "ConceptualEntity": "EQUIPES_ATUAIS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "equipes_atuais": {
+			          "Target": {
+			            "Entity": "equipes_atuais"
+			          }
+			        },
+			        "equipes_atuais.base": {
+			          "Target": {
+			            "Entity": "equipes_atuais.base"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "equipes_atuais"
+			            },
+			            "Object": {
+			              "Role": "equipes_atuais.base"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "equipes_atuaises_have_bases"
+			        }
+			      ]
+			    },
+			    "equipes_atuais_has_área": {
+			      "Binding": {
+			        "ConceptualEntity": "EQUIPES_ATUAIS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "equipes_atuais": {
+			          "Target": {
+			            "Entity": "equipes_atuais"
+			          }
+			        },
+			        "equipes_atuais.área": {
+			          "Target": {
+			            "Entity": "equipes_atuais.área"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "equipes_atuais"
+			            },
+			            "Object": {
+			              "Role": "equipes_atuais.área"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "equipes_atuaises_have_áreas"
+			        }
+			      ]
+			    },
+			    "equipes_atuais_has_técnico": {
+			      "Binding": {
+			        "ConceptualEntity": "EQUIPES_ATUAIS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "equipes_atuais": {
+			          "Target": {
+			            "Entity": "equipes_atuais"
+			          }
+			        },
+			        "equipes_atuais.técnico": {
+			          "Target": {
+			            "Entity": "equipes_atuais.técnico"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "equipes_atuais"
+			            },
+			            "Object": {
+			              "Role": "equipes_atuais.técnico"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "equipes_atuaises_have_técnicos"
+			        }
+			      ]
+			    },
+			    "data_atualizado_has_hora": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado": {
+			          "Target": {
+			            "Entity": "data_atualizado"
+			          }
+			        },
+			        "data_atualizado.hora": {
+			          "Target": {
+			            "Entity": "data_atualizado.hora"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.hora"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "data_atualizados_have_horas"
+			        }
+			      ]
+			    },
+			    "data_atualizado_has_data": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado": {
+			          "Target": {
+			            "Entity": "data_atualizado"
+			          }
+			        },
+			        "data_atualizado.data": {
+			          "Target": {
+			            "Entity": "data_atualizado.data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "data_atualizados_have_data"
+			        }
+			      ]
+			    },
+			    "data_atualizado_has_data_hora": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado": {
+			          "Target": {
+			            "Entity": "data_atualizado"
+			          }
+			        },
+			        "data_atualizado.data_hora": {
+			          "Target": {
+			            "Entity": "data_atualizado.data_hora"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data_hora"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "data_atualizados_have_data_horas"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_rotulo_personalizado": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.rotulo_personalizado": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.rotulo_personalizado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.rotulo_personalizado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_rotulo_personalizado"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_total_valor": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.total_valor": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.total_valor"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.total_valor"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_total_valor"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_valor_medio": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.valor_medio": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.valor_medio"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.valor_medio"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_valor_medios"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_codigo_servico": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.codigo_servico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.codigo_servico"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.codigo_servico"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_codigo_servicos"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_base": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.base": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.base"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.base"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_bases"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_cidade": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.cidade": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.cidade"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.cidade"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_cidades"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_data_da_movimentacao": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.data_da_movimentacao": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.data_da_movimentacao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.data_da_movimentacao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_data_da_movimentacaos"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_valor_do_item": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.valor_do_item": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.valor_do_item"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.valor_do_item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_valor_do_items"
+			        },
+			        {
+			          "Adjective": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Adjectives": [
+			              {
+			                "expensive": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Antonyms": [
+			              {
+			                "cheap": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Measurement": {
+			              "Role": "dash_atual_tecnico.valor_do_item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "valor_do_item_indicates_how_expensive_dash_atual_tecnicos_are"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_patrimonio": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.patrimonio": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.patrimonio"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.patrimonio"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_patrimonios"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_serial": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.serial": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.serial"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.serial"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_serials"
+			        }
+			      ]
+			    },
+			    "dash_atual_tecnico_has_codigo_do_produto": {
+			      "Binding": {
+			        "ConceptualEntity": "DASH_ATUAL_TECNICOS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dash_atual_tecnico": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico"
+			          }
+			        },
+			        "dash_atual_tecnico.codigo_do_produto": {
+			          "Target": {
+			            "Entity": "dash_atual_tecnico.codigo_do_produto"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dash_atual_tecnico"
+			            },
+			            "Object": {
+			              "Role": "dash_atual_tecnico.codigo_do_produto"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dash_atual_tecnicos_have_codigo_do_produtos"
+			        }
+			      ]
+			    },
+			    "data_atualizado_data_hierarquia_de_data_has_data_atualizado_data_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado.data.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.hierarquia_de_data"
+			          }
+			        },
+			        "data_atualizado.data.mê": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê1"
+			        }
+			      ]
+			    },
+			    "data_atualizado_data_hierarquia_de_data_has_data_atualizado_data_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado.data.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.hierarquia_de_data"
+			          }
+			        },
+			        "data_atualizado.data.dia": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias1"
+			        }
+			      ]
+			    },
+			    "data_atualizado_data_ano_has_data_atualizado_data_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado.data.ano": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.ano"
+			          }
+			        },
+			        "data_atualizado.data.trimestre": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.ano"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.trimestre"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "data_atualizado.data.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos1"
+			        }
+			      ]
+			    },
+			    "data_atualizado_data_trimestre_has_data_atualizado_data_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado.data.trimestre": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.trimestre"
+			          }
+			        },
+			        "data_atualizado.data.mê": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.trimestre"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.mê"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "data_atualizado.data.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres1"
+			        }
+			      ]
+			    },
+			    "data_atualizado_data_mê_has_data_atualizado_data_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "DATA_ATUALIZADO"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data_atualizado.data.mê": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.mê"
+			          }
+			        },
+			        "data_atualizado.data.dia": {
+			          "Target": {
+			            "Entity": "data_atualizado.data.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.mê"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.dia"
+			            },
+			            "Object": {
+			              "Role": "data_atualizado.data.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "data_atualizado.data.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "data_atualizado.data.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê1"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
+			    }
+			  }
+			}
+		contentType: json
+

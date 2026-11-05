@@ -1,0 +1,147 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "f34206d9c7ce36203ea2",
+  "position": {
+    "x": 80.357288817630248,
+    "y": 377.99503285233732,
+    "z": 11000,
+    "height": 575,
+    "width": 503.33333333333337,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Acompanhar a quantidade de produtos em estoque para evitar faltas ou excessos;",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Mapear os itens mais consumidos em períodos específicos, auxiliando no planejamento de compras;",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Avaliar padrões de consumo para identificar sazonalidades;",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Visualizar a quantidade de requisições de produtos realizadas, aprovadas e atendidas.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Identificar gargalos no processo de atendimento das requisições;",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Reduzir custos de armazenamento e desperdícios por meio do gerenciamento eficiente de itens;",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Ajustar estratégias de abastecimento para atender à demanda de forma mais econômica;",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Avaliar a eficiência da equipe responsável pelo controle e distribuição de materiais;",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Detectar tendências de consumo e antecipar necessidades futuras;",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

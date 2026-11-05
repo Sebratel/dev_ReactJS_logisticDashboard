@@ -1,0 +1,52 @@
+table 'ÚLTIMO VÍNCULO'
+	lineageTag: 845d49f8-81dc-4223-ab6f-9e9403e6d337
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a20fbd9-071a-4172-a544-33e3e83e3e60
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 41c2bb88-9c99-4d7d-bcbf-bb10f96fbe3a
+		summarizeBy: none
+		sourceColumn: DATA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'DESCRIÇÃO OCORRÊNCIA'
+		dataType: string
+		lineageTag: b1e92ad4-6a7c-417a-bea9-e0946f225622
+		summarizeBy: none
+		sourceColumn: DESCRIÇÃO OCORRÊNCIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DESCRIÇÃO PATRIMÔNIO'
+		dataType: string
+		lineageTag: bbaf3596-e91f-4ed7-9b4a-492f90c18b7b
+		summarizeBy: none
+		sourceColumn: DESCRIÇÃO PATRIMÔNIO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'ÚLTIMO VÍNCULO' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbvoalle", "WITH CTE AS (#(lf)    SELECT #(lf)        po.patrimony_id AS ""ID"",#(lf)        po.created AS ""DATA"",#(lf)        po.description AS ""DESCRIÇÃO OCORRÊNCIA"",#(lf)        p.title AS ""DESCRIÇÃO PATRIMÔNIO"",#(lf)        LAG(po.description) OVER (PARTITION BY po.patrimony_id ORDER BY po.created ASC) AS ""DESCRIÇÃO_ANTERIOR""#(lf)    FROM #(lf)        patrimony_occurrences po #(lf)    LEFT JOIN #(lf)        patrimonies p #(lf)    ON #(lf)        po.patrimony_id = p.id #(lf)    WHERE #(lf)          p.title IN (#(lf)            'ONU GPON WIFI ZTE F670L AC1200 2 ANTENAS V1.1 - RE907',#(lf)            'ONU GPON WIFI ZTE F670L AC1200 2 ANTENAS V9.0 - RE947',#(lf)            'ONU GPON WIFI ZTE F670L AC1200 2 ANTENAS V9.0 - RE3023',#(lf)            'ONU GPON WIFI 6 ZTE F6600P AX3000 4 ANTENAS V9.0 P0625',#(lf)            'ROTEADOR WIFI 6 ZTE MESH AX3000 H3601PE 5 ANTENAS',#(lf)            'ROTEADOR WIFI ZTE PRO MESH AC1200 H198A 2 ANTENAS - RE914',#(lf)            'ROTEADOR WIFI ZTE PRO MESH AC1200 H199A 4 ANTENAS - RE942',#(lf)            'ONU GPON WIFI ZTE F680 AC2000 6 ANTENAS V6.0 - RE913',#(lf)            'ONU GPON WIFI 6 ZTE F6600P AX3000 4 ANTENAS V9.0'#(lf))#(lf)        AND p.title NOT IN (#(lf)            'ONU FIBERHOME GPON AN5506-02-BG(B) - 1GE + 1FE + 1POT',#(lf)            'ANTENA AIRGRID M2 20 DBI',#(lf)            'ANTENA AP ADAP WI-FI 5GHZ C/ANT 27DBI - AIR GRID M5-HP',#(lf)            'ANTENA AP ADAP. WI-FI 5GHZ C/ANT. 23DBI-AIR GRID M5 HP',#(lf)            'ANTENA UBIQUITI NANOBRIDGE 900MHZ',#(lf)            'ARCHER C2 ROTEADOR WIRELESS GIGABIT DUAL BAND AC 750 2 ANTENAS',#(lf)            'F. ONU EPON FD600-111G 1GE MINI PON PORT 10/100/1000',#(lf)            'F. ONU EPON V2801ZE 01 PORT GE PPPOE/BRIDGE OEM',#(lf)            'F. ONU GPON WIFI HUAWEI EG8141A5 ECHOLIFE (N2-BR)',#(lf)            'F. ONU GPON WIFI HUAWEI EG8145V5 ECHOLIFE',#(lf)            'F. ONU GPON WIFI HUAWEI EG8145V5 ECHOLIFE (AC2)',#(lf)            'F. ONU GPON WIFI HUAWEI EG8145V5 ECHOLIFE (AC2-BR)',#(lf)            'F. ONU GPON WIFI HUAWEI HG8546M ECHOLIFE',#(lf)            'F. ONU GPON WIFI HUAWEI HG8546M ECHOLIFE (N)',#(lf)            'F. ONU GPON WIFI HUAWEI HS8545M5 NOVO 1GE+3FE+1POT+1USB',#(lf)            'F. ONU GPON WIFI HUAWEI HS8546M ECHOLIFE',#(lf)            'F. ONU GPON WIFI HUAWEI HS8546M5 ECHOLIFE',#(lf)            'F. ONU GPON WIFI HUAWEI HS8546V5 ECHOLIFE',#(lf)            'F. ONU GPON WIFI HUAWEI HS8546V5 ECHOLIFE (AC)',#(lf)            'F. ONU GPON WIFI HUAWEI HS8546V5 ECHOLIFE (AC-1PG)',#(lf)            'F. ONU GPON WIFI HUAWEI HS8546V5 ECHOLIFE (AC2-BR)',#(lf)            'F. ONU GPON WIFI HUAWEI HS8546V5 ECHOLIFE (AC3)',#(lf)            'FIBERLINK 100',#(lf)            'NANO LOCO',#(lf)            'NANO M5 LOCO',#(lf)            'ONU FIBERHOME GPON AN 5506-04-FG + WIFI',#(lf)            'ONU FIBERHOME GPON AN5506-01-A B - 1 GE',#(lf)            'ONU FIBERHOME GPON AN5506-02-B - C/ (TELEFONIA)',#(lf)            'ONU FIBERHOME GPON AN5506-02-B (TELEFONIA)',#(lf)            'ONU FIBERHOME GPON AN5506-02-BG(B) - 1GE + 1FE + 1POT',#(lf)            'ONU FIBERHOME GPON AN5506-04-FG-4GE+2POTS+WIFI',#(lf)            'ONU GPON BRIDGE PARKS FIBERLINK 100',#(lf)            'ONU GPON BRIDGE ZTE F601V7.0 (05)',#(lf)            'ONU GPON PARKS FIBERLINK 101',#(lf)            'ONU GPON WIFI 6 ZTE F6600 AX1800 4 ANTENAS V1.0 - RE963',#(lf)            'ONU GPON WIFI AC1200 F670L V9.0',#(lf)            'Onu Gpon Wifi Ac1200 F670L V9.0',#(lf)            'ONU GPON WIFI HUAWEI EG8145V5 ECHOLIFE (AC4-BR)',#(lf)            'ONU GPON WIFI HUAWEI EG8145V5 ECHOLIFE AC 2 ANTENAS (Versão AC2)',#(lf)            'ONU GPON WIFI HUAWEI EG8145V5 ECHOLIFE AC 2 ANTENAS (Versão AC2-BR)',#(lf)            'ONU GPON WIFI HUAWEI HG8546M N300 2 ANTENAS',#(lf)            'ONU GPON WIFI HUAWEI HS8546V5 ECHOLIFE AC 2 ANTENAS',#(lf)            'ONU GPON WIFI HUAWEI HS8546V5 ECHOLIFE AC 2 ANTENAS - MODELO ""AC3""',#(lf)            'ONU GPON WIFI ZTE F670L AC1200 2 ANTENAS',#(lf)            'ONU GPON WIFI ZTE F670L AC1200 2 ANTENAS - RE907',#(lf)            'ONU GPON WIFI ZTE F680 AC2000 6 ANTENAS',#(lf)            'ONU XGS-PON WIFI 6 ZTE F8648P AX6000 V2.0',#(lf)            'Onu Zte Gpon Wifi 6 AX1800 - F6600',#(lf)            'ONU ZTE GPON WIFI F680 AC2000 6 ANTENAS',#(lf)            'ROTEADOR 150MPBS IWR 1000N INTELBRAS',#(lf)            'Roteador Ac1200 Mesh Zte H199a 4 Antenas',#(lf)            'ROTEADOR EC220-G5 GIGABIT WIRELESS DUAL BAND AC 1200',#(lf)            'ROTEADOR INTELBRAS AC DUAL BAND ACTION R1200 PORTA GIGA',#(lf)            'ROTEADOR IWR 3000 N INTELBRAS',#(lf)            'ROTEADOR T P LINK 150 MBPS TL-WR720N',#(lf)            'ROTEADOR T P LINK 150 MBPS TL-WR720N ANT. EXTERNA',#(lf)            'ROTEADOR T P LINK 150 MBPS TL-WR740N',#(lf)            'ROTEADOR T P LINK 300 MBPS TL-WR 849N',#(lf)            'ROTEADOR TP LINK AC900 ARCHER C2 GIGABIT DUAL V3',#(lf)            'Roteador WIFI 6 ZTE Mesh AX3000 H3601P 5 Antenas',#(lf)            'ROTEADOR WI-FI TP-LINK ARCHER C5 AC1200 (Preset)',#(lf)            'ROTEADOR WI-FI TP-LINK EC220-G5 DUAL BAND AC 1200 (Preset)',#(lf)            'ROTEADOR WI-FI TP-LINK TL-WR840N (N 300 Preset)',#(lf)            'ROTEADOR WI-FI TP-LINK TL-WR849N (N 300)',#(lf)            'ROTEADOR WIFI ZTE PRO MESH AC 1200 H198A 2 ANTENAS',#(lf)            'ROTEADOR WIRELESS 150 MBPS TL-WR740N',#(lf)            'ROTEADOR WIRELESS AC 750 733 Mbps ARCHER C20<W>PRESET PROVEDORES TP-LINK@',#(lf)            'ROTEADOR WIRELESS AC1200 1167 MBPS ARCHER C50 CHECKIN FACEBOOK TP-LINK',#(lf)            'ROTEADOR WIRELESS AC1200 1167 Mbps GIGABIT ARCHER C5<W>PRESET TP-LINK@',#(lf)            'ROTEADOR WIRELESS N 300 MBPS TL-WR 849N (TL-WR840N) TP-LINK@',#(lf)            'ROTEADOR WIRELESS N 300 MBPS TL-WR840N<W>PRESET PROVEDORES TP-LINK',#(lf)            'ROTEADOR WIRELESS N 300 MBPS TL-WR840N<W>PRESET PROVEDORES TP-LINK@',#(lf)            'ROTEADOR WIRELESS TP-LINK EC230-G1 DUAL BAND AC 1350 (PRESET)',#(lf)            'ROTEADOR WRN 240 SLIM N150MBPS INTELBRAS',#(lf)            'TL-WR720N ROTEADOR WIRELESS N 150 MBPS',#(lf)            'TL-WR820N ROTEADOR WIRELESS N 300 MBPS',#(lf)            'TL-WR829(BR) ROTEADOR WIRELESS N 300 MBPS',#(lf)            'UBIQUITI AIRMAX NANOSTATION LOCOM2 BR',#(lf)            'UBIQUITI POWERBEAM AIRMAX NBE-M5-300 5GHZ 22DBI DUPLA POLARIDADE',#(lf)            'UBIQUITI POWERBEAM NBE-M5-400 5GHZ 25DBI DUPLA POLARIZ.'#(lf)        )#(lf))#(lf)#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)SELECT #(lf)#(tab)#(tab)#(tab)#(tab)#(tab)    ""ID"", #(lf)#(tab)#(tab)#(tab)#(tab)#(tab)    ""DATA"", #(lf)#(tab)#(tab)#(tab)#(tab)#(tab)    ""DESCRIÇÃO OCORRÊNCIA"",#(lf)                                             ""DESCRIÇÃO PATRIMÔNIO""#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)FROM #(lf)#(tab)#(tab)#(tab)#(tab)#(tab)    CTE#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)WHERE #(lf)#(tab)#(tab)#(tab)#(tab)#(tab)    ""DESCRIÇÃO OCORRÊNCIA"" LIKE '%A.ALMOXARIFADO%'#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)    AND EXISTS (#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)        SELECT 1 #(lf)#(tab)#(tab)#(tab)#(tab)#(tab)        FROM CTE AS prev_cte#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)        WHERE #(lf)#(tab)#(tab)#(tab)#(tab)#(tab)            prev_cte.""ID"" = CTE.""ID""#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)            AND (prev_cte.""DESCRIÇÃO OCORRÊNCIA"" LIKE '%CANCELAMENTO / LABORATÓRIO%'#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)                 OR prev_cte.""DESCRIÇÃO OCORRÊNCIA"" LIKE '%MANUTENÇÃO / LABORATÓRIO%')#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)            AND prev_cte.""DATA"" < CTE.""DATA""#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)    )#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)ORDER BY #(lf)#(tab)#(tab)#(tab)#(tab)#(tab)    ""ID"", ""DATA"" ASC;"),
+				    #"Data Extraída" = Table.TransformColumns(Fonte,{{"DATA", DateTime.Date, type date}})
+				in
+				    #"Data Extraída"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

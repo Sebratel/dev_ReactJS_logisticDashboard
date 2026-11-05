@@ -1,0 +1,27 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["DASH_ATUAL_TECNICOS","DATA_ATUALIZADO","EQUIPES_ATUAIS","DASH_ATUAL_CONSUMOS","DASH_ATUAL_TECNICOS(MEDIA)","DASHBOARD_ATUAL","Usuários"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DASH_ATUAL_TECNICOS
+ref table DateTableTemplate_111950a5-f900-4de6-bcfa-494346fdd22e
+ref table LocalDateTable_70927d65-eed2-49b1-b429-4cbe1e4cd541
+ref table DATA_ATUALIZADO
+ref table LocalDateTable_5037fe1c-25e9-4f90-875f-9924b981f06d
+ref table EQUIPES_ATUAIS
+ref table DASH_ATUAL_CONSUMOS
+ref table DASH_ATUAL_TECNICOS(MEDIA)
+ref table DASHBOARD_ATUAL
+ref table Usuários
+
+ref cultureInfo pt-BR
+

@@ -1,0 +1,409 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "FECHAR FILTRO (PATRIMONIO)",
+  "name": "Bookmark58b39d9bb2700daeeeae",
+  "options": {
+    "targetVisualNames": [],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSection",
+    "sections": {
+      "ReportSection": {
+        "filters": {
+          "byExpr": [
+            {
+              "name": "Filter6d5d57f518856d316ea0",
+              "type": "Categorical",
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "d",
+                    "Entity": "DASH_ATUAL_TECNICOS",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Not": {
+                        "Expression": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "d"
+                                    }
+                                  },
+                                  "Property": "BASE"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'Base: OUTROS'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DASH_ATUAL_TECNICOS"
+                    }
+                  },
+                  "Property": "BASE"
+                }
+              },
+              "howCreated": 1
+            }
+          ]
+        },
+        "visualContainers": {
+          "4c82f10440f1782229a7": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5969fb3e1d7991eaaa2e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "TECNICO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "cc2192fd53b4f9f23d75",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DASH_ATUAL_TECNICOS"
+                            }
+                          },
+                          "Property": "PATRIMONIO"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "772a0aca41e7f2875257",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "TOTAL_VALOR"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DASH_ATUAL_TECNICOS"
+                            }
+                          },
+                          "Property": "PATRIMONIO"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Rows": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "TECNICO"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "584e7cf176560fedad21": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "9e88a9f102a8a0f3eab2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "TECNICO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "033e4e46e3404771922c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "BASE"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "92ca2d33cab65cff2f62",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "CODIGO DO PRODUTO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "516d6281c8c0a26aa5be",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "DESCRICAO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "881172dffb03e49018f4",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "SERIAL"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b31f292bb68926476ada",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "PATRIMONIO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "abf0e90b610924cbdbd9",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "VALOR DO ITEM"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {}
+            }
+          },
+          "660e50ed5934e0d18920": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "9c2dbe3836c34bb046b6": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "4dc60e0352b8bace87e3": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "57544173c833cc9cb51d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5a02d89a50b8b9c47436",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DASH_ATUAL_TECNICOS"
+                            }
+                          },
+                          "Property": "PATRIMONIO"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "89624421ad86f680cb8c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "BASE"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "barChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DASH_ATUAL_TECNICOS"
+                            }
+                          },
+                          "Property": "PATRIMONIO"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_TECNICOS"
+                        }
+                      },
+                      "Property": "BASE"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "8e1a8e797cf997e70152": {
+            "isHidden": true
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

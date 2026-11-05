@@ -1,0 +1,65 @@
+table ACURACIDADE
+	lineageTag: b709ea9f-43eb-4874-affe-72d96b8bc999
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0cf89459-a8b1-4314-89e6-562d8ae2dc8b
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Perc. Acurac. Estoque'
+		dataType: double
+		formatString: 0%;-0%;0%
+		lineageTag: 2717ac3d-c826-46b7-a9ea-d16dce69f9ea
+		summarizeBy: sum
+		sourceColumn: Perc. Acurac. Estoque
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meta (%)'
+		dataType: double
+		formatString: 0%;-0%;0%
+		lineageTag: e1641fef-fbad-4cb7-9f2a-2d65ca3be816
+		summarizeBy: sum
+		sourceColumn: Meta (%)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Base
+		dataType: string
+		lineageTag: 6050c649-2ad6-48f0-a211-57a482c1e7ec
+		summarizeBy: none
+		sourceColumn: Base
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ACURACIDADE = m
+		mode: import
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1PSUyDI2jg3HInJFHWJzq2ePiXX0WBqfpX2mJFHyblFQ/edit?gid=0#gid=0"),
+				    Acuracidade_Table = Fonte{[name="Acuracidade",ItemKind="Table"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Acuracidade_Table, [PromoteAllScalars=true]),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Cabeçalhos Promovidos", "Personalizar", each [Perc. Acurac. Estoque]/100),
+				    #"Colunas Removidas1" = Table.RemoveColumns(#"Personalização Adicionada",{"Perc. Acurac. Estoque"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Removidas1",{{"Personalizar", "Perc. Acurac. Estoque"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"Perc. Acurac. Estoque", Percentage.Type}}),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Tipo Alterado1", "Personalizar", each [#"Meta (%)"]/100),
+				    #"Colunas Removidas2" = Table.RemoveColumns(#"Personalização Adicionada1",{"Meta (%)"}),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Colunas Removidas2",{{"Personalizar", "Meta (%)"}}),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"Meta (%)", Percentage.Type}, {"Date", type date}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado2","SLE","SÃO LEOPOLDO",Replacer.ReplaceText,{"Base"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","CAN","CANOAS",Replacer.ReplaceText,{"Base"}),
+				    #"Erros Removidos" = Table.RemoveRowsWithErrors(#"Valor Substituído1")
+				in
+				    #"Erros Removidos"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

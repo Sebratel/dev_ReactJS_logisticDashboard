@@ -1,0 +1,515 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "LIMPAR FILTRO (CONSUMO)",
+  "name": "Bookmark7f2e1c116635c050b80a",
+  "options": {
+    "targetVisualNames": []
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSection1a60b4f8e8543a353ceb",
+    "sections": {
+      "ReportSection1a60b4f8e8543a353ceb": {
+        "filters": {
+          "byExpr": [
+            {
+              "name": "Filter6377ab1b124ba728b5d1",
+              "type": "Categorical",
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "d",
+                    "Entity": "DASHBOARD_ATUAL",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Not": {
+                        "Expression": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "d"
+                                    }
+                                  },
+                                  "Property": "TECNICO"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "null"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DASHBOARD_ATUAL"
+                    }
+                  },
+                  "Property": "TECNICO"
+                }
+              },
+              "howCreated": 1
+            }
+          ]
+        },
+        "visualContainers": {
+          "b279e184a28b6207e6ed": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "214cacce173526698687",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DATA_ATUALIZADO"
+                            }
+                          },
+                          "Property": "Hora"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          },
+          "a382f1b95190d14131ab": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "be7494c50617dd29f077": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "93c233c6334c953308b0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DATA_ATUALIZADO"
+                            }
+                          },
+                          "Property": "Data"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          },
+          "87618fd0e5c7e7e77880": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "3699735a2b43cb1931b4": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "86f49a5697de41f6de74",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "BASE2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "68af9ac024d403af6400",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DASH_ATUAL_CONSUMOS"
+                            }
+                          },
+                          "Property": "QUANTIDADEE"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "barChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DASH_ATUAL_CONSUMOS"
+                            }
+                          },
+                          "Property": "QUANTIDADEE"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "BASE2"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "963c749e08d7f77a6f81": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "ffa28176ab3f05f0ffaf": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "a8c768320aea3c594583": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "470cffaed9dbf32594d7": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d178ef6e64fed4ba2922",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "TECNICO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7ebf3e29dbff3bf7f0f6",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "CODIGO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "86f3ab91c3519c90b890",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "DESCRICAO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4f0638b31ae8ed648794",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "UNIDADE DE MEDIDA"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0c9bff370125e32de581",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "QUANTIDADEE"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3d5a6e6370e17f51f11c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "VALOR"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4c3a0f8aa253cf8d9ad7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS (MEDIA)"
+                        }
+                      },
+                      "Property": "MÉDIA"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2c79a7d517660ce0e435",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASHBOARD_ATUAL"
+                        }
+                      },
+                      "Property": "BASE"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "QUANTIDADEE"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "5dd22176be0f62dad34e": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "ecfaf909b1cb148fd603",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "TECNICO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d0df08a871dd8ade67db",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DASH_ATUAL_CONSUMOS"
+                            }
+                          },
+                          "Property": "VALOR"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e5ce050309042cf5c7bf",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DASH_ATUAL_CONSUMOS"
+                            }
+                          },
+                          "Property": "DESCRICAO"
+                        }
+                      },
+                      "Function": 2
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "DASH_ATUAL_CONSUMOS"
+                            }
+                          },
+                          "Property": "VALOR"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Rows": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DASH_ATUAL_CONSUMOS"
+                        }
+                      },
+                      "Property": "TECNICO"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "358d04c5666c4e3ab495": {
+            "isHidden": false
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

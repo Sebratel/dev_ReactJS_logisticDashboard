@@ -1,0 +1,159 @@
+table DASH_ATUAL_TECNICOS
+	lineageTag: 5f0bc9c3-4c9a-4292-a8d0-228c7d357b99
+
+	measure TOTAL_VALOR = SUM(DASH_ATUAL_TECNICOS[VALOR DO ITEM])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: dd1c60a4-11cf-4dfc-b7c0-a082ad905d4d
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'ROTULO PERSONALIZADO' = ```
+			
+			    VAR QuantidadeTotal = DISTINCTCOUNT(DASH_ATUAL_TECNICOS[PATRIMONIO])
+			    VAR ValorTotal = SUM(DASH_ATUAL_TECNICOS[VALOR DO ITEM])
+			    
+			    RETURN
+			        "" & FORMAT(QuantidadeTotal, "#,##0") & 
+			        " || R$ " & FORMAT(ValorTotal, "#,##0.00")
+			
+			```
+		lineageTag: 11a78f8a-7a60-4384-9a14-beda389a673b
+
+	column 'CODIGO DO PRODUTO'
+		dataType: string
+		lineageTag: 6d5dcc6d-5355-4281-8a85-9b0691c7b8d7
+		summarizeBy: none
+		sourceColumn: CODIGO DO PRODUTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESCRICAO
+		dataType: string
+		lineageTag: 10c19add-2afd-4126-bde5-3e7a97c64df9
+		summarizeBy: none
+		sourceColumn: DESCRICAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERIAL
+		dataType: string
+		lineageTag: 34fd3136-c597-457a-a5df-eb6e358364a3
+		summarizeBy: none
+		sourceColumn: SERIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATRIMONIO
+		dataType: string
+		lineageTag: 345b1095-d21d-4736-bb8f-687f53c13833
+		summarizeBy: none
+		sourceColumn: PATRIMONIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VALOR DO ITEM'
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 0425adfa-7381-4860-a5b1-8b93fa266a85
+		summarizeBy: sum
+		sourceColumn: VALOR DO ITEM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column TECNICO
+		dataType: string
+		lineageTag: ad546359-fad4-40dc-9706-3710c3977b52
+		summarizeBy: none
+		sourceColumn: TECNICO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DATA DA MOVIMENTACAO'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a062f3bb-9da1-4380-9904-cfede8cb44b4
+		summarizeBy: none
+		sourceColumn: DATA DA MOVIMENTACAO
+
+		variation Variation
+			isDefault
+			relationship: 37b48885-eb09-4c74-b702-1f680ec9a54b
+			defaultHierarchy: LocalDateTable_70927d65-eed2-49b1-b429-4cbe1e4cd541.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CIDADE
+		dataType: string
+		lineageTag: 4dd58178-96d6-45ac-abeb-975559c94a3c
+		summarizeBy: none
+		sourceColumn: CIDADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column BASE = ```
+			
+			IF(
+			    'DASH_ATUAL_TECNICOS'[CIDADE] = "São Leopoldo" ||
+			    'DASH_ATUAL_TECNICOS'[CIDADE] = "Sapucaia do Sul" ||
+			    'DASH_ATUAL_TECNICOS'[CIDADE] = "Novo Hamburgo",
+			    "OUTROS",
+			    IF(
+			        'DASH_ATUAL_TECNICOS'[CIDADE] = "Esteio" ||
+			        'DASH_ATUAL_TECNICOS'[CIDADE] = "Canoas" ||
+			        'DASH_ATUAL_TECNICOS'[CIDADE] = "Porto Alegre",
+			        "OUTROS",
+			        "OUTROS"
+			    )
+			)
+			
+			```
+		lineageTag: 25d83f91-cd5b-41b5-ab9e-87c11e56adc8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CODIGO SERVICO'
+		dataType: string
+		lineageTag: b7ee4163-f1e8-4890-9e0a-038a571e9d42
+		summarizeBy: none
+		sourceColumn: CODIGO SERVICO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VALOR MEDIO'
+		dataType: double
+		lineageTag: 9612bb78-d0fe-4804-805c-13308f84fb22
+		summarizeBy: sum
+		sourceColumn: VALOR MEDIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'TEMPO (DIAS)' =
+			
+			DATEDIFF(
+			    'DASH_ATUAL_TECNICOS'[DATA DA MOVIMENTACAO],
+			    TODAY(),
+			    DAY
+			)
+		formatString: 0
+		lineageTag: 13fcc9b8-cea3-4e4d-9fbb-4d0309af5b02
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DASH_ATUAL_TECNICOS = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "select #(lf)#(tab)p.code ""CODIGO DO PRODUTO"",#(lf)#(tab)p.title ""DESCRICAO"",#(lf)#(tab)p.serial_number ""SERIAL"",#(lf)#(tab)p.tag_number ""PATRIMONIO"",#(lf)#(tab)p.purchase_amount ""VALOR DO ITEM"",#(lf)#(tab)p2.name ""TECNICO"",#(lf)#(tab)p.modified ""DATA DA MOVIMENTACAO"",#(lf)#(tab)p2.city ""CIDADE"",#(lf)#(tab)sp.code ""CODIGO SERVICO"",#(lf)#(tab)ini.mean_amount ""VALOR MEDIO""#(lf)#(tab)from patrimonies p#(lf)#(tab)left join people p2 on p2.id = p.person_id#(lf)#(tab)left join v_users vu on vu.id = p2.user_id#(lf)#(tab)left join service_products sp on sp.id = p.service_product_id#(lf)#(tab)left join invoice_note_items ini on ini.invoice_note_id = p.entry_invoice_note_id#(lf)#(tab)where p2.name is not null")
+				in
+				    Fonte
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

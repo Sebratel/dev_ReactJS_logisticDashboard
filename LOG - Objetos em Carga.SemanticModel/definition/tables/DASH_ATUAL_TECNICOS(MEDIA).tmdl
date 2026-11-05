@@ -1,0 +1,45 @@
+table DASH_ATUAL_TECNICOS(MEDIA)
+	lineageTag: 0c383ad7-76cb-455e-95d0-abbdda4151f4
+
+	column DESCRICAO
+		dataType: string
+		lineageTag: 7c5fbd36-124b-42ac-88c4-281be99d1088
+		summarizeBy: none
+		sourceColumn: DESCRICAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MEDIA_VALOR_PROD.'
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: d1c71440-7b55-4fd4-87a0-3bb9caa8e6d2
+		summarizeBy: sum
+		sourceColumn: MEDIA_VALOR_PROD.
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition DASH_ATUAL_TECNICOS(MEDIA) = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "select #(lf)#(tab)p.code ""CODIGO DO PRODUTO"",#(lf)#(tab)p.title ""DESCRICAO"",#(lf)#(tab)p.serial_number ""SERIAL"",#(lf)#(tab)p.tag_number ""PATRIMONIO"",#(lf)#(tab)p.purchase_amount ""VALOR DO ITEM"",#(lf)#(tab)p2.name ""TECNICO"",#(lf)#(tab)p.modified ""DATA DA MOVIMENTACAO"",#(lf)#(tab)p2.city ""CIDADE"",#(lf)#(tab)sp.code ""CODIGO SERVICO"",#(lf)#(tab)ini.mean_amount ""VALOR MEDIO""#(lf)#(tab)from patrimonies p#(lf)#(tab)left join people p2 on p2.id = p.person_id#(lf)#(tab)left join v_users vu on vu.id = p2.user_id#(lf)#(tab)left join service_products sp on sp.id = p.service_product_id#(lf)#(tab)left join invoice_note_items ini on ini.invoice_note_id = p.entry_invoice_note_id#(lf)#(tab)where p2.name is not null"),
+				    #"Colunas Removidas" = Table.RemoveColumns(Fonte,{"DATA DA MOVIMENTACAO", "CIDADE", "VALOR MEDIO"}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Colunas Removidas","Escada de fibra 6m","ESCADA DE FIBRA 6M",Replacer.ReplaceText,{"DESCRICAO"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","Escada de fibra 7m","ESCADA DE FIBRA 7M",Replacer.ReplaceText,{"DESCRICAO"}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Valor Substituído1","Escada de Fibra 7M","ESCADA DE FIBRA 7M",Replacer.ReplaceText,{"DESCRICAO"}),
+				    #"Valor Substituído3" = Table.ReplaceValue(#"Valor Substituído2","Escada de Fibra 6m ","ESCADA DE FIBRA 6M",Replacer.ReplaceText,{"DESCRICAO"}),
+				    #"Valor Substituído4" = Table.ReplaceValue(#"Valor Substituído3","Escada de Fibra 7m","ESCADA DE FIBRA 7M",Replacer.ReplaceText,{"DESCRICAO"}),
+				    #"Linhas Classificadas" = Table.Sort(#"Valor Substituído4",{{"CODIGO DO PRODUTO", Order.Ascending}}),
+				    #"Linhas Agrupadas" = Table.Group(#"Linhas Classificadas", {"DESCRICAO"}, {{"MÉDIA_VALOR_PROD.", each List.Average([VALOR DO ITEM]), type nullable number}}),
+				    #"Linhas Classificadas1" = Table.Sort(#"Linhas Agrupadas",{{"DESCRICAO", Order.Ascending}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Linhas Classificadas1",{{"MÉDIA_VALOR_PROD.", Currency.Type}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"MÉDIA_VALOR_PROD.", "MEDIA_VALOR_PROD."}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

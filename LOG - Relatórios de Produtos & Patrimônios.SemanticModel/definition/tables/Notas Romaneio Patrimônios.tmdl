@@ -1,0 +1,147 @@
+table 'Notas Romaneio Patrimônios'
+	lineageTag: 475e5510-2521-4bc2-8d57-86aec5dfeb5f
+
+	column RESPONSAVEL
+		dataType: string
+		lineageTag: 03388cb2-d319-42de-862a-ed63eda424d4
+		summarizeBy: none
+		sourceColumn: RESPONSAVEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column created
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 689fbd79-2a3e-4af4-a487-04e3ad2757aa
+		summarizeBy: none
+		sourceColumn: created
+
+		variation Variation
+			isDefault
+			relationship: 5f6b79d3-462b-4a2a-9c87-dd2cbe943942
+			defaultHierarchy: LocalDateTable_2ab9edaf-b5ca-4cb2-92c3-207fc3166693.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DASH
+		dataType: string
+		lineageTag: 3fa54aa2-e248-4699-b8fb-27527efbdd9d
+		summarizeBy: none
+		sourceColumn: DASH
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID MOVIMENTO'
+		dataType: int64
+		formatString: 0
+		lineageTag: ad4e35fc-ff3a-427f-ad09-6de8c690d1e5
+		summarizeBy: sum
+		sourceColumn: ID MOVIMENTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID PATRIMONIO'
+		dataType: int64
+		formatString: 0
+		lineageTag: 371fa350-286e-41ca-b2aa-67d2e476dd9f
+		summarizeBy: sum
+		sourceColumn: ID PATRIMONIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column N°PATRIMONIO
+		dataType: string
+		lineageTag: d96e87b5-9681-430f-8950-69a5771aa03d
+		summarizeBy: none
+		sourceColumn: N°PATRIMONIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERIAL
+		dataType: string
+		lineageTag: b9e3363f-d663-4505-ad0f-97a78ddbbab8
+		summarizeBy: none
+		sourceColumn: SERIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESCRICAO
+		dataType: string
+		lineageTag: 271deb68-50b3-4b38-89f6-20ea96fa0b27
+		summarizeBy: none
+		sourceColumn: DESCRICAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CRIADO EM:'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 64b9554c-a695-4bf6-80c0-7bf012cda5a0
+		summarizeBy: none
+		sourceColumn: CRIADO EM:
+
+		variation Variation
+			isDefault
+			relationship: cf7fce2a-edc8-4f75-be7c-522c3047fa5f
+			defaultHierarchy: LocalDateTable_30ed0951-fd08-40a6-993e-57885f0f5569.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DELETADO:
+		dataType: string
+		lineageTag: 16340aba-bafb-4b50-9143-35df9750e284
+		summarizeBy: none
+		sourceColumn: DELETADO:
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISPONIVEL:
+		dataType: string
+		lineageTag: 1460d4ca-3bd2-4f77-bc75-cc4a7f977cbe
+		summarizeBy: none
+		sourceColumn: DISPONIVEL:
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DATA MOVIMENTADA:'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 166b15e8-05e0-4015-8210-96d1d8b0d88f
+		summarizeBy: none
+		sourceColumn: DATA MOVIMENTADA:
+
+		variation Variation
+			isDefault
+			relationship: d24f4ef1-2b31-4f17-b434-efe7a120dc99
+			defaultHierarchy: LocalDateTable_3c4ee017-419c-4ac4-abb3-23584856a259.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'RECEBIDO POR:'
+		dataType: string
+		lineageTag: b7c6fff4-7228-410f-b96c-9e3ac39fe767
+		summarizeBy: none
+		sourceColumn: RECEBIDO POR:
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Notas Romaneio Patrimônios' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "SELECT distinct#(lf)#(tab)u.name ""RESPONSAVEL"",#(lf)    po.created,#(lf)    p2.name ""DASH"",#(lf)    po.id ""ID MOVIMENTO"",#(lf)#(tab)p.id ""ID PATRIMONIO"",#(lf)#(tab)p.serial_number ""N°PATRIMONIO"",#(lf)#(tab)p.tag_number ""SERIAL"",#(lf)#(tab)p.title ""DESCRICAO"",#(lf)#(tab)p.created ""CRIADO EM:"",#(lf)#(tab)p.deleted ""DELETADO:"",#(lf)#(tab)p.p_is_disponible ""DISPONIVEL:"",#(lf)#(tab)po.date ""DATA MOVIMENTADA:"",#(lf)#(tab)SUBSTRING(po.description FROM 'Sob Responsabilidade de (.+)') AS ""RECEBIDO POR:""#(lf)#(tab)FROM patrimony_occurrences po#(lf)#(tab)LEFT JOIN patrimonies p on p.id = po.patrimony_id#(lf)#(tab)LEFT JOIN people p2 on p2.id = p.person_id#(lf)#(tab)left join users u on u.id = po.created_by#(lf)#(tab)where po.date >= '2024-01-01'"),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"CRIADO EM:", type date}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado","0","INDISPONÍVEL",Replacer.ReplaceText,{"DISPONIVEL:"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","1","DISPONÍVEL",Replacer.ReplaceText,{"DISPONIVEL:"}),
+				    #"Linhas Classificadas" = Table.Sort(#"Valor Substituído1",{{"DATA MOVIMENTADA:", Order.Descending}})
+				in
+				    #"Linhas Classificadas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

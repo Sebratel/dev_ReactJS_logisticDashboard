@@ -1,0 +1,94 @@
+table 'Objetos Pendentes'
+	lineageTag: c47ba3ba-b5fa-4f2d-88df-d78d6c3c5a77
+
+	measure QtdPendente = ```
+			
+			SUM('Objetos Pendentes'[PENDENTES])
+			
+			```
+		formatString: 0
+		lineageTag: e8c88598-36de-406b-9dd6-561da4e70bf3
+
+	column 'NOTA FISCAL'
+		dataType: int64
+		lineageTag: 0a79cbd0-21a3-493f-b8e7-00d64515d9a1
+		summarizeBy: sum
+		sourceColumn: NOTA FISCAL
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'DATA ENTRADA'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fdeb2ecf-243f-420c-8cb0-ca62f58e0f3b
+		summarizeBy: none
+		sourceColumn: DATA ENTRADA
+
+		variation Variation
+			isDefault
+			relationship: 69f3e7df-684e-41a1-9323-1942808a83a3
+			defaultHierarchy: LocalDateTable_58bb2cfb-307f-49c2-8776-338037071f31.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CODIGO
+		dataType: string
+		lineageTag: 1a0d09d4-5371-4165-b731-e375040f3e69
+		summarizeBy: none
+		sourceColumn: CODIGO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITEM
+		dataType: string
+		lineageTag: acd379a5-6b86-4c4b-905e-9dcdaf5fe1ff
+		summarizeBy: none
+		sourceColumn: ITEM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTAL
+		dataType: int64
+		formatString: 0
+		lineageTag: 4744cdc9-7138-4fb5-8a18-6ef300d6c3fd
+		summarizeBy: sum
+		sourceColumn: TOTAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column PENDENTES
+		dataType: int64
+		formatString: 0
+		lineageTag: c31e211e-188d-41cc-a1d8-67427d1fcd55
+		summarizeBy: sum
+		sourceColumn: PENDENTES
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BASE OPERACIONAL'
+		dataType: string
+		lineageTag: d8d5be38-7e15-41da-82d2-9cf4ef20801a
+		summarizeBy: none
+		sourceColumn: BASE OPERACIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Objetos Pendentes' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "select #(lf)t.document_number as ""NOTA FISCAL"",#(lf)ppg.date as ""DATA ENTRADA"",#(lf)sp.code as ""CODIGO"",#(lf)sp.title as ""ITEM"",#(lf)ppg.units as ""TOTAL"",#(lf)ppg.balance as ""PENDENTES"",#(lf)cpbu.description as ""BASE OPERACIONAL"" #(lf)from patrimonies_pending_generations ppg #(lf)left join invoice_notes t on t.id = ppg.invoice_note_id#(lf)left join service_products sp on sp.id = ppg.service_product_id #(lf)left join company_place_business_units cpbu on cpbu.id = ppg.company_place_business_unit_id#(lf)where ppg.balance <> '0'"),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each ([PENDENTES] <> -1))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

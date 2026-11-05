@@ -1,0 +1,169 @@
+table 'Consumo Patrimônios'
+	lineageTag: ab788948-95e2-422b-ad6a-0d2254c63505
+
+	column SOLICITACAO
+		dataType: string
+		lineageTag: d164d59e-aaf2-479e-9801-619b31970d30
+		summarizeBy: none
+		sourceColumn: SOLICITACAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column N°PROTOCOLO
+		dataType: int64
+		formatString: 0
+		lineageTag: 31033f2e-a108-4143-a541-a084916ae8d9
+		summarizeBy: sum
+		sourceColumn: N°PROTOCOLO
+
+		annotation SummarizationSetBy = Automatic
+
+	column EQUIPAMENTO
+		dataType: string
+		lineageTag: c91e14e8-27be-4582-abd4-c48247d4ca8c
+		summarizeBy: none
+		sourceColumn: EQUIPAMENTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATRIMONIO
+		dataType: string
+		lineageTag: 329f0ab7-b2cd-4e7f-ba26-880d5ad44067
+		summarizeBy: none
+		sourceColumn: PATRIMONIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERIAL
+		dataType: string
+		lineageTag: 35a6a099-bb31-446b-9b4c-332429d13327
+		summarizeBy: none
+		sourceColumn: SERIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DATA SAIDA'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 26ed3d6c-d9da-4225-8466-4b8f59b134c9
+		summarizeBy: none
+		sourceColumn: DATA SAIDA
+
+		variation Variation
+			isDefault
+			relationship: bd30b56b-35af-4e11-b3ba-26887e62650d
+			defaultHierarchy: LocalDateTable_b0dde7d7-b40b-4bb2-8495-9ca6f7525ce3.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'DATA HORA SAIDA'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d41c461c-3ab8-42ca-bbbb-74c746d492cd
+		summarizeBy: none
+		sourceColumn: DATA HORA SAIDA
+
+		variation Variation
+			isDefault
+			relationship: 2d57340c-5a31-41f4-85bf-dfce514ab969
+			defaultHierarchy: LocalDateTable_d447a12a-d928-4c82-8556-c0da920f681a.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'STATUS RETORNO'
+		dataType: string
+		lineageTag: 90ea155e-8a82-49ba-ae0c-2bcfe460e56d
+		summarizeBy: none
+		sourceColumn: STATUS RETORNO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DATA DO RETORNO'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c86d5e13-1ae1-4705-962c-4ecf83f72765
+		summarizeBy: none
+		sourceColumn: DATA DO RETORNO
+
+		variation Variation
+			isDefault
+			relationship: 8a809042-9f35-4cbd-b302-778a02d6566e
+			defaultHierarchy: LocalDateTable_a084f8a2-3954-48ef-9021-0985c88d2cd6.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column RESPONSAVEL
+		dataType: string
+		lineageTag: 8bc3520f-c858-4d3b-bcb8-4e3212880a28
+		summarizeBy: none
+		sourceColumn: RESPONSAVEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ALOCADO POR:'
+		dataType: string
+		lineageTag: 6e82232e-7d46-488c-9e84-be0f0b8d1c0d
+		summarizeBy: none
+		sourceColumn: ALOCADO POR:
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLIENTE
+		dataType: string
+		lineageTag: 4fece4dd-3eb4-4266-9be9-c1451907223a
+		summarizeBy: none
+		sourceColumn: CLIENTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SITE
+		dataType: string
+		lineageTag: 5310a68b-13db-424c-b48f-45bed1a344c5
+		summarizeBy: none
+		sourceColumn: SITE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CIDADE
+		dataType: string
+		lineageTag: d2fecaaf-88a2-4158-b49c-39e6d48e90b7
+		summarizeBy: none
+		sourceColumn: CIDADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PONTO DE ACESSO'
+		dataType: string
+		lineageTag: df05f700-40ac-4b81-a945-a14ce13c5b60
+		summarizeBy: none
+		sourceColumn: PONTO DE ACESSO
+
+		annotation SummarizationSetBy = Automatic
+
+	column POSIÇÃO
+		dataType: string
+		lineageTag: d314be2b-d86f-4fff-931d-ca08646db1cf
+		summarizeBy: none
+		sourceColumn: POSIÇÃO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Consumo Patrimônios' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "#(tab)select #(lf)#(tab)a.title ""SOLICITACAO"",#(lf)#(tab)ai.protocol ""N°PROTOCOLO"",#(lf)#(tab)p.title ""EQUIPAMENTO"",#(lf)#(tab)p.tag_number ""PATRIMONIO"",#(lf)#(tab)p.serial_number ""SERIAL"",#(lf)#(tab)plis.out_date ""DATA SAIDA"",#(lf)#(tab)plis.created ""DATA HORA SAIDA"",#(lf)#(tab)plis.returned ""STATUS RETORNO"",#(lf)#(tab)plis.returned_date ""DATA DO RETORNO"",#(lf)#(tab)p2.name ""RESPONSAVEL"",#(lf)#(tab)p3.name ""ALOCADO POR:"",#(lf)#(tab)p4.name ""CLIENTE"",#(lf)#(tab)as2.title ""SITE"",#(lf)#(tab)p4.city ""CIDADE"",#(lf)#(tab)aap.title ""PONTO DE ACESSO"",#(lf)        case when p3.outsourced is true then 'TERCEIRO' else 'EFETIVO' END ""POSIÇÃO""#(lf)#(tab)from patrimony_packing_list_items plis#(lf)#(tab)left join patrimony_packing_lists ppl on ppl.id = plis.patrimony_packing_list_id#(lf)#(tab)left join assignments a on a.id = ppl.assignment_id#(lf)#(tab)left join assignment_incidents ai on ai.assignment_id = a.id#(lf)#(tab)left join incident_types it on it.id = ai.incident_type_id#(lf)#(tab)left join patrimonies p on p.id = plis.patrimony_id#(lf)#(tab)left join people p2 on p2.id = plis.created_by#(lf)#(tab)left join people p3 on p3.id = plis.person_allocator_id#(lf)#(tab)left join people p4 on p4.id = ppl.responsible_id#(lf)#(tab)left join authentication_sites as2 on as2.id = ppl.authentication_site_id#(lf)#(tab)left join authentication_access_points aap on aap.id = ppl.authentication_access_point_id#(lf)#(tab)left join solicitation_problems sp on sp.id = ai.solicitation_problem_id #(lf)#(tab)where plis.out_date > '01/01/2024'"),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"STATUS RETORNO", type text}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado","1","Retorno",Replacer.ReplaceText,{"STATUS RETORNO"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","0","-",Replacer.ReplaceText,{"STATUS RETORNO"})
+				in
+				    #"Valor Substituído1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

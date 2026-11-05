@@ -1,0 +1,52 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Data Atualizado","Controle Estoque","Saldo Voalle","Pedidos Compra","Usuários","Consumo Produtos","Consumo Patrimônios","Romaneio Produtos/ Cabos","Notas Romaneio Patrimônios","Objetos Pendentes","Requisições Almox","Descontos","Status Real Patrimonio","Romaneio de Patrimônios","Base_Senior"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_f3256a54-0f8c-4c68-a1a0-f60b97cda636
+ref table 'Data Atualizado'
+ref table LocalDateTable_d4c5c0a8-edf1-471f-91d3-d9fc6aabb44d
+ref table 'Controle Estoque'
+ref table 'Saldo Voalle'
+ref table BASES
+ref table 'Pedidos Compra'
+ref table LocalDateTable_8ce6c726-6762-455c-85d7-a199b5c6cef9
+ref table LocalDateTable_ef78dd93-8ecd-44fb-83e0-6aefb1b7e992
+ref table LocalDateTable_a1a583f6-dd3f-4471-b1b6-7663c1958f2b
+ref table Usuários
+ref table 'Consumo Produtos'
+ref table LocalDateTable_3ee42a12-1e34-4e05-b4a6-2e9a8bea9d9e
+ref table LocalDateTable_35e69705-a812-4e86-91e9-e4349af4dd1d
+ref table 'Consumo Patrimônios'
+ref table LocalDateTable_b0dde7d7-b40b-4bb2-8495-9ca6f7525ce3
+ref table LocalDateTable_d447a12a-d928-4c82-8556-c0da920f681a
+ref table LocalDateTable_a084f8a2-3954-48ef-9021-0985c88d2cd6
+ref table 'Romaneio Produtos/ Cabos'
+ref table LocalDateTable_18ba20c4-e427-41ff-9634-89605e43dbae
+ref table 'Notas Romaneio Patrimônios'
+ref table LocalDateTable_2ab9edaf-b5ca-4cb2-92c3-207fc3166693
+ref table LocalDateTable_30ed0951-fd08-40a6-993e-57885f0f5569
+ref table LocalDateTable_3c4ee017-419c-4ac4-abb3-23584856a259
+ref table 'Objetos Pendentes'
+ref table LocalDateTable_58bb2cfb-307f-49c2-8776-338037071f31
+ref table 'Requisições Almox'
+ref table LocalDateTable_98643f35-f1f8-4ecd-bfe0-8555b9a445bc
+ref table Descontos
+ref table LocalDateTable_562e30bd-b946-4403-b710-3af51761b2d6
+ref table 'Status Real Patrimonio'
+ref table 'Romaneio de Patrimônios'
+ref table LocalDateTable_49709d53-ed41-4465-9add-1f53b4a78485
+ref table Base_Senior
+
+ref cultureInfo pt-BR
+

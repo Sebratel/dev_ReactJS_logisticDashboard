@@ -1,0 +1,68 @@
+table Z_MEDIDAS_(OBJETOS)
+	lineageTag: 19c31d67-403e-4d7c-9203-68c42b36c721
+
+	measure AaA_Objetos = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM('OBJETOS CRIADOS'[CONTAGEM]), 
+			        Calendario[ANO_ATUAL_ANTERIOR] = 1), 
+			        CALCULATE(
+			            SUM('OBJETOS CRIADOS'[CONTAGEM]), 
+			            Calendario[ANO_ATUAL_ANTERIOR] = 2
+			            )
+			        )
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 40175e1a-a774-4711-a933-40e215a595c9
+
+	measure MaM_Objetos = ```
+			DIVIDE(CALCULATE(SUM('OBJETOS CRIADOS'[CONTAGEM]), Calendario[MES_ATUAL_ANTERIOR] = 1), 
+			CALCULATE(SUM('OBJETOS CRIADOS'[CONTAGEM]), Calendario[MES_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: d5e6e57e-91fd-485b-8060-809e47bacdf2
+
+	measure MAaMA_Objetos = ```
+			DIVIDE(CALCULATE(SUM('OBJETOS CRIADOS'[CONTAGEM]), Calendario[MES_ATUAL_ANTERIOR_ANO] = 1), 
+			CALCULATE(SUM('OBJETOS CRIADOS'[CONTAGEM]), Calendario[MES_ATUAL_ANTERIOR_ANO] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2b3dfdd5-285e-448b-9c52-ded48c40e0f0
+
+	measure TaT_Objetos = ```
+			DIVIDE(CALCULATE(SUM('OBJETOS CRIADOS'[CONTAGEM]), Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 1), 
+			CALCULATE(SUM('OBJETOS CRIADOS'[CONTAGEM]), Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: f36757b9-6524-4ac7-9966-7a1a3925d6b4
+
+	measure TAaTA_Objetos = ```
+			DIVIDE(CALCULATE(SUM('OBJETOS CRIADOS'[CONTAGEM]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 1), 
+			CALCULATE(SUM('OBJETOS CRIADOS'[CONTAGEM]), Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 2))
+			- 1
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e67ba12c-136e-48c4-9a19-0e14327eefb9
+
+	column Column
+		formatString: 0
+		lineageTag: 90070d38-30ce-4667-bce9-133d0e4e74e1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Z_MEDIDAS_(OBJETOS) = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = f67c9d71ee1549399c43b1a1f25e5837
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

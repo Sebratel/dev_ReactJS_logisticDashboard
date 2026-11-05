@@ -1,0 +1,117 @@
+table 'Pedidos Compra'
+	lineageTag: b6e92896-e145-4163-966c-d465c40b5d8a
+
+	column CÓDIGO
+		dataType: int64
+		formatString: 0
+		lineageTag: 614e31d9-ee13-4969-9dce-deef0e103127
+		summarizeBy: sum
+		sourceColumn: CÓDIGO
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUTO
+		dataType: string
+		lineageTag: 9748ca75-c031-45a2-b9c1-559f21e61c40
+		summarizeBy: none
+		sourceColumn: PRODUTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column BASE
+		dataType: string
+		lineageTag: edc961b6-ddf9-4a0d-9220-b52e392c412b
+		summarizeBy: none
+		sourceColumn: BASE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8efcecee-0bea-4cc0-8d72-ad0c8a05ab1e
+		summarizeBy: none
+		sourceColumn: DATA
+
+		variation Variation
+			isDefault
+			relationship: c767a483-3a05-4fb1-9835-8febf1d0b41d
+			defaultHierarchy: LocalDateTable_8ce6c726-6762-455c-85d7-a199b5c6cef9.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'REQUISITADO POR'
+		dataType: string
+		lineageTag: d5b074b0-6757-480e-a5d9-95f8030f0c78
+		summarizeBy: none
+		sourceColumn: REQUISITADO POR
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DATA PREVISÃO'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fbc73b8f-c7a3-49bf-addf-1146265f9805
+		summarizeBy: none
+		sourceColumn: DATA PREVISÃO
+
+		variation Variation
+			isDefault
+			relationship: 3d8eeb08-11a8-43e1-a389-de1e85c15f90
+			defaultHierarchy: LocalDateTable_ef78dd93-8ecd-44fb-83e0-6aefb1b7e992.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TOTAL
+		dataType: int64
+		lineageTag: 6f9b5b96-c2e3-4ea3-8939-537b2b2c3f15
+		summarizeBy: sum
+		sourceColumn: TOTAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column STATUS
+		dataType: string
+		lineageTag: b83898eb-1862-48e8-87ab-fd90623e59de
+		summarizeBy: none
+		sourceColumn: STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d521fe2-ec8c-4481-8ef6-ccdcc9bee950
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column observation
+		dataType: string
+		lineageTag: ae229157-67c9-45b4-85fe-69cfe0987391
+		summarizeBy: none
+		sourceColumn: observation
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Pedidos Compra' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "      SELECT #(lf)          par.id,#(lf)          sp.code AS ""CÓDIGO"",#(lf)          sp.title AS ""PRODUTO"",#(lf)          par.date AS ""DATA"",#(lf)          p.name AS ""REQUISITADO POR"",#(lf)          par.receipt_date_prevision AS ""DATA PREVISÃO"",#(lf)          pari.units AS ""TOTAL"",#(lf)          par.observation,#(lf)#(tab)#(tab)#(tab) CASE #(lf)#(tab)#(tab)#(tab)    WHEN UPPER(par.observation) LIKE '%93120%' THEN 'BASE OPERACIONAL - SÃO LEOPOLDO'#(lf)#(tab)#(tab)#(tab)    WHEN UPPER(par.observation) LIKE '%92010%' THEN 'BASE OPERACIONAL - CANOAS'#(lf)#(tab)#(tab)#(tab)    WHEN UPPER(par.observation) LIKE '%90230%' THEN 'SEDE - PORTO ALEGRE'#(lf)#(tab)#(tab)#(tab)    ELSE '' -- Opcional, para lidar com valores que não se encaixam nas condições#(lf)#(tab)#(tab)#(tab)END AS ""BASE"",#(lf)#(tab)      'Aguardando Entrega' AS ""STATUS""#(lf)      FROM product_acquisition_requests par#(lf)      LEFT JOIN product_acquisition_request_items AS pari ON pari.product_acquisition_request_id = par.id#(lf)      LEFT JOIN service_products sp ON sp.id = pari.service_product_id#(lf)      LEFT JOIN people p ON p.id = par.person_id#(lf)      LEFT JOIN company_place_business_units cpbu ON cpbu.company_place_id = par.company_place_id #(lf)      LEFT JOIN units_measures um ON um.code = sp.code#(lf)      WHERE par.status = 4#(lf)      AND par.deleted IS false#(lf)      --and sp.code = '01481'#(lf)      GROUP BY par.id, sp.code, sp.title, par.date, p.name, par.receipt_date_prevision, pari.units#(lf)      ORDER BY par.date DESC"),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each ([BASE] <> "")),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Linhas Filtradas",{{"CÓDIGO", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

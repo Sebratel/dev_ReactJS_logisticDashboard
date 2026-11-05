@@ -1,0 +1,227 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 74.580775417180959
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 614.41364521079765
+          },
+          "nodeIndex": "Controle Estoque",
+          "nodeLineageTag": "d61e8c3b-529c-47b4-8bbc-60f6b5413085",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 285.03052199306256,
+            "y": 238.32692044352675
+          },
+          "nodeIndex": "Saldo Voalle",
+          "nodeLineageTag": "34fda104-d828-4016-bb98-12ae75bba5be",
+          "size": {
+            "height": 433,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 200.14252126699921
+          },
+          "nodeIndex": "BASES",
+          "nodeLineageTag": "5dd1fa67-d353-479f-90cd-6ef0c8d535f9",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Data Atualizado",
+          "nodeLineageTag": "b53518f0-1601-4f43-9989-a88a1f97d11a",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1244.4630060264549,
+            "y": 745.43558650430816
+          },
+          "nodeIndex": "Pedidos Compra",
+          "nodeLineageTag": "b6e92896-e145-4163-966c-d465c40b5d8a",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 919.87331904606208,
+            "y": 82.165259724709571
+          },
+          "nodeIndex": "Usuários",
+          "nodeLineageTag": "dcf11bd7-ac9f-44f7-a2c8-fcca8437f235",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 567.96332728908726,
+            "y": 0
+          },
+          "nodeIndex": "Consumo Produtos",
+          "size": {
+            "height": 296,
+            "width": 232.74297925691246
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 921.48252861084347,
+            "y": 737.96626342132947
+          },
+          "nodeIndex": "Consumo Patrimônios",
+          "nodeLineageTag": "ab788948-95e2-422b-ad6a-0d2254c63505",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 1297.1283952268659,
+            "y": 0
+          },
+          "nodeIndex": "Romaneio Produtos/ Cabos",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 301.66467163903843,
+            "y": 1122.3068376784875
+          },
+          "nodeIndex": "Notas Romaneio Patrimônios",
+          "nodeLineageTag": "475e5510-2521-4bc2-8d57-86aec5dfeb5f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1033.5319933052137
+          },
+          "nodeIndex": "Objetos Pendentes",
+          "nodeLineageTag": "c47ba3ba-b5fa-4f2d-88df-d78d6c3c5a77",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 571.86196804144845,
+            "y": 751.5556072397726
+          },
+          "nodeIndex": "Requisições Almox",
+          "nodeLineageTag": "5ff38000-fb64-458b-bc40-2e5253b35cbe",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 896.94459790380358,
+            "y": 1065.9240668505322
+          },
+          "nodeIndex": "Descontos",
+          "nodeLineageTag": "d71f26e3-2771-40dd-9372-48e5b2709327",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 798.56011995419362,
+            "y": 363.41986493326141
+          },
+          "nodeIndex": "Status Real Patrimonio",
+          "nodeLineageTag": "1a68649e-cca5-45ff-9321-9eddaebf859f",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1304.192487490868,
+            "y": 350.99996608181345
+          },
+          "nodeIndex": "Romaneio de Patrimônios",
+          "nodeLineageTag": "72ac151a-fedf-4880-b2c6-32aa7aacb4a4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1588.192487490868,
+            "y": 561.15341883924373
+          },
+          "nodeIndex": "Base_Senior",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 63.287087723234,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

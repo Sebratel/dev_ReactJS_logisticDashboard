@@ -1,0 +1,215 @@
+table Calendario
+	lineageTag: 918822a5-ae1d-4a4a-a666-852b1a1812a4
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 8721151b-eef4-40d4-90b6-75f03b899995
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 94452acd-3ae6-4e55-8604-634638e167d6
+			defaultHierarchy: LocalDateTable_25e62b06-faeb-4ef2-b57e-b3337519c35c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano = 'Calendario'[Date].[Ano]
+		formatString: 0
+		lineageTag: 642cf4f3-12ce-4382-828b-a8f3a78fef48
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes = 'Calendario'[Date].[Mês]
+		lineageTag: 793d8952-cf20-4b20-b910-d00cba5a103b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia = 'Calendario'[Date].[Dia]
+		formatString: 0
+		lineageTag: 8004274d-d969-40e9-913a-2e177cb92b96
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Inicio do Mes' = STARTOFMONTH('Calendario'[Date])
+		formatString: mmmm" de "yyyy
+		lineageTag: 1bf76590-4f26-4a94-989d-358148a7c2ca
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 1127f167-e5b7-42e9-ab85-75b6ea6bdc5b
+			defaultHierarchy: LocalDateTable_435ec5e9-2a4f-43de-860c-a014dc1f4371.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Trimestre = ```
+			
+			SWITCH(
+			    TRUE(),
+			    MONTH('Calendario'[Date]) <= 3, "Trimestre 1",
+			    MONTH('Calendario'[Date]) <= 6, "Trimestre 2",
+			    MONTH('Calendario'[Date]) <= 9, "Trimestre 3",
+			    "Trimestre 4"
+			)
+			
+			```
+		lineageTag: 985611a3-50f5-4425-a32e-5421ae9cdf54
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Trimestre numero' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    MONTH('Calendario'[Date]) <= 3, 1,
+			    MONTH('Calendario'[Date]) <= 6, 2,
+			    MONTH('Calendario'[Date]) <= 9, 3,
+			    4
+			)
+			
+			```
+		formatString: 0
+		lineageTag: a46d183d-6407-4ee6-8b0f-b71270790746
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Vigente?' = IF(Calendario[Date] <=MAX('OBJETOS CRIADOS'[DATA]), "Sim", "Não")
+		lineageTag: 01ec290d-e517-47f2-b077-0edcc491aee6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column MES_ATUAL_ANTERIOR =
+			
+			VAR MesAtual = MONTH(TODAY())
+			VAR AnoAtual = YEAR(TODAY())
+			RETURN
+			    IF(MesAtual = 1,
+			        IF(YEAR(Calendario[Date]) = AnoAtual - 1 && MONTH(Calendario[Date]) = 12, 1,
+			            IF(YEAR(Calendario[Date]) = AnoAtual - 1 && MONTH(Calendario[Date]) = 11, 2, 0)),
+			    IF(MesAtual = 2,
+			        IF(YEAR(Calendario[Date]) = AnoAtual && MONTH(Calendario[Date]) = 1, 1,
+			            IF(YEAR(Calendario[Date]) = AnoAtual - 1 && MONTH(Calendario[Date]) = 12, 2, 0)),
+			    IF(YEAR(Calendario[Date]) = AnoAtual && MONTH(Calendario[Date]) = MesAtual - 1, 1,
+			        IF(YEAR(Calendario[Date]) = AnoAtual && MONTH(Calendario[Date]) = MesAtual - 2, 2, 0))))
+		formatString: 0
+		lineageTag: e32c0c16-2492-430e-8a31-3285147b862c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MES_ATUAL_ANTERIOR_ANO =
+			
+			VAR MesAtual = MONTH(TODAY()) - 1
+			VAR AnoAtual = YEAR(TODAY())
+			RETURN
+			    IF(
+			        MesAtual = 1,  -- Se o mês atual é janeiro (caso especial)
+			        IF(
+			            YEAR(Calendario[Date]) = AnoAtual - 1 && MONTH(Calendario[Date]) = 1,  -- Janeiro do ano passado
+			            1,
+			            IF(
+			                YEAR(Calendario[Date]) = AnoAtual - 2 && MONTH(Calendario[Date]) = 1,  -- Janeiro de 2 anos atrás
+			                2,
+			                0
+			            )
+			        ),
+			        -- Para outros meses (não-janeiro)
+			        IF(
+			            YEAR(Calendario[Date]) = AnoAtual  && MONTH(Calendario[Date]) = MesAtual,  -- Mesmo mês no ano passado
+			            1,
+			            IF(
+			                YEAR(Calendario[Date]) = AnoAtual - 1 && MONTH(Calendario[Date]) = MesAtual,  -- Mesmo mês há 2 anos
+			                2,
+			                0
+			            )
+			        )
+			    )
+		dataType: int64
+		formatString: 0
+		lineageTag: 09fc8646-740f-4158-9fcf-603bb06cf4ee
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRIMESTRE_ATUAL_ANTERIOR = ```
+			
+			VAR TrimestreAtual = QUARTER(TODAY())
+			VAR AnoAtual = YEAR(TODAY())
+			RETURN
+			    SWITCH(TRUE(),
+			        // Caso trimestre atual seja 1
+			        TrimestreAtual = 1 && YEAR(Calendario[Date]) = AnoAtual - 1 && QUARTER(Calendario[Date]) = 4, 1,
+			        TrimestreAtual = 1 && YEAR(Calendario[Date]) = AnoAtual - 1 && QUARTER(Calendario[Date]) = 3, 2,
+			        
+			        // Caso trimestre atual seja 2
+			        TrimestreAtual = 2 && YEAR(Calendario[Date]) = AnoAtual && QUARTER(Calendario[Date]) = 1, 1,
+			        TrimestreAtual = 2 && YEAR(Calendario[Date]) = AnoAtual - 1 && QUARTER(Calendario[Date]) = 4, 2,
+			        
+			        // Caso trimestre atual seja 3 ou 4
+			        YEAR(Calendario[Date]) = AnoAtual && QUARTER(Calendario[Date]) = TrimestreAtual - 1, 1,
+			        YEAR(Calendario[Date]) = AnoAtual && QUARTER(Calendario[Date]) = TrimestreAtual - 2, 2,
+			        
+			        // Default
+			        0
+			    )
+			```
+		formatString: 0
+		lineageTag: 7a9bcc19-c391-4ed8-a842-396740607f5d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRIMESTRE_ATUAL_ANTERIOR_ANO =
+			
+			VAR TrimestreAtual = QUARTER(TODAY())
+			VAR AnoAtual = YEAR(TODAY())
+			RETURN
+			    IF(TrimestreAtual = 1,
+			        IF(YEAR(Calendario[Date]) = AnoAtual - 1 && QUARTER(Calendario[Date]) = 4, 1,
+			            IF(YEAR(Calendario[Date]) = AnoAtual - 2 && QUARTER(Calendario[Date]) = 4, 2, 0)),
+			    IF(YEAR(Calendario[Date]) = AnoAtual && QUARTER(Calendario[Date]) = TrimestreAtual - 1, 1,
+			        IF(YEAR(Calendario[Date]) = AnoAtual - 1 && QUARTER(Calendario[Date]) = TrimestreAtual - 1, 2, 0)))
+		formatString: 0
+		lineageTag: ec731717-0446-4a4a-b8a2-0b09c8c245dd
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANO_ATUAL_ANTERIOR = ```
+			
+			    IF(
+			        YEAR(Calendario[Date]) = YEAR(TODAY()) - 1,
+			        1, -- Ano anterior
+			        IF(
+			            YEAR(Calendario[Date]) = YEAR(TODAY()) - 2,
+			            2, -- Dois anos atrás
+			            0 -- Outros casos
+			        )
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: 4f71126f-cb0c-4d74-916a-0c9049b552e9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendario = calculated
+		mode: import
+		source = CALENDAR(DATE(2022, 1, 1), TODAY())
+
+	annotation PBI_Id = 296e9c489a1545c8a1bd111794d30528
+

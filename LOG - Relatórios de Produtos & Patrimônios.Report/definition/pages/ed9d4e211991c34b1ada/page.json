@@ -1,0 +1,355 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ed9d4e211991c34b1ada",
+  "displayName": "PRODUTOS & CABOS - ROMANEIO",
+  "displayOption": "FitToWidth",
+  "height": 3500,
+  "width": 2400,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "538f7466135c678956e9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Romaneio Produtos/ Cabos"
+              }
+            },
+            "Property": "RECEBEDOR"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "r",
+              "Entity": "Romaneio Produtos/ Cabos",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "r"
+                              }
+                            },
+                            "Property": "RECEBEDOR"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'A. RADIO / DEPOSITO'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'ALEX RAIMUNDO RODRIGUES'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'ALEXANDRE DA SILVA MACIEL'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'ATIVOS - ADMINISTRATIVO - SEDE PORTO ALEGRE'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'ATIVOS - ALMOXARIFADO - CANOAS'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'ATIVOS - ALMOXARIFADO - SÃO LEOPOLDO'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'ATIVOS - LABORATORIO - SÃO LEOPOLDO'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'CLOVIS ALESSANDRO DA SILVA'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'ESTOQUE - SUCATA'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'GABRIEL LINHARES'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'GERMANO DE PAULA'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'JESSICA ROCHA MEIRELES'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'JOAO PEDRO DOS SANTOS MARTINS'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'PATRIMÔNIOS PENDENTES'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'PRODUTOS PENDENTES'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'RAONI SILVA DA SILVA'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "''"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "Literal": {
+                    "Value": "''"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "100D"
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": -0.2
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspace": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Wallpaper PowerBI.jpg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Wallpaper_PowerBI44764238412578317.jpg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fill'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "333L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "type": "Tooltip",
+  "visualInteractions": [
+    {
+      "source": "c6b29cd108a5141a5c4c",
+      "target": "244dd51f2c0059652940",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6b29cd108a5141a5c4c",
+      "target": "2c02c3c519ea700a1304",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6b29cd108a5141a5c4c",
+      "target": "ee881aefdc6016d22e3c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6b29cd108a5141a5c4c",
+      "target": "eb6c64871077c129db0c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6b29cd108a5141a5c4c",
+      "target": "780eadc0670009350088",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6b29cd108a5141a5c4c",
+      "target": "d140f06e6eba214000a0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "285ef3198019850b32d5",
+      "target": "423319fdd03c00e4508a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "285ef3198019850b32d5",
+      "target": "dd071b31c6a049d8db54",
+      "type": "NoFilter"
+    },
+    {
+      "source": "dd071b31c6a049d8db54",
+      "target": "458ba5ec620aa4e0a286",
+      "type": "NoFilter"
+    },
+    {
+      "source": "dd071b31c6a049d8db54",
+      "target": "285ef3198019850b32d5",
+      "type": "NoFilter"
+    },
+    {
+      "source": "458ba5ec620aa4e0a286",
+      "target": "423319fdd03c00e4508a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "458ba5ec620aa4e0a286",
+      "target": "dd071b31c6a049d8db54",
+      "type": "NoFilter"
+    },
+    {
+      "source": "423319fdd03c00e4508a",
+      "target": "458ba5ec620aa4e0a286",
+      "type": "NoFilter"
+    },
+    {
+      "source": "423319fdd03c00e4508a",
+      "target": "285ef3198019850b32d5",
+      "type": "NoFilter"
+    }
+  ]
+}

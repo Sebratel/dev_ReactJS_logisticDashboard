@@ -1,0 +1,200 @@
+table 'Pedido de Compra'
+	lineageTag: 548302b2-84da-4427-84d2-1126baf28ee0
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9870dd15-1f0b-49ea-a783-a5b026171671
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: 4323fe32-4ea7-4bcd-a858-9b07fb3d75b5
+			defaultHierarchy: LocalDateTable_5af3a8ce-5c3f-4435-bd93-7d677faa721f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Fornecedor
+		dataType: string
+		lineageTag: 0fbce6d1-6361-407a-bac0-83776be695a0
+		summarizeBy: none
+		sourceColumn: Fornecedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column N°
+		dataType: int64
+		formatString: 0
+		lineageTag: 57341974-56d5-4b5b-9b4e-b63a108a9562
+		summarizeBy: sum
+		sourceColumn: N°
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Pedido'
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: e805a683-27cf-409f-9e46-66f41c53f4f3
+		summarizeBy: sum
+		sourceColumn: Total Pedido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Prev.Entrega'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 35901692-7cfc-4090-a161-023360c87721
+		summarizeBy: none
+		sourceColumn: Prev.Entrega
+
+		variation Variation
+			isDefault
+			relationship: bfdd314b-c17e-4844-8d50-884d4e9c9195
+			defaultHierarchy: LocalDateTable_1cb31af6-6a7e-4ee6-8b0e-b120a0e93163.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Pessoa
+		dataType: string
+		lineageTag: 6571adad-f4a2-420a-b886-a0091aa4911c
+		summarizeBy: none
+		sourceColumn: Pessoa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: f09bb541-fdd7-49cc-b50c-30dd71951933
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Código
+		dataType: string
+		lineageTag: 4c4fb34f-ec6a-423e-91db-23393a2bd599
+		summarizeBy: none
+		sourceColumn: Código
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Descrição Item'
+		dataType: string
+		lineageTag: fecbdb8c-8b43-471a-8567-1d0b6673b86b
+		summarizeBy: none
+		sourceColumn: Descrição Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qtd.'
+		dataType: int64
+		formatString: 0
+		lineageTag: a3199520-a378-4957-87b8-93961f9b10be
+		summarizeBy: sum
+		sourceColumn: Qtd.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Val. Unitário'
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: bc4c52d3-e3d7-4550-ad77-1c6ddaf9b519
+		summarizeBy: sum
+		sourceColumn: Val. Unitário
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column Total
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: b1c2c7e4-e11d-488f-8980-79bfa3bc13fb
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Total com Imposto'
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: fea5ea04-bc34-4967-a6ca-a49c88a7dc55
+		summarizeBy: sum
+		sourceColumn: Total com Imposto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column Unidade
+		dataType: string
+		lineageTag: d38577b0-4386-4403-b20c-5ca7626498df
+		summarizeBy: none
+		sourceColumn: Unidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Atualiza Estoque'
+		dataType: string
+		lineageTag: 7d5aa90f-872d-4145-8168-831d6290fa40
+		summarizeBy: none
+		sourceColumn: Atualiza Estoque
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gera Patrimônio'
+		dataType: string
+		lineageTag: a7662436-508c-4cb9-8828-391fcdd6a639
+		summarizeBy: none
+		sourceColumn: Gera Patrimônio
+
+		annotation SummarizationSetBy = Automatic
+
+	column BASE
+		dataType: string
+		lineageTag: db537c75-414d-448e-aadc-bd92fd732b55
+		summarizeBy: none
+		sourceColumn: BASE
+
+		annotation SummarizationSetBy = Automatic
+
+	column Deletado
+		dataType: string
+		lineageTag: 01913743-e13d-4a23-a657-86a307b412f3
+		summarizeBy: none
+		sourceColumn: Deletado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Pedido de Compra' = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "select#(lf)par.date as ""Data"",#(lf)p2.name as ""Fornecedor"",#(lf)par.id as ""N°"",#(lf)par.total_request as ""Total Pedido"",#(lf)par.receipt_date_prevision as ""Prev.Entrega"",#(lf)par.deleted as ""Deletado"",#(lf)p.name as ""Pessoa"",#(lf)par.status as ""Status"",#(lf)sp.code as ""Código"",#(lf)sp.title as ""Descrição Item"",#(lf)pari.units as ""Qtd."",#(lf)pari.unit_amount as ""Val. Unitário"",#(lf)pari.item_amount as ""Total"",#(lf)pari.total_amount as ""Total com Imposto"",#(lf)um.title as ""Unidade"",#(lf)CASE #(lf)WHEN UPPER(par.observation) LIKE '%SCHARLAU%' THEN 'BASE OPERACIONAL - SÃO LEOPOLDO'#(lf)WHEN UPPER(par.observation) LIKE '%VICTOR BARRETO%' THEN 'BASE OPERACIONAL - CANOAS'#(lf)WHEN UPPER(par.observation) LIKE '%NAVEGANTES%' THEN 'SEDE - PORTO ALEGRE'#(lf)END AS ""BASE"",#(lf)sp.inventory_update as ""Atualiza Estoque"",#(lf)sp.generate_patrimony as ""Gera Patrimônio""#(lf)from product_acquisition_requests par#(lf)left join product_acquisition_request_items pari on pari.product_acquisition_request_id = par.id#(lf)left join service_products sp on sp.id = pari.service_product_id#(lf)left join units_measures um on um.id = sp.first_unit #(lf)left join people p on p.id = par.person_id#(lf)left join people p2 on p2.id = par.supplier_id #(lf)where par.date >= '01-01-2026'#(lf)order by par.id DESC"),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Status", type text}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Tipo Alterado","1","Inclusão",Replacer.ReplaceText,{"Status"}),
+				    #"Valor Substituído3" = Table.ReplaceValue(#"Valor Substituído","2","Cancelado",Replacer.ReplaceText,{"Status"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído3","4","Aguardando Entrega",Replacer.ReplaceText,{"Status"}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Valor Substituído1","5","Recebido",Replacer.ReplaceText,{"Status"}),
+				    #"Valor Substituído4" = Table.ReplaceValue(#"Valor Substituído2","0","Não",Replacer.ReplaceText,{"Atualiza Estoque"}),
+				    #"Valor Substituído5" = Table.ReplaceValue(#"Valor Substituído4","1","Sim",Replacer.ReplaceText,{"Atualiza Estoque"}),
+				    #"Valor Substituído6" = Table.ReplaceValue(#"Valor Substituído5","0","Não",Replacer.ReplaceText,{"Gera Patrimônio"}),
+				    #"Valor Substituído7" = Table.ReplaceValue(#"Valor Substituído6","1","Sim",Replacer.ReplaceText,{"Gera Patrimônio"}),
+				    #"Valor Substituído8" = Table.ReplaceValue(#"Valor Substituído7","0","Não",Replacer.ReplaceText,{"Deletado"}),
+				    #"Valor Substituído9" = Table.ReplaceValue(#"Valor Substituído8","1","Deletado",Replacer.ReplaceText,{"Deletado"})
+				in
+				    #"Valor Substituído9"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

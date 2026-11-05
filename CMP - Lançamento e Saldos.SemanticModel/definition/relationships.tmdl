@@ -1,0 +1,26 @@
+relationship e9ccf1c1-a4cf-40c1-a089-caaddf70de04
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DataAtualizado.Data
+	toColumn: LocalDateTable_c841af89-2fe8-48c2-808e-9327f3fec7e6.Date
+
+relationship 5ce1d977-9a6d-4d33-b529-4416b6bd623d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DataAtualizado.DataHora
+	toColumn: LocalDateTable_5fc5a6e6-6c84-46f0-9e3b-904d8d659a77.Date
+
+relationship 4323fe32-4ea7-4bcd-a858-9b07fb3d75b5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Pedido de Compra'.Data
+	toColumn: LocalDateTable_5af3a8ce-5c3f-4435-bd93-7d677faa721f.Date
+
+relationship bfdd314b-c17e-4844-8d50-884d4e9c9195
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Pedido de Compra'.'Prev.Entrega'
+	toColumn: LocalDateTable_1cb31af6-6a7e-4ee6-8b0e-b120a0e93163.Date
+
+relationship 5478bc3b-fc4e-bfaa-118a-3f5d26e521a0
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Produtos.Código
+	toColumn: 'Pedido de Compra'.Código
+

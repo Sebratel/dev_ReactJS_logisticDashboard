@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "TECH - Patrimônios em Carga"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a26ee7b1-669a-4961-89fa-2d7e0b628a89"
+  }
+}

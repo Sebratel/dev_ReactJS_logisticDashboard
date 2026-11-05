@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Abrir filtro",
+  "name": "Bookmarke37de9b5bcbc0dc742ce",
+  "options": {
+    "targetVisualNames": [
+      "01260f9c1bb64400c55b"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSection543be694ea2addb30065",
+    "sections": {
+      "ReportSection543be694ea2addb30065": {
+        "visualContainers": {},
+        "visualContainerGroups": {
+          "d628d3123eb5c8b9b47e": {
+            "isHidden": false
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

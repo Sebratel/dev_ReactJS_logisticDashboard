@@ -1,0 +1,89 @@
+table Descontos
+	lineageTag: d71f26e3-2771-40dd-9372-48e5b2709327
+
+	column DATA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ceb8fc01-6f8e-4312-8a52-384d2b6a4fcc
+		summarizeBy: none
+		sourceColumn: DATA
+
+		variation Variation
+			isDefault
+			relationship: 12b0fcea-de4c-44f5-a70e-78606bbce1ee
+			defaultHierarchy: LocalDateTable_562e30bd-b946-4403-b710-3af51761b2d6.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NOME
+		dataType: string
+		lineageTag: add7f819-05f2-41f2-97e3-5984381d343a
+		summarizeBy: none
+		sourceColumn: NOME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SETOR
+		dataType: string
+		lineageTag: 453fd4b6-bdcd-4c43-80cb-9471ed28d950
+		summarizeBy: none
+		sourceColumn: SETOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITEM
+		dataType: string
+		lineageTag: b9de0d8f-b28f-428c-ab86-1bb7cd41b779
+		summarizeBy: none
+		sourceColumn: ITEM
+
+		annotation SummarizationSetBy = Automatic
+
+	column QUANTIDADE
+		dataType: int64
+		formatString: 0
+		lineageTag: 1bc219e6-ceb8-4634-975e-b305951d89fa
+		summarizeBy: sum
+		sourceColumn: QUANTIDADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATRIMÔNIO
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dc0e41c-b9d0-48c1-8875-66a596318ec3
+		summarizeBy: sum
+		sourceColumn: PATRIMÔNIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VALOR TOTAL'
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 71bcef36-3893-4dc4-b36e-5b02e720cf64
+		summarizeBy: sum
+		sourceColumn: VALOR TOTAL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition Descontos = m
+		mode: import
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1b-xZgjkmbCRrRWWeEodFZYSNSE3v63WxejMfZzbEZ0g/edit?usp=sharing"),
+				    HISTORICO_GERAL_Table = Fonte{[name="HISTORICO_GERAL",ItemKind="Table"]}[Data],
+				    #"Colunas Removidas" = Table.RemoveColumns(HISTORICO_GERAL_Table,{"Column8"}),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Colunas Removidas", [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"DATA", type date}, {"NOME", type text}, {"SETOR", type text}, {"ITEM", type text}, {"QUANTIDADE", Int64.Type}, {"PATRIMÔNIO", Int64.Type}, {"VALOR TOTAL", type number}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado", each ([DATA] <> null))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

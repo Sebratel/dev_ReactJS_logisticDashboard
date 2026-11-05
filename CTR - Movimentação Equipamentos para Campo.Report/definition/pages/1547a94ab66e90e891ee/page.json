@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "1547a94ab66e90e891ee",
+  "displayName": "Movimentação Equipamentos",
+  "displayOption": "FitToWidth",
+  "height": 3800,
+  "width": 2800,
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "405L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

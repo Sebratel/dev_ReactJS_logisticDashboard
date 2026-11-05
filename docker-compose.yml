@@ -1,0 +1,72 @@
+services:
+  logistic-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: logistic-dashboard:1.0.0
+    # a imagem é construída aqui, não baixada de registro: sem isto o "Re-pull
+    # image" do Portainer tenta o Docker Hub e o redeploy falha
+    pull_policy: build
+    container_name: logistic-dashboard
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-8083}:8080"
+    environment:
+      TZ: America/Sao_Paulo
+      PORT: 8080
+      # atrás do proxy reverso: 1 salto (o rate limit precisa do IP real)
+      TRUST_PROXY: ${TRUST_PROXY:-1}
+      # ~70% do limite do contêiner: o modelo em memória tem ~1,7 milhão de linhas
+      NODE_OPTIONS: ${NODE_OPTIONS:---max-old-space-size=2048}
+
+      # ---- Voalle (PostgreSQL) — no Power BI era o DSN "dbVoalle" ----
+      DB_VOALLE_HOST: ${DB_VOALLE_HOST}
+      DB_VOALLE_DATABASE: ${DB_VOALLE_DATABASE}
+      DB_VOALLE_USER: ${DB_VOALLE_USER}
+      DB_VOALLE_PASSWORD: ${DB_VOALLE_PASSWORD}
+      DB_VOALLE_PORT: ${DB_VOALLE_PORT:-5432}
+
+      # ---- MariaDB (base Senior) — no Power BI era o DSN "dbMaria" ----
+      DB_MARIA_HOST: ${DB_MARIA_HOST}
+      DB_MARIA_USER: ${DB_MARIA_USER}
+      DB_MARIA_PASSWORD: ${DB_MARIA_PASSWORD}
+      DB_MARIA_PORT: ${DB_MARIA_PORT:-3306}
+
+      # ---- cadastro de controle de estoque (fica no volume abaixo) ----
+      DATA_PATH: /app/data
+
+      # ---- login com Google ----
+      AUTH_ENABLED: ${AUTH_ENABLED:-true}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      ALLOWED_DOMAIN: ${ALLOWED_DOMAIN:-sebratel.com.br}
+      # admin(s) de fábrica: só valem enquanto não houver nenhum admin salvo
+      # (instalação nova); depois, permissões são dadas na tela de Administração
+      ADMIN_EMAILS: ${ADMIN_EMAILS:-}
+
+      # ---- cadência ----
+      REFRESH_INTERVAL_MS: ${REFRESH_INTERVAL_MS:-3600000}
+      # tela de Compras: saldo de itens e pedidos relidos a cada minuto (~1 s de consulta)
+      LIVE_REFRESH_INTERVAL_MS: ${LIVE_REFRESH_INTERVAL_MS:-60000}
+      QUERY_TIMEOUT_MS: ${QUERY_TIMEOUT_MS:-900000}
+    volumes:
+      # cadastro de controle de estoque, usuários/permissões e log de edições:
+      # sem volume, cada deploy apagaria tudo (e o cadastro voltaria à planilha oficial)
+      - logistic-dashboard-data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: ${MEM_LIMIT:-3g}
+
+volumes:
+  logistic-dashboard-data:

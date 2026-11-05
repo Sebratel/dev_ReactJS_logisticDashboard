@@ -1,0 +1,153 @@
+table Z_MEDIDAS_(OBSOLETOS)
+	lineageTag: a16ebbea-bf2e-4002-96f0-43457d2596b0
+
+	measure AaA_Obsoletos = ```
+			
+			VAR ValorAnoAtual = 
+			    CALCULATE(
+			        [AcumuladoSeriaisAteMesSelecionado],
+			        FILTER(
+			            ALL('Calendario'),
+			            Calendario[ANO_ATUAL_ANTERIOR] = 1
+			        )
+			    )
+			
+			VAR ValorAnoAnterior = 
+			    CALCULATE(
+			        [AcumuladoSeriaisAteMesSelecionado],
+			        FILTER(
+			            ALL('Calendario'),
+			            Calendario[ANO_ATUAL_ANTERIOR] = 2
+			        )
+			    )
+			
+			RETURN
+			    DIVIDE(ValorAnoAtual, ValorAnoAnterior, 0) - 1
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0399cdce-a228-4403-835d-2b7e8cc8959c
+
+	measure MAaMA_Obsoletos = ```
+			
+			VAR ValorMesAtual = 
+			    CALCULATE(
+			        [AcumuladoSeriaisAteMesSelecionado],
+			        FILTER(
+			            ALL('Calendario'),
+			            Calendario[MES_ATUAL_ANTERIOR_ANO] = 1
+			        )
+			    )
+			
+			VAR ValorMesAnteriorAno = 
+			    CALCULATE(
+			        [AcumuladoSeriaisAteMesSelecionado],
+			        FILTER(
+			            ALL('Calendario'),
+			            Calendario[MES_ATUAL_ANTERIOR_ANO] = 2
+			        )
+			    )
+			
+			RETURN
+			    DIVIDE(ValorMesAtual, ValorMesAnteriorAno, 0) -1
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f909bb2c-53c6-4461-af21-139650676a43
+
+	measure MaM_Obsoletos = ```
+			
+			VAR ValorMesAtual = 
+			    CALCULATE(
+			        [AcumuladoSeriaisAteMesSelecionado],
+			        FILTER(
+			            ALL('Calendario'),
+			            Calendario[MES_ATUAL_ANTERIOR] = 1
+			        )
+			    )
+			
+			VAR ValorMesAnterior = 
+			    CALCULATE(
+			        [AcumuladoSeriaisAteMesSelecionado],
+			        FILTER(
+			            ALL('Calendario'),
+			            Calendario[MES_ATUAL_ANTERIOR] = 2
+			        )
+			    )
+			
+			RETURN
+			    DIVIDE(ValorMesAtual, ValorMesAnterior, 0) - 1
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: cd9edd7a-c038-4c94-912e-b2898252f99c
+
+	measure TaT_Obsoletos = ```
+			
+			VAR ValorTrimestreAtual = 
+			    CALCULATE(
+			        [AcumuladoSeriaisAteMesSelecionado],
+			        FILTER(
+			            ALL('Calendario'),
+			            Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 1
+			        )
+			    )
+			
+			VAR ValorTrimestreAnterior = 
+			    CALCULATE(
+			        [AcumuladoSeriaisAteMesSelecionado],
+			        FILTER(
+			            ALL('Calendario'),
+			            Calendario[TRIMESTRE_ATUAL_ANTERIOR] = 2
+			        )
+			    )
+			
+			RETURN
+			    DIVIDE(ValorTrimestreAtual, ValorTrimestreAnterior, 0) - 1
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 256d5e70-dd4f-426c-b9c4-d472433d51be
+
+	measure TAaTA_Obsoletos = ```
+			
+			VAR ValorTrimestreAtual = 
+			    CALCULATE(
+			        [AcumuladoSeriaisAteMesSelecionado],
+			        FILTER(
+			            ALL('Calendario'),
+			            Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 1
+			        )
+			    )
+			
+			VAR ValorTrimestreAnteriorAno = 
+			    CALCULATE(
+			        [AcumuladoSeriaisAteMesSelecionado],
+			        FILTER(
+			            ALL('Calendario'),
+			            Calendario[TRIMESTRE_ATUAL_ANTERIOR_ANO] = 2
+			        )
+			    )
+			
+			RETURN
+			    DIVIDE(ValorTrimestreAtual, ValorTrimestreAnteriorAno, 0) - 1
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d000f94d-2c2d-4a80-a6d3-3fd03c6af667
+
+	column Column
+		formatString: 0
+		lineageTag: 91804db1-6331-4f04-9aaa-10089c42aba3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Z_MEDIDAS_(OBSOLETOS) = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 464bdd87e4824232b9ea9d2c9017a936
+

@@ -1,0 +1,78 @@
+table Produtos
+	lineageTag: 8b64d59f-cae7-46c1-adbc-e1256ab35051
+
+	column Código
+		dataType: string
+		lineageTag: 077bcdd0-fcf9-4e4c-ac6c-d4a135608857
+		summarizeBy: none
+		sourceColumn: Código
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: d63dd508-8b6c-42ee-b6b6-e4c6b0c083de
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Base
+		dataType: string
+		lineageTag: b017063c-ec6d-4771-9bec-a231bf792894
+		summarizeBy: none
+		sourceColumn: Base
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: double
+		formatString: 0
+		lineageTag: 2d5660ec-b98c-4d54-9c72-ba50660ef7b2
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Unidade
+		dataType: string
+		lineageTag: ef6053f1-8501-4aef-99a5-addfe16ae6ea
+		summarizeBy: none
+		sourceColumn: Unidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Atualiza Estoque'
+		dataType: string
+		lineageTag: e3de41c5-1593-47b1-9f85-4ef68a8fbf44
+		summarizeBy: none
+		sourceColumn: Atualiza Estoque
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gera Patrimônio'
+		dataType: string
+		lineageTag: 5ff92055-2693-4bba-9c61-221c6b167683
+		summarizeBy: none
+		sourceColumn: Gera Patrimônio
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Produtos = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=dbVoalle", "SELECT#(lf)    sp.code          AS ""Código"",#(lf)    sp.title         AS ""Item"",#(lf)    cpbu.description AS ""Base"",#(lf)    SUM(v.disponible) AS ""Quantidade"",#(lf)    um.title as ""Unidade"",#(lf)    sp.inventory_update as ""Atualiza Estoque"",#(lf)    sp.generate_patrimony as ""Gera Patrimônio""#(lf)FROM v_company_place_business_units_movimentations v#(lf)LEFT JOIN company_place_business_units cpbu ON cpbu.id = v.company_place_business_unit_id #(lf)LEFT JOIN service_products sp ON sp.id = v.service_product_id #(lf)LEFT JOIN companies_places cp ON cp.id = v.company_place_id #(lf)left join units_measures um  on um.id = sp.first_unit #(lf)WHERE #(lf)    sp.title IS NOT NULL#(lf)    AND cp.id = 1#(lf)    AND cpbu.deleted IS NOT TRUE#(lf)GROUP BY#(lf)    sp.code,#(lf)    sp.title,#(lf)    um.title,#(lf)    cpbu.description,#(lf)    sp.inventory_update,#(lf)    sp.generate_patrimony #(lf)ORDER BY#(lf)    sp.title"),
+				    #"Valor Substituído" = Table.ReplaceValue(Fonte,"0","Não",Replacer.ReplaceText,{"Atualiza Estoque"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","1","Sim",Replacer.ReplaceText,{"Atualiza Estoque"}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Valor Substituído1","0","Não",Replacer.ReplaceText,{"Gera Patrimônio"}),
+				    #"Valor Substituído3" = Table.ReplaceValue(#"Valor Substituído2","1","Sim",Replacer.ReplaceText,{"Gera Patrimônio"})
+				in
+				    #"Valor Substituído3"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
