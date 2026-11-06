@@ -94,6 +94,8 @@ const EnvSchema = z.object({
   // Carga "ao vivo" da tela de Compras (lançamento e saldos): a cada minuto.
   // São duas consultas leves; o piso de 30 s protege o ERP de um valor errado na stack.
   LIVE_REFRESH_INTERVAL_MS: z.coerce.number().int().min(30_000).default(60_000),
+  // tela do laboratório: relida a cada 3 horas (a carga horária pula as fontes dela no meio)
+  LAB_REFRESH_INTERVAL_MS: z.coerce.number().int().min(60_000).default(10_800_000),
 
   // Recortes de data — os mesmos escritos nas consultas do Power BI
   CONSUMPTION_SINCE: isoDate.default('2024-01-01'),
@@ -176,6 +178,7 @@ export const appConfig = {
   queryTimeoutMs: env.QUERY_TIMEOUT_MS,
   refreshIntervalMs: env.REFRESH_INTERVAL_MS,
   liveRefreshIntervalMs: env.LIVE_REFRESH_INTERVAL_MS,
+  labRefreshIntervalMs: env.LAB_REFRESH_INTERVAL_MS,
 
   since: {
     consumption: env.CONSUMPTION_SINCE,

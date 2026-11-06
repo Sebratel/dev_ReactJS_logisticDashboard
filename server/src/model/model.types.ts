@@ -226,6 +226,39 @@ export interface PurchaseOrderItem {
   generatesPatrimony: YesNo;
 }
 
+// ------------------------------------------------------------------ laboratório
+
+/** Um evento do patrimônio no laboratório ("general" do Power BI "LAB - Produtividade Laboratório"). */
+export interface LabEvent {
+  /** data/hora do movimento (AAAA-MM-DD HH:MM:SS) */
+  occurredAt: string;
+  day: string;
+  eventType: string;
+  entryReason: string | null;
+  entryLab: string | null;
+  baseLab: string | null;
+  warehouse: string | null;
+  discardReason: string | null;
+  patrimonyId: number;
+  patrimonyTag: string | null;
+  serialNumber: string | null;
+  productTitle: string | null;
+  cycle: number;
+  cycleEntryAt: string | null;
+  labDays: number | null;
+  packingNumber: string | null;
+}
+
+/** Patrimônio no laboratório agora, sem saída ("backlog"), com os dias em aberto da consulta. */
+export interface LabBacklogItem {
+  patrimonyId: number;
+  currentLab: string | null;
+  entryAt: string | null;
+  openDays: number | null;
+  /** "Acima de 90 dias" / "Até 90 dias" */
+  over90: string | null;
+}
+
 // ------------------------------------------------------------------ gerencial
 
 /** Valor por dia (AAAA-MM-DD), em ordem de data. */
@@ -287,6 +320,9 @@ export interface DataModel {
   usedFieldEquipment: FieldEquipmentDispatch[];
   chargedPatrimonies: ChargedPatrimony[];
   chargedProducts: ChargedProduct[];
+  /** laboratório (Power BI "LAB - Produtividade Laboratório") */
+  labEvents: LabEvent[];
+  labBacklog: LabBacklogItem[];
   /** seção Gerencial (Power BI "LOG - Gerencial") */
   createdObjects: DailyValue[];
   flatConsumption: DailyValue[];

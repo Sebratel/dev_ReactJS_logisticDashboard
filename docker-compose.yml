@@ -47,6 +47,8 @@ services:
       REFRESH_INTERVAL_MS: ${REFRESH_INTERVAL_MS:-3600000}
       # tela de Compras: saldo de itens e pedidos relidos a cada minuto (~1 s de consulta)
       LIVE_REFRESH_INTERVAL_MS: ${LIVE_REFRESH_INTERVAL_MS:-60000}
+      # tela do laboratório: as duas consultas (~53 s e ~28 s) relidas a cada 3 horas
+      LAB_REFRESH_INTERVAL_MS: ${LAB_REFRESH_INTERVAL_MS:-10800000}
       QUERY_TIMEOUT_MS: ${QUERY_TIMEOUT_MS:-900000}
     volumes:
       # cadastro de controle de estoque, usuários/permissões e log de edições:

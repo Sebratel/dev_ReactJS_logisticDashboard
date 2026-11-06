@@ -22,6 +22,7 @@ import { buildFieldEquipmentReport, FIELD_EQUIPMENT_SPEC } from './field-equipme
 import {
   buildChargedPatrimoniesReport, buildChargedProductsReport, chargedPatrimonySpec, chargedProductSpec,
 } from './charged-items.service.js';
+import { buildLabMovementsReport, LAB_SPEC } from './lab-movements.service.js';
 import { buildPurchaseOrdersReport, PURCHASING_SPEC } from './purchase-orders.service.js';
 import { REPORT_EXPORTS } from './report-exports.js';
 import { parseSelection, type FilterSpec } from './report-filter.js';
@@ -100,6 +101,11 @@ reportsRouter.get('/charged-patrimonies', (req, res) => {
 reportsRouter.get('/charged-products', (req, res) => {
   const selection = parseSelection(req.query, spec(chargedProductSpec(getModel())));
   respond(req, res, 'charged-products', (model) => buildChargedProductsReport(model, selection));
+});
+
+reportsRouter.get('/lab-movements', (req, res) => {
+  const selection = parseSelection(req.query, spec(LAB_SPEC));
+  respond(req, res, 'lab-movements', (model) => buildLabMovementsReport(model, selection));
 });
 
 reportsRouter.get('/field-equipment', (req, res) => {

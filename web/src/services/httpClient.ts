@@ -24,8 +24,23 @@ interface RetriableConfig extends InternalAxiosRequestConfig {
   retriedAfterRenewal?: boolean;
 }
 
+const accessDeniedListeners = new Set<() => void>();
+
+/**
+ * O servidor recusou por permissão (403 — ex.: um administrador tirou o
+ * Gerencial da pessoa com a tela aberta): quem escuta (a sessão) relê o
+ * /auth/me, e o que a pessoa não pode mais ver some da tela.
+ */
+export function onAccessDenied(listener: () => void): () => void {
+  accessDeniedListeners.add(listener);
+  return () => {
+    accessDeniedListeners.delete(listener);
+  };
+}
+
 httpClient.interceptors.response.use(undefined, async (error: AxiosError) => {
   const config = error.config as RetriableConfig | undefined;
+  if (error.response?.status === 403) accessDeniedListeners.forEach((listener) => listener());
   if (error.response?.status === 401 && config && !config.retriedAfterRenewal) {
     config.retriedAfterRenewal = true;
     try {

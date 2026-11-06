@@ -27,6 +27,7 @@ const PATHS: Record<string, ReactNode> = {
   carrinho: <><circle cx="9" cy="20" r="1.4" /><circle cx="18" cy="20" r="1.4" /><path d="M2 3h3l2.6 12.3a1.8 1.8 0 0 0 1.8 1.4h8.3a1.8 1.8 0 0 0 1.7-1.3L21.6 7H6" /></>,
   roteador: <><rect x="3" y="13" width="18" height="7" rx="2" /><path d="M7 16.5h.01M11 16.5h.01" /><path d="M8 13 6 6M16 13l2-7" /><path d="M15 16.5h3" /></>,
   carga: <><circle cx="9" cy="6" r="3" /><path d="M3 21v-2a5 5 0 0 1 5-5h2" /><rect x="13" y="13" width="8" height="8" rx="1" /><path d="M13 16.5h8M17 13v3.5" /></>,
+  laboratorio: <><path d="M9 3h6M10 3v6.5L4.6 18.2A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.7-2.8L14 9.5V3" /><path d="M7.5 14h9" /></>,
   // seção Gerencial
   grafico: <path d="M3 3v18h18M7 16v-5M12 16V8M17 16v-8" />,
   novo: <><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M12 8v8M8 12h8" /></>,

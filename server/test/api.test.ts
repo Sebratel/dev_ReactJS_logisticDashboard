@@ -86,6 +86,13 @@ describe('API', () => {
     }
   });
 
+  it('tela do laboratório (e as exportações) exigem login', async () => {
+    for (const path of ['/reports/lab-movements', '/reports/lab-movements/exports/detail', '/reports/lab-movements/exports/patrimonies', '/reports/lab-movements/exports/backlog']) {
+      const res = await fetch(`${base}${path}`);
+      assert.equal(res.status, 401, path);
+    }
+  });
+
   it('seção Gerencial e a lista da produtividade exigem login', async () => {
     const calls: Array<[string, string]> = [
       ['GET', '/management-reports/created-objects'], ['GET', '/management-reports/flat-consumption'],

@@ -47,6 +47,18 @@ export function useUrlFilters() {
     }, { replace: true });
   }, [setParams]);
 
+  /** Troca várias listas numa única mudança da URL (ex.: o dia clicado entra e o mês sai). Empilha no histórico. */
+  const setLists = useCallback((patch: Record<string, string[]>) => {
+    setParams((prev) => {
+      const next = new URLSearchParams(prev);
+      for (const [key, values] of Object.entries(patch)) {
+        next.delete(key);
+        values.forEach((v) => next.append(key, v));
+      }
+      return next;
+    });
+  }, [setParams]);
+
   /** Clique num visual: liga/desliga um valor e empilha no histórico. */
   const toggle = useCallback((key: string, value: string) => {
     setParams((prev) => {
@@ -67,7 +79,7 @@ export function useUrlFilters() {
     }, { replace: true });
   }, [setParams]);
 
-  return { query, getList, getValue, setList, setValues, toggle, clear };
+  return { query, getList, getValue, setList, setLists, setValues, toggle, clear };
 }
 
 export type UrlFilters = ReturnType<typeof useUrlFilters>;

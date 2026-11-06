@@ -249,3 +249,37 @@ export interface PackingProductivitySourceRow {
   description: string | null;
   patrimonies: number;
 }
+
+// ------------------------------------------------------------------ laboratório (Power BI "LAB - Produtividade Laboratório")
+
+/** "general": um evento do patrimônio no laboratório — as colunas da consulta original. */
+export interface LabEventSourceRow {
+  data_movimento: string;
+  data: string;
+  tipo_evento: string;
+  motivo_entrada: string | null;
+  laboratorio_entrada: string | null;
+  base_lab: string | null;
+  almoxarifado: string | null;
+  motivo: string | null;
+  patrimonio_id: number;
+  patrimonio: string | null;
+  serial: string | null;
+  produto_codigo: string | null;
+  produto_titulo: string | null;
+  base_descricao: string | null;
+  ciclo: number | string;
+  data_entrada_ciclo: string | null;
+  dias_no_laboratorio: number | string | null;
+  nota_romaneio: string | null;
+  fornecedor: string | null;
+}
+
+/** "backlog": patrimônio no laboratório agora, sem saída registrada — as colunas da consulta original. */
+export interface LabBacklogSourceRow {
+  patrimony_id: number;
+  laboratorio_atual: string | null;
+  data_entrada_lab: string | null;
+  dias_em_aberto: number | string | null;
+  status_backlog_90: string | null;
+}

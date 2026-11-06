@@ -25,7 +25,7 @@ interface FilterBarProps {
   filters: UrlFilters;
   options: FilterOptions | undefined;
   /** campos que só existem como clique num visual (aparecem nos chips) */
-  extraKeys?: { key: string; label: string }[];
+  extraKeys?: { key: string; label: string; format?: (value: string) => string }[];
   /** barra de uma seção da tela: não gruda no topo e não conta na altura útil */
   section?: boolean;
   label?: string;
@@ -51,12 +51,13 @@ export function FilterBar({
     ...extraKeys.map((e) => [e.key, e.label]),
   ]);
   const listKeys = [...listFields.map((f) => f.key), ...extraKeys.map((e) => e.key)];
+  const formats: Record<string, ((value: string) => string) | undefined> = Object.fromEntries(extraKeys.map((e) => [e.key, e.format]));
   const searchKeys = fields.filter((f) => f.type === 'search').map((f) => (f as { key: string }).key);
 
   const chips: { key: string; value: string; text: string; remove: () => void }[] = [];
   for (const key of listKeys) {
     for (const value of filters.getList(key)) {
-      chips.push({ key, value, text: value, remove: () => filters.toggle(key, value) });
+      chips.push({ key, value, text: formats[key]?.(value) ?? value, remove: () => filters.toggle(key, value) });
     }
   }
   for (const key of searchKeys) {

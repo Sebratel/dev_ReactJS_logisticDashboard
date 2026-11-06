@@ -4,13 +4,14 @@ Migração do relatório Power BI **"LOG - Relatórios de Produtos & Patrimônio
 se chamava assim até 05/11/2026) para
 uma aplicação web (React + Vite no front, Node + Express no back), no mesmo padrão
 visual e de arquitetura das demais dashboards da Sebratel (COM · Gestão Comercial,
-DEVINTEL, Financeiro). O `.pbip` original continua nesta pasta como referência.
+DEVINTEL, Financeiro). Os `.pbip` de origem não são versionados: ficam só na máquina de quem migra (o `.gitignore` os ignora).
 
 Também traz, como abas próprias, os relatórios Power BI **"CMP - Lançamento e Saldos"**
 (Compras · Lançamento e saldos), **"CTR - Movimentação Equipamentos para Campo"**
 (Controle · Equipamentos para campo), as duas páginas do **"LOG - Objetos em Carga"**
-(Patrimônios · Em carga e Produtos & Cabos · Em carga) e, numa seção de acesso
-restrito, o **"LOG - Gerencial"** (ver [Gerencial](#gerencial-acesso-restrito)).
+(Patrimônios · Em carga e Produtos & Cabos · Em carga), a aba "Entrada/ Saída
+Laboratório" do **"LAB - Produtividade Laboratório"** (Laboratório · Entrada e saída) e,
+numa seção de acesso restrito, o **"LOG - Gerencial"** (ver [Gerencial](#gerencial-acesso-restrito)).
 
 Os dados vêm **direto das fontes** (Voalle e MariaDB) e são **relidos de hora em hora**
 pelo servidor — menos a tela de Compras, relida **a cada minuto**. Mínimo, alerta e situação dos produtos ficam num cadastro do próprio app
@@ -30,6 +31,7 @@ para uma fase seguinte — ver [Próximo passo: Data Hub](#próximo-passo-data-h
 | Produtos & Cabos · Alocação | PRODUTOS & CABOS - ALOCAÇÃO | Consumo Produtos, cadastro de controle de estoque, Usuários |
 | Compras · Lançamento e saldos | RECEBIMENTO (do Power BI "CMP - Lançamento e Saldos") | Produtos, Pedido de Compra — **a cada minuto** |
 | Controle · Equipamentos para campo | Movimentação Equipamentos (do Power BI "CTR - Movimentação Equipamentos para Campo") | PRIMEIRO VÍNCULO, ÚLTIMO VÍNCULO |
+| Laboratório · Entrada e saída | Entrada/ Saída Laboratório (do Power BI "LAB - Produtividade Laboratório") | general, backlog |
 | Patrimônios · Em carga | SALDO PATRIMÔNIO (do Power BI "LOG - Objetos em Carga") | DASH_ATUAL_TECNICOS, Usuários |
 | Produtos & Cabos · Em carga | SALDO PRODUTO (do Power BI "LOG - Objetos em Carga") | DASH_ATUAL_CONSUMOS, Usuários |
 | Gerencial · Objetos criados | OBJETOS CRIADOS (do Power BI "LOG - Gerencial") | OBJETOS CRIADOS |
@@ -41,6 +43,11 @@ para uma fase seguinte — ver [Próximo passo: Data Hub](#próximo-passo-data-h
 | Configuração · Controle de estoque | (planilha "Controle Estoque") | cadastro do app + saldo Voalle |
 
 **Fora desta versão, por decisão:** "Requisições almoxarifado" e "Desconto ferramental".
+
+**Navegação:** as abas ficam **recolhidas numa linha** — a do grupo da tela aberta
+(ex.: Patrimônios › alerta, romaneio, alocação, em carga). O botão **Mais telas** abre os
+outros grupos por cima do conteúdo (a página não pula) e o painel se fecha ao escolher
+uma tela, ao clicar fora ou com Esc (`web/src/components/layout/PageNav.tsx`).
 
 ## Arquitetura
 
@@ -63,13 +70,17 @@ cadastro do app (JSON) ───────┤                                 
 - **Carga horária** (`server/src/sources/refresh.job.ts`): primeiro as tabelas de
   cadastro (rápidas), depois as de movimento (pesadas, duas em paralelo). A carga
   completa leva ~9 min; a tela segue com o dado anterior enquanto isso. Fonte que
-  falha mantém a última leitura boa e aparece como "falhou" na capa.
+  falha mantém a última leitura boa e aparece como "falhou" na capa. As duas fontes do
+  laboratório têm cadência própria, a cada 3 horas (`LAB_REFRESH_INTERVAL_MS`): as cargas
+  do meio as pulam; o boot e a atualização manual pela capa leem tudo.
 - **Carga ao vivo** (`server/src/sources/live-refresh.job.ts`): as duas fontes da tela de
   Compras ficam fora da carga horária e são relidas a cada minuto
   (`LIVE_REFRESH_INTERVAL_MS`), em sequência e numa conexão só — ~1 s de consulta por
   minuto. Têm versão própria no modelo: a releitura não invalida o cache das outras telas.
 - **Tabelas de detalhe** mostram até 1.000 linhas; o botão **CSV** de cada visual
-  exporta todas as linhas do recorte, geradas no servidor com os mesmos filtros.
+  exporta todas as linhas do recorte, geradas no servidor com os mesmos filtros. A tela
+  do laboratório é a exceção: sem limite, todas as linhas vão para a tela, e a tabela
+  desenha só as que estão à vista (`DataTable` com `virtual`).
 
 ### Estrutura
 
@@ -155,7 +166,7 @@ docker compose up -d --build
 ## Compras · Lançamento e saldos
 
 Migração da página **RECEBIMENTO** do Power BI **"CMP - Lançamento e Saldos"** (o
-`.pbip` está nesta pasta). Aba **Compras · Lançamento e saldos** na linha "Outras áreas" do
+`.pbip` não é versionado). Aba **Compras · Lançamento e saldos** na linha "Outras áreas" do
 topo e um cartão na capa.
 
 - **Saldo de itens:** saldo disponível de cada produto por base, de todas as bases da
@@ -191,7 +202,7 @@ topo e um cartão na capa.
 ## Controle · Equipamentos para campo
 
 Migração da página **Movimentação Equipamentos** do Power BI **"CTR - Movimentação
-Equipamentos para Campo"** (o `.pbip` está nesta pasta). Aba **Controle · Equipamentos para
+Equipamentos para Campo"** (o `.pbip` não é versionado). Aba **Controle · Equipamentos para
 campo** na linha "Outras áreas" do topo e um cartão na capa, ao lado do de Compras. Atualiza de hora em hora,
 junto com a carga das outras telas.
 
@@ -216,10 +227,45 @@ junto com a carga das outras telas.
   o F670L RE3023 e o mesh H3601PE), enquanto a pizza, as tabelas por data e por tipo e
   o detalhe mostram os 9.
 
+## Laboratório · Entrada e saída
+
+Migração da aba **"Entrada/ Saída Laboratório"** do Power BI **"LAB - Produtividade
+Laboratório"** (o `.pbip` não é versionado), na linha **Outras áreas** das abas e nos
+cartões de área da capa. Atualiza **a cada 3 horas**. As outras duas abas do relatório
+("Produtividade x Reincidentes" e "Produtividade / Base") não vieram: liam uma planilha
+Google de apontamentos do laboratório e estavam ocultas no Power BI.
+
+- **As consultas são as do Power BI, exatamente como estão** (decisão da área,
+  06/11/2026): nenhum filtro, piso ou limite a mais no app — os dados da tela são os do
+  relatório.
+- **Eventos** (`lab_events.sql`, a consulta "general", ~53 s): a partir das trocas de responsável (tipo 5), do RMA/garantia e do descarte
+  interno, cada patrimônio ganha os eventos **ENTRADA** (do almoxarifado para um
+  laboratório), **SAIDA** (de volta a um almoxarifado), **RMA** e **DESCARTE INTERNO**
+  (terminais), numerados por **ciclo**, com o laboratório e o motivo da entrada
+  (cancelamento ou manutenção) e os **dias no laboratório** nos eventos de fechamento.
+  Desde 2026 (o corte é o do próprio Power BI), com o histórico inteiro de cada patrimônio.
+- **Backlog** (`lab_backlog.sql`, ~28 s): o que está no laboratório agora — responsável
+  atual é um laboratório, sem RMA/descarte — com a data de entrada, os dias em aberto e o
+  "Acima de 90 dias" da própria consulta (contados na hora da leitura, como no Power BI;
+  acima de 90 fica em vinho).
+  Como no Power BI, os filtros da tela chegam a ele pelos patrimônios dos eventos.
+- **Tela:** cartões (eventos, patrimônios, no laboratório), eventos por dia ou mês por
+  tipo, a tabela de eventos, a matriz item x evento/motivo, patrimônios por item, a
+  listagem por patrimônio e ciclo, e o backlog por item e por patrimônio (vinho = mais de
+  90 dias). Todas as linhas, sem limite. Três CSVs: eventos, patrimônios e backlog.
+- **Cores do Power BI:** colunas do gráfico com entrada verde, saída vermelha, RMA azul e
+  descarte interno roxo; nas tabelas, a célula do evento com as mesmas cores e a do
+  motivo com cancelamento amarelo e manutenção azul.
+- **Filtros:** data, item, dash laboratório, dash almox e patrimônio (busca) na barra;
+  tipo de evento, base operacional e tipo de entrada em botões. **Clique numa coluna do
+  gráfico** filtra a tela pelo dia (ou mês) clicado; **Ctrl+clique** soma mais de um
+  período; clicar de novo tira. O gráfico continua com todos os períodos, os escolhidos
+  em destaque.
+
 ## Em carga (Patrimônios e Produtos & Cabos)
 
 Migração das páginas **SALDO PATRIMÔNIO** e **SALDO PRODUTO** do Power BI **"LOG - Objetos em
-Carga"** (o `.pbip` está nesta pasta): a coluna **Em carga** nas linhas Patrimônios e
+Carga"** (o `.pbip` não é versionado): a coluna **Em carga** nas linhas Patrimônios e
 Produtos & Cabos do topo, e dois cartões na capa. Atualiza de hora em hora. Mostra o que
 está com **cada pessoa da empresa** (o relatório antigo "TECH - Patrimônios em Carga",
 que chegou a ser migrado em 04/11/2026, foi trocado por este).
@@ -250,7 +296,7 @@ que chegou a ser migrado em 04/11/2026, foi trocado por este).
 
 ## Gerencial (acesso restrito)
 
-Migração do Power BI **"LOG - Gerencial"** (o `.pbip` está nesta pasta): seis telas numa
+Migração do Power BI **"LOG - Gerencial"** (o `.pbip` não é versionado): seis telas numa
 linha própria de abas, entre **Produtos & Cabos** e **Outras áreas**, e um bloco de cartões
 na capa. Atualiza de hora em hora (seis consultas novas, de 0,1 s a ~16 s cada).
 
@@ -258,7 +304,10 @@ na capa. Atualiza de hora em hora (seis consultas novas, de 0,1 s a ~16 s cada).
   (coluna **Gerencial**) e os próprios administradores. Para os outros a linha de abas, os
   cartões da capa e as rotas nem aparecem, as fontes da seção somem de `/data-sources`, e
   o servidor recusa as consultas com **403** (`AUTH_MANAGEMENT_FORBIDDEN`). Rotas em
-  `/api/v1/management-reports/*`.
+  `/api/v1/management-reports/*`. A troca de acesso vale sem recarregar a página: a tela
+  relê a permissão (`/auth/me`) ao voltar para a aba (no máximo uma vez por minuto) e na
+  hora em que o servidor recusa algo — quem perde o acesso com uma tela gerencial aberta
+  volta para a capa, já sem o bloco.
 - **Cinco telas de comparação** (objetos criados, consumo de flat, movimentações ZTE, ZTE
   usados, equipamentos obsoletos), no desenho do Power BI: mês, mês x mesmo mês do ano
   anterior e ano em cima; trimestre e trimestre x ano anterior embaixo; e o histórico mês
@@ -469,6 +518,10 @@ tela mostra. Quem comparar lado a lado vai encontrar estas diferenças:
     salvos no Power BI (sem o "descer" para o dia). As consultas já chegam somadas por dia;
     a de obsoletos sem o join com os itens da nota fiscal (só repetia linhas que o DISTINCT
     juntava de novo).
+27. **Laboratório · gráfico** — o Power BI mostrava as colunas dia a dia; aqui dá para
+    trocar entre dia e mês, e com mais de dois meses no recorte a tela abre no mês. O
+    filtro de patrimônio é uma busca (são ~20 mil), e a tabela de eventos lista cada
+    evento (o Power BI juntava linhas idênticas, o que na prática não acontece).
 
 ## Segurança
 
@@ -492,11 +545,11 @@ tela mostra. Quem comparar lado a lado vai encontrar estas diferenças:
 A migração está preparada em [`MIGRACAO-DATAHUB.md`](MIGRACAO-DATAHUB.md), na raiz do projeto:
 
 - as **23 fontes** (tabelas puras), com as colunas que cada uma precisa publicar;
-- os **20 conjuntos calculados** prontos para colar no Data Hub, validados no mesmo
+- os **22 conjuntos calculados** prontos para colar no Data Hub, validados no mesmo
   DuckDB dele (o 11 e o 12 são da tela de Compras — ver a decisão 6 do documento sobre
   manter a atualização a cada minuto; o 13 e o 14, da tela de equipamentos para campo e
   também dos ZTE novos e usados do Gerencial; o 15 e o 16, das telas em carga; do 17 ao
-  20, do resto da seção Gerencial);
+  20, do resto da seção Gerencial; o 21 e o 22, da tela do laboratório);
 - as regras que saem do SQL e passam para o app;
 - os números da carga direta, para conferir depois da primeira materialização.
 

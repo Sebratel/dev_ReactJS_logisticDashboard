@@ -5,6 +5,7 @@ import {
   buildChargedPatrimonies, buildChargedProducts, buildFieldEquipment, buildPatrimonyAllocations, buildPatrimonyPackingNotes, buildPatrimonyPackings, buildPatrimonyStatuses,
   buildPendingPatrimonies, buildProductAllocations, buildProductPackings, buildUserActivity,
 } from '../model/builders/activity.builder.js';
+import { buildLabBacklog, buildLabEvents } from '../model/builders/lab.builder.js';
 import {
   buildCreatedObjects, buildFlatConsumption, buildObsoleteFirstDays, buildPackingProductivity, buildZteDispatches, buildZteReturns,
 } from '../model/builders/management.builder.js';
@@ -45,6 +46,13 @@ const master: {
 };
 
 const ACTIVITY_CONCURRENCY = 2;
+/**
+ * Folga da cadência própria: a carga horária começa na hora cheia, mas a fonte
+ * termina alguns minutos depois — sem a folga, a de 3 horas só rodaria na 4ª.
+ */
+const CADENCE_SLACK_MS = 15 * 60_000;
+/** a carga em andamento foi pedida pela tela (atualização manual): lê tudo, até o que tem cadência própria */
+let forceAll = false;
 const MANUAL_REFRESH_MIN_INTERVAL_MS = 5 * 60_000;
 
 let running: Promise<void> | null = null;
@@ -64,6 +72,16 @@ export interface RunSourceOptions {
   devCache?: boolean;
   /** true: só registra no log a primeira leitura, falha e volta da falha (fonte lida a cada minuto) */
   quiet?: boolean;
+}
+
+/**
+ * A fonte com cadência própria (`everyMs`) só é relida quando a última leitura
+ * BOA ficou velha; no boot e na atualização manual, sempre.
+ */
+export function isSourceDue(source: SourceDefinition<unknown>, now = Date.now()): boolean {
+  if (!source.everyMs || isFirstRun || forceAll) return true;
+  const updatedAt = getSourceStatuses().find((s) => s.key === source.key)?.updatedAt;
+  return !updatedAt || now - new Date(updatedAt).getTime() >= source.everyMs() - CADENCE_SLACK_MS;
 }
 
 /** Roda uma fonte e registra o resultado. Nunca lança: falha vira status. */
@@ -216,6 +234,17 @@ async function runActivityPhase(): Promise<void> {
       const rows = await runSource(SOURCES.chargedProducts);
       if (rows) publishModel({ chargedProducts: buildChargedProducts(rows, pool) });
     },
+    // laboratório (Power BI "LAB - Produtividade Laboratório"): ~53 s e ~28 s, a cada 3 horas
+    async () => {
+      if (!isSourceDue(SOURCES.labEvents)) return;
+      const rows = await runSource(SOURCES.labEvents);
+      if (rows) publishModel({ labEvents: buildLabEvents(rows, pool) });
+    },
+    async () => {
+      if (!isSourceDue(SOURCES.labBacklog)) return;
+      const rows = await runSource(SOURCES.labBacklog);
+      if (rows) publishModel({ labBacklog: buildLabBacklog(rows, pool) });
+    },
     // seção Gerencial (Power BI "LOG - Gerencial"): de 0,1 s a ~16 s cada
     async () => {
       const rows = await runSource(SOURCES.createdObjects);
@@ -256,8 +285,9 @@ async function runActivityPhase(): Promise<void> {
   await Promise.all(Array.from({ length: ACTIVITY_CONCURRENCY }, worker));
 }
 
-export function refreshAll(): Promise<void> {
+export function refreshAll(options: { force?: boolean } = {}): Promise<void> {
   if (running) return running;
+  forceAll = options.force === true;
   lastStartedAt = Date.now();
   logger.info('etl', 'carga iniciada');
   running = (async () => {
@@ -269,6 +299,7 @@ export function refreshAll(): Promise<void> {
     } finally {
       running = null;
       isFirstRun = false;
+      forceAll = false;
     }
   })();
   return running;
@@ -304,7 +335,8 @@ export type ManualRefreshResult = 'STARTED' | 'ALREADY_RUNNING' | 'TOO_SOON';
 export function requestManualRefresh(): ManualRefreshResult {
   if (running) return 'ALREADY_RUNNING';
   if (lastStartedAt && Date.now() - lastStartedAt < MANUAL_REFRESH_MIN_INTERVAL_MS) return 'TOO_SOON';
-  void refreshAll().finally(scheduleNext);
+  // pedida pela tela: lê também as fontes de cadência própria (laboratório)
+  void refreshAll({ force: true }).finally(scheduleNext);
   return 'STARTED';
 }
 

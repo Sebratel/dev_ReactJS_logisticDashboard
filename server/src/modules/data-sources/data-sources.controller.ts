@@ -5,7 +5,12 @@ import { sendOk } from '../../common/http/api-response.js';
 import { getModel, getSourceStatuses } from '../../model/model.store.js';
 import { getLiveRefreshState, LIVE_SOURCE_KEYS } from '../../sources/live-refresh.job.js';
 import { getRefreshState, requestManualRefresh } from '../../sources/refresh.job.js';
-import { MANAGEMENT_SOURCE_KEYS } from '../../sources/source.registry.js';
+import { MANAGEMENT_SOURCE_KEYS, SOURCES } from '../../sources/source.registry.js';
+
+/** cadência própria de cada fonte (`everyMs`), quando ela não segue a carga horária */
+const OWN_CADENCE = new Map<string, () => number>(
+  Object.values(SOURCES).flatMap((s) => ('everyMs' in s && s.everyMs ? [[s.key, s.everyMs] as const] : [])),
+);
 import { recordAudit } from '../audit/audit.service.js';
 
 /**
@@ -44,7 +49,8 @@ dataSourcesRouter.get('/', requireAuth(), (req, res) => {
       updatedAt: s.updatedAt,
       failed: s.error !== null,
       // de quanto em quanto tempo a fonte é relida (o cadastro do app muda na hora: null)
-      intervalMs: LIVE_SOURCE_KEYS.includes(s.key) ? live.intervalMs : s.origin === 'APP' ? null : refresh.intervalMs,
+      intervalMs: LIVE_SOURCE_KEYS.includes(s.key) ? live.intervalMs
+        : OWN_CADENCE.get(s.key)?.() ?? (s.origin === 'APP' ? null : refresh.intervalMs),
     })),
   });
 });

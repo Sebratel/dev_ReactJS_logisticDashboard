@@ -67,7 +67,7 @@ export default function CoverPage() {
           <p className="bv-onde">Você está em <b>{DASHBOARD_NAME}</b>.</p>
           <p className="bv-intro">
             Aqui você acompanha o saldo de estoque, os pedidos de compra, o que o almoxarifado envia em romaneio, o
-            que é alocado em protocolo, o que está em carga com cada pessoa e os equipamentos enviados a campo.
+            que é alocado em protocolo, o que está em carga com cada pessoa, os equipamentos enviados a campo e o que entra e sai do laboratório.
             Escolha uma das telas para começar.
           </p>
           {canEdit && (

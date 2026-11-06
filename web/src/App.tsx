@@ -16,6 +16,7 @@ const ProductAllocationsPage = lazy(() => import('./pages/product-allocations/Pr
 const FieldEquipmentPage = lazy(() => import('./pages/field-equipment/FieldEquipmentPage'));
 const ChargedPatrimoniesPage = lazy(() => import('./pages/charged-patrimonies/ChargedPatrimoniesPage'));
 const ChargedProductsPage = lazy(() => import('./pages/charged-products/ChargedProductsPage'));
+const LabMovementsPage = lazy(() => import('./pages/lab-movements/LabMovementsPage'));
 const PurchaseOrdersPage = lazy(() => import('./pages/purchase-orders/PurchaseOrdersPage'));
 const StockControlsPage = lazy(() => import('./pages/stock-controls/StockControlsPage'));
 const AdminPage = lazy(() => import('./pages/admin/AdminPage'));
@@ -48,6 +49,7 @@ export default function App() {
           <Route path="/produtos/em-carga" element={<ChargedProductsPage />} />
           <Route path="/compras/lancamento-e-saldos" element={<PurchaseOrdersPage />} />
           <Route path="/controle/equipamentos-campo" element={<FieldEquipmentPage />} />
+          <Route path="/laboratorio/entrada-saida" element={<LabMovementsPage />} />
           <Route path="/configuracoes/controle-estoque" element={<StockControlsPage />} />
           <Route path="/administracao" element={<AdminPage />} />
           {/* seção Gerencial: sem acesso, a rota nem existe (cai na capa) — e o servidor recusa as consultas */}

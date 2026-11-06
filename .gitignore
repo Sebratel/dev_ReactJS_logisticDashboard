@@ -1,6 +1,11 @@
-# Power BI: cache local do modelo (dado real) e configurações da máquina
-**/.pbi/localSettings.json
-**/.pbi/cache.abf
+# Power BI: os relatórios de origem (.pbip e as pastas .Report/.SemanticModel) ficam só na
+# máquina — o repositório guarda o app. O cache do modelo tem dado real.
+*.pbip
+*.pbix
+*.pbit
+*.Report/
+*.SemanticModel/
+**/.pbi/
 
 # dependências e artefatos de build
 node_modules/

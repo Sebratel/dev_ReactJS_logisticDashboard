@@ -219,7 +219,7 @@ minuto, fora da carga horária.
 | Severidade | Item | Observação |
 |---|---|---|
 | BAIXA | ~1.440 leituras por dia no ERP (2 consultas por minuto) | ~1 s por minuto em uma conexão; ajustável por `LIVE_REFRESH_INTERVAL_MS` |
-| BAIXA | Tabelas de até 1.000 linhas baixadas a cada mudança do dado (no máximo 1 vez por minuto por aba) | Resposta comprimida (gzip) e vinda do cache; o CSV leva o recorte inteiro |
+| BAIXA | Tabelas de até 1.000 linhas baixadas a cada mudança do dado (no máximo 1 vez por minuto por aba); na tela do laboratório, sem limite (~43 mil eventos, decisão da área) | Resposta comprimida (gzip) e vinda do cache; o CSV leva o recorte inteiro; a tabela do laboratório desenha só as linhas à vista |
 
 ---
 
@@ -278,4 +278,21 @@ Seis telas do Power BI "LOG - Gerencial", visíveis só para quem um administrad
   regra original.
 - **Dados pessoais:** nomes de quem lançou romaneio (produtividade) e de quem entregou/
   recebeu flat (só para filtrar) — os mesmos do Power BI, agora restritos à seção.
+
+# Laboratório · Entrada e saída (06/11/2026)
+
+Aba nova (Power BI "LAB - Produtividade Laboratório") em Outras áreas, na carga horária.
+
+- **Duas consultas novas, só leitura:** `lab_events.sql` (~53 s, a lógica do Power BI
+  sem mudança, com a data de início como parâmetro) e `lab_backlog.sql` (~28 s, sem
+  parâmetro). Medidas com `statement_timeout` antes de entrar na carga; rodam na mesma
+  conexão de atividade das outras.
+- **Mesma autenticação** das outras telas: `GET /api/v1/reports/lab-movements` e as três
+  exportações exigem login (401 testado); exportação com rate limit e CSV com
+  neutralização de fórmula.
+- **Dados pessoais:** nenhum — o usuário que lançou a ocorrência (o "fornecedor" do Power
+  BI, que a aba não usava) saiu da consulta. Patrimônio, serial e item são cadastro de
+  equipamento.
+- **Sem planilha:** a planilha Google de apontamentos do laboratório (abas ocultas do
+  relatório) não é lida.
 

@@ -10,7 +10,7 @@ Depois da migração ele lê **conjuntos calculados do Data Hub** pelo endpoint 
 no app.
 
 ```
-Voalle / MariaDB ──> 23 FONTES (tabelas puras no lake) ──> 20 CONJUNTOS calculados (DuckDB)
+Voalle / MariaDB ──> 23 FONTES (tabelas puras no lake) ──> 22 CONJUNTOS calculados (DuckDB)
                                                                   │
                                          app: /rows?token=… ──────┘  filtros, medidas e regras
 ```
@@ -41,11 +41,11 @@ e um piso de volume (ver [Decisões](#decisões)).
 3. **Sincronize** e use *Administração › Padronizar atualização*. Ele propõe a chave
    incremental e a identidade de cada fonte. Publique também as colunas que ele pedir
    como chave (ex.: `modified`). A view do saldo não tem chave e fica em *snapshot*.
-4. **Crie os 20 conjuntos calculados** da [seção 3](#3-consultas-conjuntos-calculados): em
+4. **Crie os 22 conjuntos calculados** da [seção 3](#3-consultas-conjuntos-calculados): em
    *Conjuntos › Novo calculado*, cole a consulta **inteira**. Os comentários do topo
    podem ir junto, porque o Data Hub os ignora. Use o slug sugerido: é por ele
    que o app vai ler.
-5. **Gere um token de integração** com escopo nos 20 conjuntos. O token **não** vem
+5. **Gere um token de integração** com escopo nos 22 conjuntos. O token **não** vem
    pelo chat: ele entra como `DATAHUB_TOKEN` na stack do Portainer (e no `.env` local),
    junto com `DATAHUB_URL` (endereço **interno** do Data Hub; o nome público bloqueia por
    origem de servidor para servidor).
@@ -62,8 +62,8 @@ Voalle = conexão **ELLEVEN (ERP)**, schema `erp`. Linhas = estimativa do Postgr
 | # | Fonte (tabela) | Linhas | Colunas a publicar | Usada nas consultas |
 |---|---|---:|---|---|
 | 1 | `v_company_place_business_units_movimentations` **(VIEW)** | ~110 mil | `company_place_id`, `company_place_business_unit_id`, `service_product_id`, `disponible` | 01, 11 |
-| 2 | `company_place_business_units` | 19 | `id`, `description`, `company_place_id`, `deleted` | 01, 03, 08, 09, 10, 11, 18 |
-| 3 | `service_products` | 5,9 mil | `id`, `code`, `title`, `type`, `generate_patrimony`, `minimum_inventory`, `inventory_update`, `first_unit`, `active`, `deleted` | 01, 02, 03, 06, 08, 09, 10, 11, 12, 15, 16, 18 |
+| 2 | `company_place_business_units` | 19 | `id`, `description`, `company_place_id`, `deleted` | 01, 03, 08, 09, 10, 11, 18, 21 |
+| 3 | `service_products` | 5,9 mil | `id`, `code`, `title`, `type`, `generate_patrimony`, `minimum_inventory`, `inventory_update`, `first_unit`, `active`, `deleted` | 01, 02, 03, 06, 08, 09, 10, 11, 12, 15, 16, 18, 21 |
 | 4 | `product_acquisition_requests` | 16 mil | `id`, `status`, `deleted`, `date`, `receipt_date_prevision`, `observation`, `person_id`, `supplier_id`, `total_request` | 02, 12 |
 | 5 | `product_acquisition_request_items` | 38 mil | `id`, `product_acquisition_request_id`, `service_product_id`, `units`, `unit_amount`, `item_amount`, `total_amount` | 02, 12 |
 | 6 | `people` | 308 mil | `id`, `name`, `city` | 02, 06, 07, 08, 09, 10, 12, 15, 16, 18, 19 |
@@ -77,9 +77,9 @@ Voalle = conexão **ELLEVEN (ERP)**, schema `erp`. Linhas = estimativa do Postgr
 | 14 | `patrimony_packing_list_items` | 1,1 mi | `id`, `patrimony_packing_list_id`, `patrimony_id`, `person_allocator_id`, `created`, `out_date`, `returned`, `returned_date` | 07 |
 | 15 | `patrimony_packing_lists` | 495 mil | `id`, `assignment_id`, `responsible_id`, `authentication_site_id` | 07 |
 | 16 | `assignment_incidents` | 1,9 mi | `assignment_id`, `protocol` | 07 |
-| 17 | `patrimonies` | 216 mil | `id`, `title`, `serial_number`, `tag_number`, `service_product_id`, `company_place_business_unit_id`, `person_id`, `p_is_disponible`, `last_occurrence_description`, `purchase_amount`, `modified`, `active`, `deleted` | 07, 09, 10, 13, 14, 15, 19 |
+| 17 | `patrimonies` | 216 mil | `id`, `title`, `serial_number`, `tag_number`, `service_product_id`, `company_place_business_unit_id`, `person_id`, `p_is_disponible`, `last_occurrence_description`, `purchase_amount`, `modified`, `active`, `deleted` | 07, 09, 10, 13, 14, 15, 19, 21 |
 | 18 | `authentication_sites` | 198 | `id`, `title` | 07 |
-| 19 | `patrimony_occurrences` | 2,6 mi | `id`, `patrimony_id`, `occurrence_type`, `title`, `description`, `created`, `date`, `created_by` | 09, 10, 13, 14, 17, 20 |
+| 19 | `patrimony_occurrences` | 2,6 mi | `id`, `patrimony_id`, `occurrence_type`, `title`, `description`, `created`, `date`, `created_by` | 09, 10, 13, 14, 17, 20, 21, 22 |
 | 20 | `db_senior_collaborators` (MariaDB, banco `API_WebDeveloper`) | ~2,5 mil | `name`, `registration`, `operational_base`, `team` | 05 |
 | 21 | `v_internal_movimentations_products` **(VIEW)** | ~40 mil com saldo | `service_product_id`, `person_id`, `person_product_movimentation_id`, `first_units_measure_id`, `actual_balance` | 16 |
 | 22 | `people_teams` | — | `person_id`, `team_id` | 18 |
@@ -137,6 +137,8 @@ e o que o app faz depois de carregar. Cole a consulta inteira, com o comentário
 | [18](#consulta-18-gerencial-consumo-flat) | `gerencial-consumo-flat` | Consumo Voalle (Power BI "LOG - Gerencial") | ~45 mil | hora em hora |
 | [19](#consulta-19-gerencial-equipamentos-obsoletos) | `gerencial-equipamentos-obsoletos` | EQUIPAMENTO OBSOLETOS (Power BI "LOG - Gerencial") | ~1,2 mil | hora em hora |
 | [20](#consulta-20-gerencial-produtividade-almox) | `gerencial-produtividade-almox` | QuantidadeRomaneios (Power BI "LOG - Gerencial") | ~15 mil | hora em hora |
+| [21](#consulta-21-laboratorio-eventos) | `laboratorio-eventos` | general (Power BI "LAB - Produtividade Laboratório") | ~45 mil | a cada 3 horas |
+| [22](#consulta-22-laboratorio-backlog) | `laboratorio-backlog` | backlog (Power BI "LAB - Produtividade Laboratório") | ~350 | a cada 3 horas |
 
 **Seção Gerencial (Power BI "LOG - Gerencial"):** as ONUs ZTE **novas** e **usadas** não
 têm conjunto próprio: são o 13 (primeiro "Enviado em Romaneio" de cada patrimônio) e o
@@ -1118,9 +1120,284 @@ WHERE dia >= CAST(date_trunc('month', current_date) AS DATE) - INTERVAL 3 MONTH
 GROUP BY name, strftime(dia, '%Y-%m'), description
 ```
 
+### Consulta 21: laboratorio-eventos
+
+```sql
+-- =============================================================================
+-- LABORATÓRIO · EVENTOS                    conjunto calculado: laboratorio-eventos
+--
+-- Substitui a consulta "general" do Power BI "LAB - Produtividade Laboratório"
+-- (server/src/sources/sql/lab_events.sql). Grão: evento do patrimônio no
+-- laboratório — ENTRADA (do almoxarifado para um laboratório), SAIDA (de volta a
+-- um almoxarifado), RMA e DESCARTE INTERNO (terminais), numerados por ciclo,
+-- com os dias no laboratório nos eventos de fechamento.
+--
+-- A lógica é a do Power BI, passo a passo (mesmos CTEs). Do Postgres para o
+-- DuckDB: `~*` virou regexp_matches com (?i), `\m...\M` virou `\b`, o
+-- SUBSTRING por regex virou regexp_extract (com (?s): no Postgres o ponto pega
+-- a quebra de linha), o COUNT ... FILTER da janela virou SUM(CASE ...) e o
+-- EXTRACT(EPOCH ...) virou epoch(). O filtro de desempenho do Power BI
+-- (`patrimony_id IN (...created >= 2026)`) saiu: não muda o resultado (todo
+-- evento de 2026 é uma ocorrência de 2026 do próprio patrimônio). As colunas
+-- saem com os nomes da consulta original, na mesma ordem.
+--
+-- Fontes: patrimony_occurrences, patrimonies, service_products,
+--         company_place_business_units, users.
+--
+-- Como no Power BI (ver decisão 8): empresa 1, sem PROJETO NHO e sem base
+-- excluída (entram na escolha dos patrimônios) e o corte de 2026 nos eventos.
+-- O app não aplica nada além disso.
+--
+-- Volume: ~45 mil linhas (nov/2026). Cadência sugerida: a cada 3 horas.
+-- =============================================================================
+WITH movimentos AS (
+    SELECT
+        TRY_CAST(po.id AS BIGINT)                                       AS ocorrencia_id,
+        TRY_CAST(po.created AS TIMESTAMP)                               AS data_movimento,
+        TRY_CAST(po.occurrence_type AS INTEGER)                         AS occurrence_type,
+        po.title                                                        AS titulo_ocorrencia,
+        po.description                                                  AS descricao_ocorrencia,
+        TRY_CAST(p.id AS INTEGER)                                       AS patrimonio_id,
+        p.serial_number                                                 AS serial,
+        p.tag_number                                                    AS patrimonio,
+        sp.code                                                         AS produto_codigo,
+        sp.title                                                        AS produto_titulo,
+        cpbu.description                                                AS base_descricao,
+        NULLIF(regexp_extract(po.description, 'N[º°]\s*(\d+)', 1), '')  AS nota_romaneio,
+        u.name                                                          AS fornecedor,
+        rtrim(NULLIF(regexp_extract(po.description, '(?s)Sob Responsabilidade de\s+(.+)', 1), ''), ' .') AS recebedor,
+        -- motivo do descarte: o que vem depois da primeira quebra de linha
+        CASE WHEN po.title = 'Descarte Interno' THEN
+            NULLIF(trim(
+                CASE WHEN strpos(po.description, chr(10)) > 0
+                     THEN substring(po.description, strpos(po.description, chr(10)) + 1)
+                     ELSE po.description
+                END
+            ), '')
+        END                                                             AS motivo_descarte
+    FROM patrimony_occurrences po
+    JOIN patrimonies p ON p.id = po.patrimony_id
+    JOIN service_products sp ON sp.id = p.service_product_id
+    JOIN company_place_business_units cpbu ON cpbu.id = p.company_place_business_unit_id
+    LEFT JOIN users u ON u.id = po.created_by
+    WHERE (
+            (TRY_CAST(po.occurrence_type AS INTEGER) = 5 AND po.description LIKE '%Sob Responsabilidade de%')
+         OR regexp_matches(po.description, '(?i)\bRMA\b|GARANTIA')
+         OR po.title = 'Descarte Interno'
+          )
+      AND sp.title IS NOT NULL
+      AND TRY_CAST(cpbu.company_place_id AS INTEGER) = 1
+      AND cpbu.description <> 'PROJETO NHO'
+      AND coalesce(TRY_CAST(CAST(cpbu.deleted AS VARCHAR) AS BOOLEAN),
+                   TRY_CAST(CAST(cpbu.deleted AS VARCHAR) AS DOUBLE) <> 0, false) IS NOT TRUE
+),
+com_local AS (
+    SELECT m.*,
+        CASE
+            -- descarte primeiro: o motivo pode citar "garantia" e não deve virar RMA
+            WHEN titulo_ocorrencia = 'Descarte Interno'                          THEN 'Descarte Interno'
+            WHEN regexp_matches(descricao_ocorrencia, '(?i)\bRMA\b|GARANTIA')     THEN 'RMA/Garantia'
+            WHEN recebedor LIKE '%CANCELAMENTO / LABORATÓRIO / CANOAS%'          THEN 'Lab Cancelamento CAN'
+            WHEN recebedor LIKE '%CANCELAMENTO / LABORATÓRIO / SLE%'             THEN 'Lab Cancelamento SLE'
+            WHEN recebedor LIKE '%CONSERTO INTERNO / LABORATÓRIO CANOAS%'        THEN 'Lab Conserto Interno CAN'
+            WHEN recebedor LIKE '%CONSERTO INTERNO / LABORATÓRIO SLE%'           THEN 'Lab Conserto Interno SLE'
+            WHEN recebedor LIKE '%MANUTENÇÃO / LABORATÓRIO / CANOAS%'            THEN 'Lab Manutenção CAN'
+            WHEN recebedor LIKE '%MANUTENÇÃO / LABORATÓRIO / SLE%'               THEN 'Lab Manutenção SLE'
+            WHEN recebedor LIKE '%A.ALMOXARIFADO / CANOAS%'                      THEN 'Almox CAN'
+            WHEN recebedor LIKE '%A.ALMOXARIFADO / SÃO LEO%'                     THEN 'Almox SLE'
+            WHEN recebedor LIKE '%ALMOXARIFADO - CANOAS - CANCELAMENTO%'         THEN 'Almox CAN Cancelamento'
+            WHEN recebedor LIKE '%ALMOXARIFADO - CANOAS - MANUTENÇÃO%'           THEN 'Almox CAN Manutenção'
+            WHEN recebedor LIKE '%ALMOXARIFADO - SÃO LEOPOLDO - CANCELAMENTO%'   THEN 'Almox SLE Cancelamento'
+            WHEN recebedor LIKE '%ALMOXARIFADO - SÃO LEOPOLDO - MANUTENÇÃO%'     THEN 'Almox SLE Manutenção'
+        END                                                             AS local,
+        -- toda troca de responsável (qualquer conta, mesmo fora da lista acima)
+        CASE WHEN occurrence_type = 5 AND recebedor IS NOT NULL
+                  AND titulo_ocorrencia IS DISTINCT FROM 'Descarte Interno'
+             THEN 1 ELSE 0 END                                          AS is_responsabilidade
+    FROM movimentos m
+),
+grupos_resp AS (
+    -- cada troca de responsável abre um grupo; as ocorrências seguintes herdam esse grupo
+    SELECT c.*,
+        SUM(is_responsabilidade) OVER (PARTITION BY patrimonio_id ORDER BY data_movimento, ocorrencia_id) AS grupo_resp
+    FROM com_local c
+),
+com_ultimo_resp AS (
+    -- último responsável registrado até cada ocorrência
+    SELECT g.*,
+        CASE WHEN grupo_resp > 0 THEN
+            FIRST_VALUE(local) OVER (PARTITION BY patrimonio_id, grupo_resp ORDER BY data_movimento, ocorrencia_id)
+        END                                                             AS ultimo_responsavel_local
+    FROM grupos_resp g
+),
+checkpoints AS (
+    SELECT c.*,
+        CASE
+            WHEN local LIKE 'Lab%'          THEN 'LAB'
+            WHEN local = 'RMA/Garantia'     THEN 'RMA'
+            WHEN local = 'Descarte Interno' THEN 'DESCARTE'
+            ELSE 'ALMOX'
+        END                                                             AS classe
+    FROM com_ultimo_resp c
+    WHERE local IS NOT NULL
+),
+checkpoints_validos AS (
+    -- RMA e descarte são terminais: ignora o que for lançado depois do primeiro deles
+    SELECT * FROM (
+        SELECT ck.*,
+            SUM(CASE WHEN classe IN ('RMA', 'DESCARTE') THEN 1 ELSE 0 END)
+                OVER (PARTITION BY patrimonio_id ORDER BY data_movimento, ocorrencia_id
+                      ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS terminais_anteriores
+        FROM checkpoints ck
+    ) x
+    WHERE COALESCE(terminais_anteriores, 0) = 0
+),
+sequencia AS (
+    SELECT ck.*,
+        LAG(classe) OVER w                                              AS classe_anterior,
+        LAG(local)  OVER w                                              AS local_anterior
+    FROM checkpoints_validos ck
+    WINDOW w AS (PARTITION BY patrimonio_id ORDER BY data_movimento, ocorrencia_id)
+),
+eventos AS (
+    SELECT s.*,
+        CASE
+            WHEN classe = 'LAB'      AND (classe_anterior IS NULL OR classe_anterior = 'ALMOX') THEN 'ENTRADA'
+            WHEN classe = 'ALMOX'    AND classe_anterior = 'LAB'                               THEN 'SAIDA'
+            WHEN classe = 'RMA'      AND classe_anterior = 'LAB'                               THEN 'RMA'
+            -- só conta se o último responsável antes do descarte era um laboratório
+            WHEN classe = 'DESCARTE' AND classe_anterior = 'LAB'
+                 AND ultimo_responsavel_local LIKE 'Lab%'                                      THEN 'DESCARTE INTERNO'
+        END                                                             AS tipo_evento
+    FROM sequencia s
+),
+ciclos AS (
+    SELECT e.*,
+        SUM(CASE WHEN tipo_evento = 'ENTRADA' THEN 1 ELSE 0 END)
+            OVER (PARTITION BY patrimonio_id ORDER BY data_movimento, ocorrencia_id) AS ciclo
+    FROM eventos e
+    WHERE tipo_evento IS NOT NULL
+),
+final AS (
+    SELECT c.*,
+        MIN(data_movimento) OVER (PARTITION BY patrimonio_id, ciclo)   AS data_entrada_ciclo,
+        MAX(CASE WHEN tipo_evento = 'ENTRADA' THEN local END)
+            OVER (PARTITION BY patrimonio_id, ciclo)                    AS laboratorio_entrada,
+        MAX(CASE WHEN tipo_evento = 'ENTRADA' THEN
+                CASE WHEN local LIKE 'Lab Cancelamento%' THEN 'Cancelamento' ELSE 'Manutenção' END
+            END) OVER (PARTITION BY patrimonio_id, ciclo)               AS motivo_entrada
+    FROM ciclos c
+)
+SELECT
+    strftime(data_movimento, '%Y-%m-%d %H:%M:%S')                       AS data_movimento,
+    strftime(data_movimento, '%Y-%m-%d')                                AS data,
+    tipo_evento,
+    motivo_entrada,
+    laboratorio_entrada,
+    -- CAN ou SLE; nos eventos de fechamento, o último laboratório antes do evento
+    right(CASE WHEN tipo_evento = 'ENTRADA' THEN local ELSE local_anterior END, 3) AS base_lab,
+    CASE WHEN tipo_evento = 'SAIDA' THEN local END                      AS almoxarifado,
+    CASE WHEN tipo_evento = 'DESCARTE INTERNO' THEN motivo_descarte END AS motivo,
+    patrimonio_id,
+    patrimonio,
+    serial,
+    produto_codigo,
+    produto_titulo,
+    base_descricao,
+    CAST(ciclo AS INTEGER)                                              AS ciclo,
+    strftime(data_entrada_ciclo, '%Y-%m-%d %H:%M:%S')                   AS data_entrada_ciclo,
+    CASE WHEN tipo_evento IN ('SAIDA', 'RMA', 'DESCARTE INTERNO')
+         THEN ROUND((epoch(data_movimento) - epoch(data_entrada_ciclo)) / 86400.0, 1)
+    END                                                                 AS dias_no_laboratorio,
+    nota_romaneio,
+    fornecedor
+FROM final
+WHERE data_movimento >= TIMESTAMP '2026-01-01'
+ORDER BY data_movimento DESC
+```
+
+### Consulta 22: laboratorio-backlog
+
+```sql
+-- =============================================================================
+-- LABORATÓRIO · BACKLOG                    conjunto calculado: laboratorio-backlog
+--
+-- Substitui a consulta "backlog" do Power BI "LAB - Produtividade Laboratório"
+-- (server/src/sources/sql/lab_backlog.sql). Grão: patrimônio que está no
+-- laboratório agora — o responsável atual é um laboratório, nunca houve
+-- RMA/descarte, e a entrada é a primeira passagem por laboratório depois da
+-- última ida ao almoxarifado.
+--
+-- Lógica do Power BI (Postgres `~` virou regexp_matches; o ARRAY_AGG ... [1]
+-- virou list(... ORDER BY ...)[1]; NOW() virou o relógio de São Paulo, porque
+-- o `created` do Voalle é hora local). Os dias em aberto e o "acima de 90
+-- dias" contam até a hora do cálculo do conjunto, como no Power BI até a hora
+-- da consulta. As colunas saem com os nomes da consulta original.
+--
+-- Fontes: patrimony_occurrences.
+--
+-- Abrangente: o app não aplica nada além disso; a tela mostra o backlog dos
+-- patrimônios que aparecem nos eventos filtrados (conjunto 21).
+--
+-- Volume: ~350 linhas. Cadência sugerida: a cada 3 horas.
+-- =============================================================================
+WITH agora AS (
+    SELECT timezone('America/Sao_Paulo', now()) AS ts
+),
+oc AS (
+    SELECT
+        TRY_CAST(po.id AS BIGINT)                                       AS id,
+        TRY_CAST(po.patrimony_id AS INTEGER)                            AS patrimony_id,
+        TRY_CAST(po.created AS TIMESTAMP)                               AS created,
+        rtrim(NULLIF(regexp_extract(po.description, '(?s)Sob Responsabilidade de\s+(.+)', 1), ''), ' .') AS recebedor,
+        CASE
+            WHEN po.title = 'Descarte Interno'
+              OR regexp_matches(po.description, '(?i)\bRMA\b|GARANTIA')
+                THEN 'TERMINAL'
+            WHEN regexp_matches(po.description, '(CANCELAMENTO|MANUTENÇÃO) / LABORATÓRIO / (CANOAS|SLE)|CONSERTO INTERNO / LABORATÓRIO (CANOAS|SLE)')
+                THEN 'LAB'
+            WHEN regexp_matches(po.description, 'A\.ALMOXARIFADO / (CANOAS|SÃO LEO)|ALMOXARIFADO - (CANOAS|SÃO LEOPOLDO) - (CANCELAMENTO|MANUTENÇÃO)')
+                THEN 'ALMOX'
+        END                                                             AS classe,
+        -- troca de responsável em qualquer conta
+        (TRY_CAST(po.occurrence_type AS INTEGER) = 5
+         AND po.description LIKE '%Sob Responsabilidade de%'
+         AND po.title IS DISTINCT FROM 'Descarte Interno')               AS is_resp
+    FROM patrimony_occurrences po
+    WHERE (TRY_CAST(po.occurrence_type AS INTEGER) = 5 AND po.description LIKE '%Sob Responsabilidade de%')
+       OR regexp_matches(po.description, '(?i)\bRMA\b|GARANTIA')
+       OR po.title = 'Descarte Interno'
+),
+resumo AS (
+    SELECT
+        patrimony_id,
+        (list(classe ORDER BY created DESC, id DESC) FILTER (WHERE is_resp))[1]    AS classe_resp_atual,
+        (list(recebedor ORDER BY created DESC, id DESC) FILTER (WHERE is_resp))[1] AS responsavel_atual,
+        bool_or(classe = 'TERMINAL')                                    AS teve_terminal,
+        MAX(created) FILTER (WHERE classe = 'ALMOX')                    AS ultimo_almox
+    FROM oc
+    GROUP BY patrimony_id
+)
+SELECT
+    r.patrimony_id,
+    r.responsavel_atual                                                 AS laboratorio_atual,
+    strftime(MIN(oc.created), '%Y-%m-%d %H:%M:%S')                      AS data_entrada_lab,
+    ROUND((epoch(MAX(a.ts)) - epoch(MIN(oc.created))) / 86400.0, 1)     AS dias_em_aberto,
+    CASE WHEN epoch(MAX(a.ts)) - epoch(MIN(oc.created)) > 90 * 86400
+         THEN 'Acima de 90 dias' ELSE 'Até 90 dias' END                 AS status_backlog_90
+FROM resumo r
+JOIN oc ON oc.patrimony_id = r.patrimony_id
+       AND oc.classe = 'LAB'
+       AND oc.created > COALESCE(r.ultimo_almox, TIMESTAMP '-infinity')
+CROSS JOIN agora a
+WHERE r.classe_resp_atual = 'LAB'
+  AND NOT r.teve_terminal
+GROUP BY r.patrimony_id, r.responsavel_atual
+```
+
 ### Validação feita
 
-As 20 consultas rodaram no **mesmo motor do Data Hub** (`@duckdb/node-api` 1.5), passando pelo
+As 22 consultas rodaram no **mesmo motor do Data Hub** (`@duckdb/node-api` 1.5), passando pelo
 guard de SQL do próprio Data Hub e embrulhados como ele faz
 (`select * from (…) as __derivado`). Foram testados com dados sintéticos que exercitam
 cada regra: a soma de devoluções da alocação, as notas canceladas, o recorte do
@@ -1128,7 +1405,10 @@ protocolo, a última ocorrência do patrimônio, o número do romaneio e o receb
 texto (inclusive com quebra de linha), o `DISTINCT` dos pedidos e o fornecedor sem
 `synsuite_code`; no Gerencial, a origem da volta do laboratório (a mais recente antes
 dela), a entrega de flat repetida por equipe, o ajuste de 04/09/2025, o primeiro dia de
-cada serial e a janela dos últimos meses da produtividade. Foram duas variações de tipo: o lake tipado, e o pior caso com
+cada serial e a janela dos últimos meses da produtividade; no laboratório, a sequência entrada → saída
+→ nova entrada → descarte (com o motivo depois da quebra de linha), o que vem depois do
+descarte ignorado, o número do romaneio e o recebedor no texto, e o backlog de quem ficou
+no laboratório. Foram duas variações de tipo: o lake tipado, e o pior caso com
 booleano como `1.0` e data como texto. O resultado foi idêntico nas duas.
 
 **Não foi feito:** rodar contra o lake real (a ferramenta não tem acesso a ele). A
@@ -1159,6 +1439,8 @@ conferência fica para depois da primeira materialização (seção 5).
 | 18 consumo de flat | quem entregou em `FLAT_SUPPLIERS`; quem recebeu fora de `FLAT_EXCLUDED_RECEIVERS` |
 | 19 obsoletos | — (a data sem dia vazio) |
 | 20 produtividade | os dois últimos meses fechados; pessoas da lista da Administração; quem lançou com nome |
+| 21 laboratório · eventos | — (a consulta do Power BI como está; ver decisão 8) |
+| 22 laboratório · backlog | só os patrimônios que aparecem nos eventos filtrados (é assim que o filtro chegava a ele no Power BI) |
 
 ---
 
@@ -1189,6 +1471,8 @@ movimento, mas a ordem de grandeza tem de bater:
 | 18 consumo de flat: metros em 2025 depois do filtro do app | 4.111.128 (05/11/2026) |
 | 19 obsoletos: linhas (seriais distintos) | 1.147 (05/11/2026) |
 | 20 produtividade: patrimônios em set+out/2026 de todas as pessoas | 30.412 (05/11/2026) |
+| 21 laboratório · eventos desde 2026: entrada / saída / descarte / RMA | 43.432: 20.873 / 19.945 / 2.535 / 79 (06/11/2026) |
+| 22 laboratório · backlog: linhas / com evento em 2026 (o que a tela mostra) | 351 / 316 (06/11/2026) |
 
 ---
 
@@ -1251,4 +1535,13 @@ movimento, mas a ordem de grandeza tem de bater:
      todos os responsáveis seriam ~216 mil linhas para usar 1,2 mil.
    - **20 produtividade:** só os últimos três meses (a tela usa dois). O Power BI lia
      desde 2023, mas nenhum visual ou medida passava dos dois meses fechados.
+8. **Laboratório: as consultas do Power BI como estão** (06/11/2026). Por decisão da
+   área, a aba usa as duas consultas exatamente como no relatório, sem filtro, piso ou
+   limite a mais no app — senão os dados mudam. Por isso ficam no SQL a empresa 1, o "sem
+   PROJETO NHO" e o "sem base excluída", que escolhem os patrimônios ANTES de montar a
+   sequência de eventos, e o corte de 2026 do próprio Power BI (o histórico inteiro de
+   cada patrimônio continua montando a sequência; só os eventos que saem são de 2026 em
+   diante). A única mudança na tradução é o filtro de desempenho
+   (`patrimony_id IN (… created >= 2026)`), que não muda o resultado. Os dois conjuntos
+   recalculam a cada 3 horas (a cadência da tela).
 

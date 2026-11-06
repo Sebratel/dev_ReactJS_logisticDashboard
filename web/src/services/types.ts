@@ -542,3 +542,59 @@ export interface ProductivityStaff {
   updatedBy: string | null;
   candidates: { name: string; patrimonies: number }[];
 }
+
+// ------------------------------------------------------------------ laboratório (Power BI "LAB - Produtividade Laboratório")
+
+/** Um evento do laboratório — a linha da tabela de eventos, como vem do servidor. */
+export interface LabDetailRow {
+  occurredAt: string;
+  day: string;
+  eventType: string;
+  entryReason: string | null;
+  entryLab: string | null;
+  baseLab: string | null;
+  warehouse: string | null;
+  discardReason: string | null;
+  patrimonyId: number;
+  patrimonyTag: string | null;
+  serialNumber: string | null;
+  productTitle: string | null;
+  cycle: number;
+  cycleEntryAt: string | null;
+  labDays: number | null;
+  packingNumber: string | null;
+}
+
+export interface LabPatrimonyRow {
+  patrimonyTag: string | null;
+  serialNumber: string | null;
+  cycle: number;
+  item: string | null;
+}
+
+export interface LabBacklogRow {
+  patrimonyTag: string | null;
+  serialNumber: string | null;
+  item: string | null;
+  currentLab: string | null;
+  entryAt: string | null;
+  openDays: number | null;
+  over90: string | null;
+}
+
+export interface LabMovementsReport {
+  options: Record<string, string[]>;
+  kpis: { events: number; patrimonies: number; backlog: number };
+  series: SeriesDefinition[];
+  byDay: PeriodValues[];
+  matrix: Matrix;
+  byItem: { rows: KeyValue[]; total: number };
+  /** sem limite de linhas nesta tela: tudo do recorte */
+  patrimonies: LabPatrimonyRow[];
+  backlog: {
+    byItem: KeyValue[];
+    over90: number;
+    rows: LabBacklogRow[];
+  };
+  detail: LabDetailRow[];
+}

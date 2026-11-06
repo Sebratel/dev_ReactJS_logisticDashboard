@@ -24,6 +24,8 @@ function emptyModel(): DataModel {
     usedFieldEquipment: [],
     chargedPatrimonies: [],
     chargedProducts: [],
+    labEvents: [],
+    labBacklog: [],
     createdObjects: [],
     flatConsumption: [],
     zteDispatches: [],

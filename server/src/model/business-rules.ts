@@ -378,3 +378,9 @@ export const DEFAULT_PRODUCTIVITY_STAFF = [
   'RAONI SILVA DA SILVA',
   'SAMUEL FIGUEIRA DUTRA',
 ] as const;
+
+// ------------------------------------------------------------------ laboratório
+// Regras do Power BI "LAB - Produtividade Laboratório" (aba "Entrada/ Saída Laboratório").
+
+/** Os tipos de evento, na ordem da legenda e da matriz. */
+export const LAB_EVENT_TYPES = ['ENTRADA', 'SAIDA', 'RMA', 'DESCARTE INTERNO'] as const;

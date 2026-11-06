@@ -72,6 +72,7 @@ export const AREA_ROW_LABEL = 'Outras áreas';
 export const AREA_GROUPS = [
   { key: 'compras', label: 'Compras', paths: ['/compras/lancamento-e-saldos'] },
   { key: 'controle', label: 'Controle', paths: ['/controle/equipamentos-campo'] },
+  { key: 'laboratorio', label: 'Laboratório', paths: ['/laboratorio/entrada-saida'] },
 ] as const;
 
 export const PAGES: PageDefinition[] = [
@@ -149,6 +150,15 @@ export const PAGES: PageDefinition[] = [
     description: 'ONUs e roteadores enviados a campo, novos e usados (vindos do laboratório), por dia, mês e modelo',
     icon: 'roteador',
     sources: ['newFieldEquipment', 'usedFieldEquipment'],
+  },
+  {
+    path: '/laboratorio/entrada-saida',
+    label: 'Laboratório · Entrada e saída',
+    shortLabel: 'Entrada e saída',
+    title: 'Entrada e saída · Laboratório',
+    description: 'O que entrou e saiu do laboratório (e foi para RMA ou descarte), por dia, item e ciclo, e o que está lá sem saída',
+    icon: 'laboratorio',
+    sources: ['labEvents', 'labBacklog'],
   },
   {
     path: '/patrimonios/em-carga',

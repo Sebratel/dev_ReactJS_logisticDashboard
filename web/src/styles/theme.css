@@ -88,9 +88,9 @@
 
   /* cromo: a área útil dos visuais é derivada daqui */
   --h-topbar: 52px;
-  /* abas em três linhas (patrimônios / produtos / outras áreas): a altura total entra no cálculo da área útil e no topo da barra de filtros */
+  /* abas recolhidas numa linha (a do grupo da tela aberta); o bloco inteiro abre por cima do conteúdo e não entra na altura */
   --h-nav-linha: 30px;
-  --nav-linhas: 3;
+  --nav-linhas: 1;
   --h-nav: calc(var(--h-nav-linha) * var(--nav-linhas) + 1px);
   --h-filtros: 50px;
   --h-chips: 0px;
@@ -248,16 +248,33 @@ a.icon-btn { text-decoration: none; }
    as duas linhas — em cima e embaixo é a mesma tela, só muda o grupo. A
    terceira junta as áreas próprias (compras, controle, tecnologia): uma tela
    por coluna, cada uma com o seu ícone e o nome da área na aba. */
-.pagenav {
-  background: var(--pbi-superficie);
-  display: grid; height: var(--h-nav);
-  grid-template-columns: max-content repeat(4, var(--nav-icone) minmax(max-content, 1fr));
-  grid-template-rows: repeat(var(--nav-linhas), var(--h-nav-linha));
-  border-bottom: 1px solid var(--pbi-borda);
-  overflow-x: auto; scrollbar-width: none;
+/* a faixa das abas (presa sob o topo): a linha do grupo aberto + o botão "Todas as telas" */
+.pagenav-wrap {
   position: sticky; top: var(--h-topbar); z-index: 39;
+  display: flex; height: var(--h-nav);
+  background: var(--pbi-superficie); border-bottom: 1px solid var(--pbi-borda);
   --nav-icone: 48px;
 }
+.pagenav {
+  background: var(--pbi-superficie);
+  display: grid; flex: 1; min-width: 0; height: var(--h-nav);
+  grid-template-columns: max-content repeat(4, var(--nav-icone) minmax(max-content, 1fr));
+  grid-template-rows: repeat(var(--nav-linhas), var(--h-nav-linha));
+  overflow-x: auto; scrollbar-width: none;
+}
+/* o bloco completo: por cima do conteúdo, logo abaixo da faixa */
+.pagenav.pagenav-painel {
+  position: absolute; top: 100%; left: 0; right: 0; height: auto; z-index: 45;
+  border-bottom: 1px solid var(--pbi-borda); box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+}
+.nav-toggle {
+  flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 0 14px;
+  border: none; border-left: 1px solid var(--pbi-borda); background: var(--pbi-superficie-2); cursor: pointer;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: var(--pbi-primary-texto);
+}
+.nav-toggle:hover, .pagenav-wrap.aberta .nav-toggle { background: var(--pbi-hover-vinho); }
+.nav-toggle:focus-visible { outline: 2px solid var(--pbi-gold); outline-offset: -2px; }
+.nav-dica { grid-column: 2 / -1; display: flex; align-items: center; padding: 0 14px; font-size: 12px; color: var(--pbi-muted); }
 .pagenav::-webkit-scrollbar { display: none; }
 /* nome do grupo: célula própria em vinho; a barra lateral (vinho) só na linha da tela aberta */
 .nav-grupo {
@@ -391,6 +408,11 @@ a.icon-btn { text-decoration: none; }
 .alternador button:last-child { border-right: none; }
 .alternador button i { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
 .alternador button.on { background: var(--pbi-hover-vinho); color: var(--pbi-primary-texto); }
+.alternador-rotulo {
+  display: inline-flex; align-items: center; padding: 0 10px; border-right: 1px solid var(--pbi-borda);
+  background: var(--pbi-superficie-2); color: var(--pbi-muted); font-size: 10.5px; font-weight: 800;
+  letter-spacing: 0.3px; text-transform: uppercase; white-space: nowrap;
+}
 
 .pop {
   position: absolute; z-index: 60; top: calc(100% + 6px); left: 0; min-width: 260px; max-width: 360px;
@@ -526,6 +548,11 @@ table.pbi td.est-alerta, table.pbi tbody tr:hover td.est-alerta { background: va
 table.pbi td.ped-aguardando, table.pbi tbody tr:hover td.ped-aguardando { background: var(--pedido-aguardando); color: var(--pedido-aguardando-texto); }
 table.pbi td.st, table.pbi tbody tr:hover td.st { color: var(--status-texto); font-weight: 600; }
 .st-disponivel { background: var(--status-disponivel) !important; }
+/* tabela virtual (sem limite de linhas): colunas travadas na largura da primeira página, uma linha por registro */
+table.pbi.travada { table-layout: fixed; }
+table.pbi.travada td { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+table.pbi.travada td.wrap { white-space: nowrap; min-width: 0; }
+table.pbi tbody tr.vt-espaco td, table.pbi tbody tr.vt-espaco:hover td { padding: 0; border: 0; background: transparent; }
 .st-indisponivel { background: var(--status-indisponivel) !important; }
 .st-extraviado { background: var(--status-extraviado) !important; }
 .st-aguardando { background: var(--status-aguardando) !important; }
@@ -793,6 +820,25 @@ button.link { border: none; background: none; padding: 0 0 0 6px; cursor: pointe
   .tela-card, .tela-card:hover, .tela-seta, .tela-card:hover .tela-seta { transition: none; transform: none; }
 }
 
+/* ----------------------------------------------------------- laboratório */
+/* cartões | eventos por dia (o gráfico ocupa quase tudo) */
+.linha-lab-topo { grid-template-columns: minmax(180px, 220px) minmax(0, 1fr); }
+.linha-lab-topo > .visual { height: clamp(300px, calc((var(--util) - var(--gap)) * 0.5), 460px); }
+.lab-legenda { list-style: none; margin: 0; padding: 4px 4px 0; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+.lab-legenda li { display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; color: var(--pbi-muted); }
+.lab-legenda li i { width: 10px; height: 10px; border-radius: 2px; }
+.dias-atraso { color: var(--pbi-primary-texto); font-weight: 800; }
+/* cores das células do Power BI (as mesmas no tema escuro: o texto é sempre branco) */
+table.pbi td.lab-ev, table.pbi tbody tr:hover td.lab-ev { color: #fff; font-weight: 700; }
+table.pbi td.lab-ev-entrada, table.pbi tbody tr:hover td.lab-ev-entrada { background: #31A744; }
+table.pbi td.lab-ev-saida, table.pbi tbody tr:hover td.lab-ev-saida { background: #A1343C; }
+table.pbi td.lab-ev-rma, table.pbi tbody tr:hover td.lab-ev-rma { background: #118DFF; }
+table.pbi td.lab-ev-descarte, table.pbi tbody tr:hover td.lab-ev-descarte { background: #893395; }
+table.pbi td.lab-motivo-cancelamento, table.pbi tbody tr:hover td.lab-motivo-cancelamento { background: #A38600; }
+table.pbi td.lab-motivo-manutencao, table.pbi tbody tr:hover td.lab-motivo-manutencao { background: #0D6ABF; }
+.lab-filtros { display: flex; flex-wrap: wrap; gap: 8px; }
+.lab-dica { font-size: 11px; color: var(--pbi-muted); text-align: center; margin-top: 2px; }
+
 /* ------------------------------------------------------------ gerencial */
 /* linha de abas da seção Gerencial: as seis telas dividem a largura toda, cada uma com o ícone */
 .nav-linha-ger {
@@ -871,7 +917,9 @@ button.link { border: none; background: none; padding: 0 0 0 6px; cursor: pointe
 @media (max-width: 860px) {
   .admin-resumo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nav-grupo { min-width: 0; padding: 0 10px; font-size: 11px; }
-  .pagenav { --nav-icone: 36px; }
+  .pagenav-wrap { --nav-icone: 36px; }
+  .nav-toggle { padding: 0 11px; }
+  .nav-toggle span { display: none; }
   .capa-telas { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-auto-flow: row; }
   .capa-extra { grid-template-columns: minmax(0, 1fr); }
   .boas-vindas { padding: 20px; }

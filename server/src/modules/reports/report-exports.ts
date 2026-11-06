@@ -16,6 +16,9 @@ import {
 } from './charged-items.service.js';
 import { patrimonyPackingSpec, productPackingSpec } from './packing-lists.service.js';
 import {
+  LAB_SPEC, labBacklog, labPatrimonies, toLabDetailRow, type LabBacklogRow, type LabDetailRow, type LabPatrimonyRow,
+} from './lab-movements.service.js';
+import {
   filterPurchasing, groupOrderItems, PURCHASING_SPEC, sortBalances, summarizeOrders,
   type PurchaseOrderSummary, type PurchasingSlice,
 } from './purchase-orders.service.js';
@@ -309,4 +312,52 @@ export const REPORT_EXPORTS: Record<string, ExportDefinition> = {
       { header: 'MEDIDA', value: (r) => r.unitMeasure },
     ],
   ),
+  // tela do laboratório (Power BI "LAB - Produtividade Laboratório"): os títulos do relatório
+  'lab-movements/detail': {
+    fileName: 'laboratorio-eventos',
+    build: (model, query) => {
+      const { rows } = applyFilters(model.labEvents, LAB_SPEC, parseSelection(query, LAB_SPEC as FilterSpec<unknown>));
+      return toCsv<LabDetailRow>([
+        { header: 'Data Movimento', value: (r) => r.occurredAt },
+        { header: 'Evento', value: (r) => r.eventType },
+        { header: 'Patrimônio', value: (r) => r.patrimonyTag },
+        { header: 'Serial', value: (r) => r.serialNumber },
+        { header: 'Romaneio', value: (r) => r.packingNumber },
+        { header: 'Item', value: (r) => r.item },
+        { header: 'Motivo', value: (r) => r.entryReason },
+        { header: 'Dash Laboratório', value: (r) => r.entryLab },
+        { header: 'Data Entrada', value: (r) => r.cycleEntryAt },
+        { header: 'Dias no Lab', value: (r) => r.labDays },
+        { header: 'Dash Almox', value: (r) => r.warehouse },
+        { header: 'Motivo do descarte', value: (r) => r.discardReason },
+      ], rows.map(toLabDetailRow));
+    },
+  },
+  'lab-movements/patrimonies': {
+    fileName: 'laboratorio-patrimonios',
+    build: (model, query) => {
+      const { rows } = applyFilters(model.labEvents, LAB_SPEC, parseSelection(query, LAB_SPEC as FilterSpec<unknown>));
+      return toCsv<LabPatrimonyRow>([
+        { header: 'PATRIMÔNIO', value: (r) => r.patrimonyTag },
+        { header: 'SERIAL', value: (r) => r.serialNumber },
+        { header: 'CICLOS', value: (r) => r.cycle },
+        { header: 'ITEM', value: (r) => r.item },
+      ], labPatrimonies(rows));
+    },
+  },
+  'lab-movements/backlog': {
+    fileName: 'laboratorio-backlog',
+    build: (model, query) => {
+      const { rows } = applyFilters(model.labEvents, LAB_SPEC, parseSelection(query, LAB_SPEC as FilterSpec<unknown>));
+      return toCsv<LabBacklogRow>([
+        { header: 'PATRIMÔNIO', value: (r) => r.patrimonyTag },
+        { header: 'SERIAL', value: (r) => r.serialNumber },
+        { header: 'ITEM', value: (r) => r.item },
+        { header: 'LABORATÓRIO ATUAL', value: (r) => r.currentLab },
+        { header: 'DATA ENTRADA', value: (r) => r.entryAt },
+        { header: 'DIAS', value: (r) => r.openDays },
+        { header: 'BACKLOG 90 DIAS', value: (r) => r.over90 },
+      ], labBacklog(rows, model.labBacklog));
+    },
+  },
 };

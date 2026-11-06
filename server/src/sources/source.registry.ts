@@ -8,7 +8,8 @@ import {
 } from '../model/business-rules.js';
 import { productivityMonths } from '../modules/management/period-comparison.js';
 import type {
-  ChargedPatrimonySourceRow, ChargedProductSourceRow, CreatedObjectsSourceRow, FlatConsumptionSourceRow, ObsoleteEquipmentSourceRow,
+  ChargedPatrimonySourceRow, ChargedProductSourceRow, CreatedObjectsSourceRow, FlatConsumptionSourceRow, LabBacklogSourceRow, LabEventSourceRow,
+  ObsoleteEquipmentSourceRow,
   PackingProductivitySourceRow, ZteDispatchSourceRow, ZteReturnSourceRow, FieldEquipmentSourceRow, ItemBalanceSourceRow, PatrimonyAllocationSourceRow, PatrimonyPackingNoteSourceRow, PatrimonyPackingSourceRow,
   PatrimonyStatusSourceRow, PendingPatrimonySourceRow, ProductAllocationSourceRow,
   ProductPackingSourceRow, PurchaseOrderItemSourceRow, PurchaseRequestSourceRow, SeniorCollaboratorSourceRow,
@@ -35,6 +36,8 @@ export interface SourceDefinition<T> {
   origin: 'VOALLE' | 'MARIADB';
   phase: 'MASTER' | 'ACTIVITY' | 'LIVE';
   load: () => Promise<T[]>;
+  /** fonte relida com cadência própria, mais espaçada que a carga horária (ela pula as cargas no meio) */
+  everyMs?: () => number;
 }
 
 const voalle = <T extends object>(name: string, params: unknown[] = [], timeoutMs?: number) => () => (
@@ -204,6 +207,23 @@ export const SOURCES = {
       return voalle<PackingProductivitySourceRow>('management_packing_productivity', [from, to])();
     },
   } satisfies SourceDefinition<PackingProductivitySourceRow>,
+  // ---- Laboratório (Power BI "LAB - Produtividade Laboratório"): ~53 s e ~28 s, a cada 3 horas
+  labEvents: {
+    key: 'labEvents',
+    label: 'Laboratório · entradas e saídas',
+    origin: 'VOALLE',
+    phase: 'ACTIVITY',
+    load: voalle<LabEventSourceRow>('lab_events'),
+    everyMs: () => appConfig.labRefreshIntervalMs,
+  } satisfies SourceDefinition<LabEventSourceRow>,
+  labBacklog: {
+    key: 'labBacklog',
+    label: 'Laboratório · backlog',
+    origin: 'VOALLE',
+    phase: 'ACTIVITY',
+    load: voalle<LabBacklogSourceRow>('lab_backlog'),
+    everyMs: () => appConfig.labRefreshIntervalMs,
+  } satisfies SourceDefinition<LabBacklogSourceRow>,
   itemBalances: {
     key: 'itemBalances',
     label: 'Saldo de itens (compras)',

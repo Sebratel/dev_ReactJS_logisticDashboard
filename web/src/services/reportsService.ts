@@ -2,7 +2,7 @@ import { fileNameFrom, saveBlob } from '../utils/download';
 import { todayIso } from '../utils/format';
 import { getData, httpClient, toApiError } from './httpClient';
 import type {
-  ChargedPatrimoniesReport, ChargedProductsReport, ComparisonReport, ProductivityReport, FieldEquipmentReport, PatrimonyAllocationReport, PatrimonyPackingReport, PatrimonyStockAlertReport, ProductAllocationReport,
+  ChargedPatrimoniesReport, ChargedProductsReport, ComparisonReport, LabMovementsReport, ProductivityReport, FieldEquipmentReport, PatrimonyAllocationReport, PatrimonyPackingReport, PatrimonyStockAlertReport, ProductAllocationReport,
   ProductPackingReport, PurchaseOrdersReport, StockAlertReport,
 } from './types';
 
@@ -18,6 +18,7 @@ export interface ReportMap {
   'field-equipment': FieldEquipmentReport;
   'charged-patrimonies': ChargedPatrimoniesReport;
   'charged-products': ChargedProductsReport;
+  'lab-movements': LabMovementsReport;
   // seção Gerencial (/management-reports: só quem tem acesso)
   'created-objects': ComparisonReport;
   'flat-consumption': ComparisonReport;
