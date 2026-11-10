@@ -97,11 +97,13 @@ const EnvSchema = z.object({
   // tela do laboratório: relida a cada 3 horas (a carga horária pula as fontes dela no meio)
   LAB_REFRESH_INTERVAL_MS: z.coerce.number().int().min(60_000).default(10_800_000),
 
-  // Recortes de data — os mesmos escritos nas consultas do Power BI
-  CONSUMPTION_SINCE: isoDate.default('2024-01-01'),
+  // Recortes de data — os das consultas do Power BI, menos as alocações e o histórico de
+  // romaneios de patrimônio, que o Power BI lia desde 2024 e passaram a 2026 (decisão de
+  // 10/11/2026, para aliviar a carga horária no Voalle)
+  CONSUMPTION_SINCE: isoDate.default('2026-01-01'),
   PRODUCT_PACKING_SINCE: isoDate.default('2025-01-01'),
   PATRIMONY_PACKING_SINCE: isoDate.default('2026-01-01'),
-  PATRIMONY_NOTES_SINCE: isoDate.default('2024-01-01'),
+  PATRIMONY_NOTES_SINCE: isoDate.default('2026-01-01'),
   PURCHASE_ORDERS_SINCE: isoDate.default('2026-01-01'),
   // tela de equipamentos para campo: o Power BI "CTR" só mostrava de 2025 em diante
   FIELD_EQUIPMENT_SINCE: isoDate.default('2025-01-01'),
