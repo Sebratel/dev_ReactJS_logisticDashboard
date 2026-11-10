@@ -81,7 +81,7 @@ describe('Gerencial · regras das consultas', () => {
     assert.equal(sumBetween(daily([['2026-01-01', 1], ['2026-01-05', 2], ['2026-02-01', 4]]), '2026-01-02', '2026-01-31'), 2);
   });
 
-  it('objetos criados: só desde 2022 (o conjunto do Data Hub vem sem corte)', () => {
+  it('objetos criados: só desde 2022, mesmo que a fonte traga dia anterior', () => {
     assert.deepEqual(buildCreatedObjects([
       { day: '2021-12-31', objects: 9 }, { day: '2022-01-03', objects: 60 }, { day: '2022-01-03T00:00:00', objects: 1 },
     ]), [{ day: '2022-01-03', value: 61 }]);

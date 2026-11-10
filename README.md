@@ -15,8 +15,8 @@ numa seção de acesso restrito, o **"LOG - Gerencial"** (ver [Gerencial](#geren
 
 Os dados vêm **direto das fontes** (Voalle e MariaDB) e são **relidos de hora em hora**
 pelo servidor — menos a tela de Compras, relida **a cada minuto**. Mínimo, alerta e situação dos produtos ficam num cadastro do próprio app
-(ver [Configuração · Controle de estoque](#configuração--controle-de-estoque)). A migração para o Data Hub está prevista
-para uma fase seguinte — ver [Próximo passo: Data Hub](#próximo-passo-data-hub).
+(ver [Configuração · Controle de estoque](#configuração--controle-de-estoque)). As consultas
+vão direto ao banco, sem camada intermediária — ver [Carga e impacto no banco](#carga-e-impacto-no-banco).
 
 ## Telas
 
@@ -69,7 +69,7 @@ cadastro do app (JSON) ───────┤                                 
   meio de uma requisição lê o modelo antigo inteiro, nunca uma mistura.
 - **Carga horária** (`server/src/sources/refresh.job.ts`): primeiro as tabelas de
   cadastro (rápidas), depois as de movimento (pesadas, duas em paralelo). A carga
-  completa leva ~9 min; a tela segue com o dado anterior enquanto isso. Fonte que
+  completa leva de ~3 a ~9 min, conforme a carga do ERP; a tela segue com o dado anterior enquanto isso. Fonte que
   falha mantém a última leitura boa e aparece como "falhou" na capa. As duas fontes do
   laboratório têm cadência própria, a cada 3 horas (`LAB_REFRESH_INTERVAL_MS`): as cargas
   do meio as pulam; o boot e a atualização manual pela capa leem tudo.
@@ -522,6 +522,11 @@ tela mostra. Quem comparar lado a lado vai encontrar estas diferenças:
     trocar entre dia e mês, e com mais de dois meses no recorte a tela abre no mês. O
     filtro de patrimônio é uma busca (são ~20 mil), e a tabela de eventos lista cada
     evento (o Power BI juntava linhas idênticas, o que na prática não acontece).
+28. **Alocações e histórico de romaneios de patrimônio desde 2026** (decisão de
+    10/11/2026, para aliviar a carga no Voalle) — o Power BI lia desde 2024
+    (`CONSUMPTION_SINCE` e `PATRIMONY_NOTES_SINCE`, agora `2026-01-01`). As telas de
+    alocação e o histórico de romaneios do alerta de patrimônios não mostram mais 2024 e
+    2025; para voltar, basta mudar as duas variáveis na stack.
 
 ## Segurança
 
@@ -540,18 +545,35 @@ tela mostra. Quem comparar lado a lado vai encontrar estas diferenças:
 - CSV exportado neutraliza injeção de fórmula (`=`, `+`, `-`, `@`).
 - Segredos só em variáveis de ambiente; `.env*` fora do git.
 
-## Próximo passo: Data Hub
+## Carga e impacto no banco
 
-A migração está preparada em [`MIGRACAO-DATAHUB.md`](MIGRACAO-DATAHUB.md), na raiz do projeto:
+O painel consulta o Voalle e a MariaDB diretamente (decisão de 10/11/2026), sem camada
+intermediária. Medição de uma carga completa em horário comercial (10/11/2026, 11h15),
+lendo tudo do banco, ainda com as alocações e o histórico de romaneios desde 2024:
 
-- as **23 fontes** (tabelas puras), com as colunas que cada uma precisa publicar;
-- os **22 conjuntos calculados** prontos para colar no Data Hub, validados no mesmo
-  DuckDB dele (o 11 e o 12 são da tela de Compras — ver a decisão 6 do documento sobre
-  manter a atualização a cada minuto; o 13 e o 14, da tela de equipamentos para campo e
-  também dos ZTE novos e usados do Gerencial; o 15 e o 16, das telas em carga; do 17 ao
-  20, do resto da seção Gerencial; o 21 e o 22, da tela do laboratório);
-- as regras que saem do SQL e passam para o app;
-- os números da carga direta, para conferir depois da primeira materialização.
+| | Consultas | Linhas | Tempo |
+|---|---|---|---|
+| Carga completa | 23 | 2,1 mi | 168 s (320 s somando as consultas, duas em paralelo) |
+| Compras (a cada minuto) | 2 | 28,5 mil | 0,5 a 0,8 s |
+| **Por dia** | **~3.400** | **~91 mi** | **~2 h de consulta no banco** |
 
-No app, a troca fica em `server/src/sources/source.registry.ts`: cada fonte passa a ler
-um conjunto pelo `/rows` do Data Hub em vez do banco. Modelo e telas não mudam.
+**Com o corte em 2026** (alocações e histórico de romaneios, mesmo dia — divergência 28):
+
+| Consulta | Desde 2024 | Desde 2026 |
+|---|---|---|
+| Alocação de produtos | 703.589 linhas, 143 s | ~247 mil linhas (estimado) |
+| Alocação de patrimônios | 576.470 linhas, 12 s | 195.044 linhas, 1,4 s |
+| Histórico de romaneios de patrimônio | 126.620 linhas, 9 s | 49.686 linhas, 5 s |
+| **Carga horária** | **2,05 mi linhas** | **~1,14 mi linhas (−45%)** |
+| **Por dia (com Compras e laboratório)** | **~91 mi linhas** | **~69 mi linhas** |
+
+- **Maiores consultas agora:** alocação de produtos (~247 mil linhas; o tempo é dominado
+  pela view do ERP e varia com a carga dele — já passou de 2 a ~7 min), status real dos
+  patrimônios (213 mil, 38 s) e laboratório (44 mil, 82 s, a cada 3 horas).
+- **Por dia:** ~27 mi de linhas na carga horária, 41 mi na tela de Compras (a cada
+  minuto) e 0,35 mi no laboratório.
+- **Aplicação:** pico de ~1,1 GB de memória com o corte em 2024 (limite do contêiner:
+  3 GB), 40 s de CPU para a carga e o cálculo das telas; cada tela responde em 0,01 a 0,7 s.
+- **Para aliviar mais o banco, se preciso:** Compras a cada 5 min
+  (`LIVE_REFRESH_INTERVAL_MS`) baixa de 41 para 8 mi de linhas por dia. Uma réplica de
+  leitura do Voalle, se houver, tira a carga do banco principal.

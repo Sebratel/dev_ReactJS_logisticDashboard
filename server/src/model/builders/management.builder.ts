@@ -25,7 +25,7 @@ function sumByDay<T>(rows: readonly T[], dayOfRow: (row: T) => string | null, va
   return [...byDay].map(([day, value]) => ({ day, value })).sort((a, b) => a.day.localeCompare(b.day));
 }
 
-/** Desde 2022 (o corte do Power BI): a consulta direta já corta; o conjunto do Data Hub (17) vem inteiro. */
+/** Desde 2022 (o corte do Power BI). A consulta já corta pela mesma data; aqui é só a garantia. */
 export const buildCreatedObjects = (rows: CreatedObjectsSourceRow[]): DailyValue[] => sumByDay(
   rows,
   (r) => {
